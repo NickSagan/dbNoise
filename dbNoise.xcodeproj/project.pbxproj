@@ -15,6 +15,7 @@
 		91D8E71627A158FE00816161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E71427A158FE00816161 /* LaunchScreen.storyboard */; };
 		91D8E71E27A15CD300816161 /* SwiftyOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E71D27A15CD300816161 /* SwiftyOnboard.swift */; };
 		91D8E72027A15D2B00816161 /* SwiftyOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E71F27A15D2B00816161 /* SwiftyOnboardOverlay.swift */; };
+		91D8E72227A15D7000816161 /* SwiftyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E72127A15D7000816161 /* SwiftyOnboardPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		91D8E71727A158FE00816161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91D8E71D27A15CD300816161 /* SwiftyOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboard.swift; sourceTree = "<group>"; };
 		91D8E71F27A15D2B00816161 /* SwiftyOnboardOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardOverlay.swift; sourceTree = "<group>"; };
+		91D8E72127A15D7000816161 /* SwiftyOnboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				91D8E71727A158FE00816161 /* Info.plist */,
 				91D8E71D27A15CD300816161 /* SwiftyOnboard.swift */,
 				91D8E71F27A15D2B00816161 /* SwiftyOnboardOverlay.swift */,
+				91D8E72127A15D7000816161 /* SwiftyOnboardPage.swift */,
 			);
 			path = dbNoise;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				91D8E72027A15D2B00816161 /* SwiftyOnboardOverlay.swift in Sources */,
 				91D8E71E27A15CD300816161 /* SwiftyOnboard.swift in Sources */,
 				91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */,
+				91D8E72227A15D7000816161 /* SwiftyOnboardPage.swift in Sources */,
 				91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

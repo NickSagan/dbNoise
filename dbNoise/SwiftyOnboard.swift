@@ -4,6 +4,7 @@
 //
 //  Created by Nick Sagan on 26.01.2022.
 //
+// https://github.com/juanpablofernandez/SwiftyOnboard
 
 import UIKit
 
