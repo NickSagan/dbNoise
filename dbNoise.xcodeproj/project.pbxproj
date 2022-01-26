@@ -13,12 +13,12 @@
 		91D8E71127A158F300816161 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E70F27A158F300816161 /* Main.storyboard */; };
 		91D8E71327A158FE00816161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E71227A158FE00816161 /* Assets.xcassets */; };
 		91D8E71627A158FE00816161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E71427A158FE00816161 /* LaunchScreen.storyboard */; };
-		91D8E71E27A15CD300816161 /* SwiftyOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E71D27A15CD300816161 /* SwiftyOnboard.swift */; };
-		91D8E72027A15D2B00816161 /* SwiftyOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E71F27A15D2B00816161 /* SwiftyOnboardOverlay.swift */; };
-		91D8E72227A15D7000816161 /* SwiftyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E72127A15D7000816161 /* SwiftyOnboardPage.swift */; };
+		A3A24089A48A721168A31209 /* Pods_dbNoise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2560DAE6AC4C4BF3688C300A /* Pods_dbNoise.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15E91EDAF027074BA15B0C17 /* Pods-dbNoise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dbNoise.debug.xcconfig"; path = "Target Support Files/Pods-dbNoise/Pods-dbNoise.debug.xcconfig"; sourceTree = "<group>"; };
+		2560DAE6AC4C4BF3688C300A /* Pods_dbNoise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dbNoise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D8E70627A158F300816161 /* dbNoise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dbNoise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D8E70927A158F300816161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D8E70B27A158F300816161 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,9 +27,7 @@
 		91D8E71227A158FE00816161 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91D8E71527A158FE00816161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91D8E71727A158FE00816161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91D8E71D27A15CD300816161 /* SwiftyOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboard.swift; sourceTree = "<group>"; };
-		91D8E71F27A15D2B00816161 /* SwiftyOnboardOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardOverlay.swift; sourceTree = "<group>"; };
-		91D8E72127A15D7000816161 /* SwiftyOnboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardPage.swift; sourceTree = "<group>"; };
+		E357D514ABDEF34408D12A35 /* Pods-dbNoise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dbNoise.release.xcconfig"; path = "Target Support Files/Pods-dbNoise/Pods-dbNoise.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A24089A48A721168A31209 /* Pods_dbNoise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +47,8 @@
 			children = (
 				91D8E70827A158F300816161 /* dbNoise */,
 				91D8E70727A158F300816161 /* Products */,
+				AB49EE65795AA6B2516C948F /* Pods */,
+				C509DF731B51F3374E6B959E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,11 +70,25 @@
 				91D8E71227A158FE00816161 /* Assets.xcassets */,
 				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
 				91D8E71727A158FE00816161 /* Info.plist */,
-				91D8E71D27A15CD300816161 /* SwiftyOnboard.swift */,
-				91D8E71F27A15D2B00816161 /* SwiftyOnboardOverlay.swift */,
-				91D8E72127A15D7000816161 /* SwiftyOnboardPage.swift */,
 			);
 			path = dbNoise;
+			sourceTree = "<group>";
+		};
+		AB49EE65795AA6B2516C948F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15E91EDAF027074BA15B0C17 /* Pods-dbNoise.debug.xcconfig */,
+				E357D514ABDEF34408D12A35 /* Pods-dbNoise.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C509DF731B51F3374E6B959E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2560DAE6AC4C4BF3688C300A /* Pods_dbNoise.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91D8E71A27A158FE00816161 /* Build configuration list for PBXNativeTarget "dbNoise" */;
 			buildPhases = (
+				54D44BDF71463BA9F817170C /* [CP] Check Pods Manifest.lock */,
 				91D8E70227A158F300816161 /* Sources */,
 				91D8E70327A158F300816161 /* Frameworks */,
 				91D8E70427A158F300816161 /* Resources */,
+				674D0EC66F98BAC433032FFD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -142,16 +159,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		54D44BDF71463BA9F817170C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dbNoise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		674D0EC66F98BAC433032FFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dbNoise/Pods-dbNoise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dbNoise/Pods-dbNoise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dbNoise/Pods-dbNoise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		91D8E70227A158F300816161 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				91D8E70E27A158F300816161 /* ViewController.swift in Sources */,
-				91D8E72027A15D2B00816161 /* SwiftyOnboardOverlay.swift in Sources */,
-				91D8E71E27A15CD300816161 /* SwiftyOnboard.swift in Sources */,
 				91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */,
-				91D8E72227A15D7000816161 /* SwiftyOnboardPage.swift in Sources */,
 				91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +352,7 @@
 		};
 		91D8E71B27A158FE00816161 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15E91EDAF027074BA15B0C17 /* Pods-dbNoise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -326,6 +383,7 @@
 		};
 		91D8E71C27A158FE00816161 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E357D514ABDEF34408D12A35 /* Pods-dbNoise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
