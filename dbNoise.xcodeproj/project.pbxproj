@@ -13,7 +13,6 @@
 		91D8E71127A158F300816161 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E70F27A158F300816161 /* Main.storyboard */; };
 		91D8E71327A158FE00816161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E71227A158FE00816161 /* Assets.xcassets */; };
 		91D8E71627A158FE00816161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E71427A158FE00816161 /* LaunchScreen.storyboard */; };
-		91D8E72527A1680D00816161 /* MyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E72427A1680C00816161 /* MyOnboardPage.swift */; };
 		91D8E73B27A177D300816161 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E72727A177D000816161 /* SF-Pro-Display-BoldItalic.otf */; };
 		91D8E73C27A177D300816161 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E72827A177D100816161 /* SF-Pro-Display-Thin.otf */; };
 		91D8E73D27A177D300816161 /* SF-Pro-Display-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91D8E72927A177D100816161 /* SF-Pro-Display-UltralightItalic.otf */; };
@@ -48,7 +47,6 @@
 		91D8E71227A158FE00816161 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91D8E71527A158FE00816161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91D8E71727A158FE00816161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91D8E72427A1680C00816161 /* MyOnboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOnboardPage.swift; sourceTree = "<group>"; };
 		91D8E72727A177D000816161 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
 		91D8E72827A177D100816161 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		91D8E72927A177D100816161 /* SF-Pro-Display-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-UltralightItalic.otf"; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 				91D8E71227A158FE00816161 /* Assets.xcassets */,
 				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
 				91D8E71727A158FE00816161 /* Info.plist */,
-				91D8E72427A1680C00816161 /* MyOnboardPage.swift */,
 				91D8E72627A1778A00816161 /* fonts */,
 			);
 			path = dbNoise;
@@ -297,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91D8E72527A1680D00816161 /* MyOnboardPage.swift in Sources */,
 				91D8E70E27A158F300816161 /* ViewController.swift in Sources */,
 				91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */,
 				91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */,
