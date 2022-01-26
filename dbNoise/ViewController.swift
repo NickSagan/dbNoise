@@ -59,14 +59,17 @@ extension ViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
         overlay.pageControl.currentPage = Int(currentPage)
         print(Int(currentPage))
         overlay.continueButton.tag = Int(position)
+        overlay.microTitle.text = "Payment will be charged to your iTunes Account at confirmation of purchase. Subscriptions will automatically renew unless auto-renew is turned off at least 24 hours before the end of the period. Your account will be charged for renewal according to your plan within 24 hours prior to the end of the current period. You can control or turn off auto-renewal by going to your Apple ID account settings at any time after purchase."
         
         if currentPage == 0.0 || currentPage == 1.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
             overlay.skipButton.setTitle("Skip", for: .normal)
             overlay.skipButton.isHidden = true
+            overlay.microTitle.isHidden = true
         } else {
             overlay.continueButton.setTitle("Start using", for: .normal)
             overlay.skipButton.isHidden = false
+            overlay.microTitle.isHidden = false
         }
     }
 }
