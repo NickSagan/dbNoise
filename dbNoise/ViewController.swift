@@ -20,6 +20,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame)
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            swiftyOnboard.style = .dark
+            swiftyOnboard.backgroundColor = .white
+        } else {
+            swiftyOnboard.style = .light
+            swiftyOnboard.backgroundColor = .white
+        }
         view.addSubview(swiftyOnboard)
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
@@ -64,10 +72,11 @@ extension ViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
 //        }
         
         page.title.text = onboardTitleArray[index]
-        page.subTitle.text = onboardSubTitleArray[index]
         page.title.font = UIFont(name: "SFProDisplay-Bold", size: 34)
+
+        page.subTitle.text = onboardSubTitleArray[index]
         page.subTitle.font = UIFont(name: "SFProDisplay-Light", size: 22)
-        
+
         page.imageView.image = UIImage(named: "\(index).png")
         
         return page
