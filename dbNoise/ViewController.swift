@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     @objc func handleSkip() {
         let index = swiftyOnboard.currentPage
         if index == 2 {
-            print("Skip Onboarding")
+            print("Skip Onboarding - go to main stuff")
         } else {
             print("Skip to last page")
             swiftyOnboard?.goToPage(index: 2, animated: true)
