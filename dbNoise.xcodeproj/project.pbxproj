@@ -108,12 +108,12 @@
 				91D8E70927A158F300816161 /* AppDelegate.swift */,
 				91D8E70B27A158F300816161 /* SceneDelegate.swift */,
 				91D8E70D27A158F300816161 /* ViewController.swift */,
+				91124E6B27A2C787006AA3DC /* NoiseDetectorViewController.swift */,
 				91D8E70F27A158F300816161 /* Main.storyboard */,
 				91D8E71227A158FE00816161 /* Assets.xcassets */,
 				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
 				91D8E71727A158FE00816161 /* Info.plist */,
 				91D8E72627A1778A00816161 /* fonts */,
-				91124E6B27A2C787006AA3DC /* NoiseDetectorViewController.swift */,
 			);
 			path = dbNoise;
 			sourceTree = "<group>";

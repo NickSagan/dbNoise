@@ -70,6 +70,9 @@
                                     <constraint firstAttribute="width" constant="37" id="H1Z-Xe-LoO"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="settings"/>
+                                <connections>
+                                    <action selector="settingsPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="GBT-Rn-bxk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IH-Gs-ggb">
                                 <rect key="frame" x="347" y="151" width="54" height="21"/>
@@ -81,6 +84,9 @@
                                 <buttonConfiguration key="configuration" style="plain">
                                     <backgroundConfiguration key="background" image="pro"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="proPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="Wmp-ZI-VzE"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="YJ2-A8-Z7L">
                                 <rect key="frame" x="13" y="578.5" width="388" height="263.5"/>
@@ -131,6 +137,9 @@
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background" image="hearing"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="hearingPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="ugi-Kb-XHv"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Why-Hz-7wY">
                                                 <rect key="frame" x="156.5" y="37" width="75" height="75"/>
@@ -142,6 +151,9 @@
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background" image="Rec"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="recordPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="MLy-rE-kke"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1G-Wn-iIg">
                                                 <rect key="frame" x="301" y="56" width="37" height="37"/>
@@ -153,6 +165,9 @@
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background" image="menu"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="menuPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="a4G-Oh-HDG"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="50" bottom="8" trailing="50"/>
@@ -180,6 +195,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QXU-KX-Meg"/>
+                    <connections>
+                        <outlet property="avgLabel" destination="axM-xO-aht" id="XQg-Mn-drR"/>
+                        <outlet property="dbResultLabel" destination="xRF-8I-kOU" id="S2c-K6-YR2"/>
+                        <outlet property="maxLabel" destination="1tI-a1-ysM" id="qVe-X9-avZ"/>
+                        <outlet property="minLabel" destination="bWL-Np-CI3" id="Zcl-mZ-VXL"/>
+                        <outlet property="textExplanationLabel" destination="Nxm-q1-dFn" id="EZX-6B-9fR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBC-eT-TxE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
