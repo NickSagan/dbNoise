@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Puy-wC-EcC">
-                                <rect key="frame" x="61" y="139" width="292" height="284"/>
+                                <rect key="frame" x="61" y="91" width="292" height="284"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="78" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRF-8I-kOU">
                                         <rect key="frame" x="91" y="104.5" width="110.5" height="75"/>
@@ -48,27 +48,14 @@
                                     <constraint firstAttribute="width" constant="292" id="wmk-t4-afv"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRU-kg-3Pt">
-                                <rect key="frame" x="364" y="57" width="37" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="1z4-nK-wcy"/>
-                                    <constraint firstAttribute="width" constant="37" id="H1Z-Xe-LoO"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="settings"/>
-                                <connections>
-                                    <action selector="settingsPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="GBT-Rn-bxk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IH-Gs-ggb">
-                                <rect key="frame" x="347" y="107" width="54" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IH-Gs-ggb">
+                                <rect key="frame" x="347" y="57" width="54" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XVP-Gb-Ezh"/>
                                     <constraint firstAttribute="width" constant="54" id="tdi-pV-Bxc"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <backgroundConfiguration key="background" image="pro"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="pro"/>
                                 <connections>
                                     <action selector="proPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="Wmp-ZI-VzE"/>
                                 </connections>
@@ -118,10 +105,8 @@
                                                     <constraint firstAttribute="width" constant="37" id="O6m-df-kek"/>
                                                     <constraint firstAttribute="height" constant="37" id="oSL-ap-Kfh"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <backgroundConfiguration key="background" image="hearing"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" backgroundImage="hearing"/>
                                                 <connections>
                                                     <action selector="hearingPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="ugi-Kb-XHv"/>
                                                 </connections>
@@ -132,10 +117,8 @@
                                                     <constraint firstAttribute="width" constant="75" id="2Gi-qO-eEa"/>
                                                     <constraint firstAttribute="height" constant="75" id="tRv-vn-G7y"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <backgroundConfiguration key="background" image="Rec"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" backgroundImage="Rec"/>
                                                 <connections>
                                                     <action selector="recordPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="MLy-rE-kke"/>
                                                 </connections>
@@ -146,10 +129,8 @@
                                                     <constraint firstAttribute="height" constant="37" id="ZGo-g9-X1G"/>
                                                     <constraint firstAttribute="width" constant="37" id="sth-UJ-U4g"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <backgroundConfiguration key="background" image="menu"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" backgroundImage="menu"/>
                                                 <connections>
                                                     <action selector="menuPressed:" destination="1Vd-99-dn5" eventType="touchUpInside" id="a4G-Oh-HDG"/>
                                                 </connections>
@@ -167,16 +148,14 @@
                         <viewLayoutGuide key="safeArea" id="AG8-2J-H2L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Puy-wC-EcC" firstAttribute="top" secondItem="JRU-kg-3Pt" secondAttribute="bottom" constant="45" id="9vh-KM-NmD"/>
-                            <constraint firstItem="AG8-2J-H2L" firstAttribute="trailing" secondItem="JRU-kg-3Pt" secondAttribute="trailing" constant="13" id="Bka-LL-hg3"/>
+                            <constraint firstItem="Puy-wC-EcC" firstAttribute="top" secondItem="6IH-Gs-ggb" secondAttribute="bottom" constant="13" id="FlP-ex-ViK"/>
                             <constraint firstItem="AG8-2J-H2L" firstAttribute="trailing" secondItem="6IH-Gs-ggb" secondAttribute="trailing" constant="13" id="L6b-do-N36"/>
-                            <constraint firstItem="6IH-Gs-ggb" firstAttribute="top" secondItem="JRU-kg-3Pt" secondAttribute="bottom" constant="13" id="WUm-Ob-pRp"/>
                             <constraint firstItem="AG8-2J-H2L" firstAttribute="trailing" secondItem="YJ2-A8-Z7L" secondAttribute="trailing" constant="13" id="Yvl-l8-AFT"/>
                             <constraint firstItem="Puy-wC-EcC" firstAttribute="centerX" secondItem="F8n-U9-oBR" secondAttribute="centerX" id="a0Y-oB-E3u"/>
                             <constraint firstItem="YJ2-A8-Z7L" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Puy-wC-EcC" secondAttribute="bottom" constant="10" id="hnD-hR-obL"/>
                             <constraint firstItem="AG8-2J-H2L" firstAttribute="bottom" secondItem="YJ2-A8-Z7L" secondAttribute="bottom" constant="20" id="j2K-kO-tHz"/>
+                            <constraint firstItem="6IH-Gs-ggb" firstAttribute="top" secondItem="AG8-2J-H2L" secondAttribute="top" constant="13" id="kHj-IW-FEB"/>
                             <constraint firstItem="YJ2-A8-Z7L" firstAttribute="leading" secondItem="AG8-2J-H2L" secondAttribute="leading" constant="13" id="vsK-82-erW"/>
-                            <constraint firstItem="JRU-kg-3Pt" firstAttribute="top" secondItem="AG8-2J-H2L" secondAttribute="top" constant="13" id="xfc-PG-T3Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QXU-KX-Meg"/>
@@ -185,6 +164,7 @@
                         <outlet property="dbResultLabel" destination="xRF-8I-kOU" id="S2c-K6-YR2"/>
                         <outlet property="maxLabel" destination="1tI-a1-ysM" id="qVe-X9-avZ"/>
                         <outlet property="minLabel" destination="bWL-Np-CI3" id="Zcl-mZ-VXL"/>
+                        <outlet property="proButton" destination="6IH-Gs-ggb" id="TyR-lY-PmN"/>
                         <outlet property="recordButton" destination="Why-Hz-7wY" id="nCo-hb-hvw"/>
                         <outlet property="textExplanationLabel" destination="Nxm-q1-dFn" id="EZX-6B-9fR"/>
                     </connections>
@@ -199,7 +179,6 @@
         <image name="hearing" width="18.5" height="18.5"/>
         <image name="menu" width="18.5" height="18.5"/>
         <image name="pro" width="27" height="10.5"/>
-        <image name="settings" width="18.5" height="18.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

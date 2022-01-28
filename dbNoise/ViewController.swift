@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         
         if traitCollection.userInterfaceStyle == .dark {
             swiftyOnboard.style = .dark
-            swiftyOnboard.backgroundColor = .white
+            swiftyOnboard.backgroundColor = .black
         } else {
             swiftyOnboard.style = .light
             swiftyOnboard.backgroundColor = .white
@@ -47,6 +47,13 @@ class ViewController: UIViewController {
         let index = swiftyOnboard.currentPage
         if index == 2 {
             print("Skip Onboarding - go to main stuff")
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "NoiseDetectorID")
+            let nc = UINavigationController(rootViewController: vc)
+            nc.modalPresentationStyle = .overFullScreen
+            present(nc, animated: true, completion: nil)
+            
         } else {
             print("Skip to last page")
             swiftyOnboard?.goToPage(index: 2, animated: true)
@@ -76,6 +83,14 @@ extension ViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
 
         page.subTitle.text = onboardSubTitleArray[index]
         page.subTitle.font = UIFont(name: "SFProDisplay-Light", size: 22)
+        
+        if traitCollection.userInterfaceStyle == .dark {
+            swiftyOnboard.style = .dark
+            swiftyOnboard.backgroundColor = .black
+        } else {
+            swiftyOnboard.style = .light
+            swiftyOnboard.backgroundColor = .white
+        }
 
         page.imageView.image = UIImage(named: "\(index).png")
         

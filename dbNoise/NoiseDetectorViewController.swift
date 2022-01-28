@@ -9,6 +9,7 @@ import UIKit
 
 class NoiseDetectorViewController: UIViewController {
     
+    @IBOutlet weak var proButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var dbResultLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
@@ -18,17 +19,27 @@ class NoiseDetectorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let btn = UIButton(type: .custom)
+        btn.setBackgroundImage(UIImage(named: "settings"), for: .normal)
+        btn.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
+        btn.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+        let item  = UIBarButtonItem(customView: btn)
+        self.navigationItem.setRightBarButton(item, animated: true)
+        
+        textExplanationLabel.layer.masksToBounds = true
+        textExplanationLabel.layer.cornerRadius = 5
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
     
     
     @IBAction func recordPressed(_ sender: UIButton) {
@@ -37,7 +48,7 @@ class NoiseDetectorViewController: UIViewController {
 
     }
     
-    @IBAction func settingsPressed(_ sender: UIButton) {
+    @objc func settingsPressed(_ sender: UIButton) {
         print("settings")
     }
     
