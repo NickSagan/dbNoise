@@ -10,8 +10,8 @@ import AVKit
 
 protocol MicManagerDelegate {
     func audioRecordingFailed()
-    func avgAudioVolumeResult(_ value: Double)
-    func peakAudioVolumeResult(_ value: Double)
+    func avgAudioVolumeResult(_ value: Int)
+    func peakAudioVolumeResult(_ value: Int)
 }
 
 class MicManager: NSObject {
@@ -89,15 +89,42 @@ class MicManager: NSObject {
     
     @objc func getDispersyPercent() {
         recorder?.updateMeters()
-
-        let db = Double(recorder?.averagePower(forChannel: 0) ?? -160)
-        let result = pow(10.0, db / 20.0)
-        delegate?.avgAudioVolumeResult(result)
+//        let db = Double(recorder?.averagePower(forChannel: 0) ?? -160)
+//        let result = pow(10.0, db / 20.0)
+        delegate?.avgAudioVolumeResult(Int(dBFS_convertTo_dB(dBFSValue: recorder?.averagePower(forChannel: 0) ?? -160) * 140))
         
-        let db2 = Double(recorder?.peakPower(forChannel: 0) ?? -160)
-        let result2 = pow(10.0, db2 / 20.0)
-        delegate?.peakAudioVolumeResult(result2)
+//        let db2 = Double(recorder?.peakPower(forChannel: 0) ?? -160)
+//        let result2 = pow(10.0, db2 / 20.0)
+        delegate?.peakAudioVolumeResult(Int(dBFS_convertTo_dB(dBFSValue: recorder?.averagePower(forChannel: 0) ?? -160) * 140))
 
+    }
+    
+    // https://stackoverflow.com/questions/38246919/how-to-detect-max-db-swift
+    
+    func dBFS_convertTo_dB (dBFSValue: Float) -> Float
+    {
+    var level:Float = 0.0
+    let peak_bottom:Float = -60.0 // dBFS -> -160..0   so it can be -80 or -60
+
+    if dBFSValue < peak_bottom
+    {
+        level = 0.0
+    }
+    else if dBFSValue >= 0.0
+    {
+        level = 1.0
+    }
+    else
+    {
+        let root:Float              =   2.0
+        let minAmp:Float            =   powf(10.0, 0.05 * peak_bottom)
+        let inverseAmpRange:Float   =   1.0 / (1.0 - minAmp)
+        let amp:Float               =   powf(10.0, 0.05 * dBFSValue)
+        let adjAmp:Float            =   (amp - minAmp) * inverseAmpRange
+
+        level = powf(adjAmp, 1.0 / root)
+    }
+    return level
     }
 }
 
