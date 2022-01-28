@@ -17,8 +17,19 @@ class NoiseDetectorViewController: UIViewController {
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var textExplanationLabel: UILabel!
     
+    let micManager = MicManager()
+    let decibelLimit: Double = 140
+    var upperLimit: Double = 110
+    var interval: Double = 0.2
+    var minimal: Int = 141
+    var maximal: Int = 0
+    var avereage: Int = 40
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        micManager.delegate = self
+        micManager.interval = interval
         
         let btn = UIButton(type: .custom)
         btn.setBackgroundImage(UIImage(named: "settings"), for: .normal)
@@ -44,7 +55,30 @@ class NoiseDetectorViewController: UIViewController {
     
     @IBAction func recordPressed(_ sender: UIButton) {
         print("record")
-        sender.setBackgroundImage(UIImage(named: "Rec-2.png"), for: .normal)
+        maximal = 0
+        minimal = 141
+        avereage = 40
+        
+        if micManager.isAudioEngineRunning {
+            DispatchQueue.main.async {
+                sender.setBackgroundImage(UIImage(named: "Rec.png"), for: .normal)
+            }
+            micManager.stopRecording()
+        } else {
+            micManager.checkForPermission { (success) in
+                if success {
+                    DispatchQueue.main.async {
+                        sender.setBackgroundImage(UIImage(named: "Rec-2.png"), for: .normal)
+                    }
+                    self.micManager.startRecording()
+
+                } else {
+                    DispatchQueue.main.async {
+                        sender.setBackgroundImage(UIImage(named: "Rec-2.png"), for: .normal)
+                    }
+                }
+            }
+        }
 
     }
     
@@ -62,5 +96,47 @@ class NoiseDetectorViewController: UIViewController {
     
     @IBAction func menuPressed(_ sender: UIButton) {
         print("menu")
+    }
+}
+
+extension NoiseDetectorViewController: MicManagerDelegate {
+    
+    func audioRecordingFailed() {
+        print("failed")
+    }
+    
+    func peakAudioVolumeResult(_ value: Int) {
+        
+        if maximal < value {
+            maximal = value
+        }
+        maxLabel.text = "\(maximal) max"
+    }
+    
+    func avgAudioVolumeResult(_ value: Int) {
+        
+        if minimal > value {
+            minimal = value
+        }
+        
+        avereage = (maximal - minimal) / 2
+        
+        minLabel.text = "\(minimal) min"
+        avgLabel.text = "\(avereage) avg"
+        dbResultLabel.text = "\(value)"
+        
+        var explanation: String = "quiet conversation level"
+        switch avereage {
+            case 0...40: explanation = "whisper in a quiet place"
+            case 41...50: explanation = "quiet conversation level"
+            case 51...60: explanation = "office norm"
+            case 61...70: explanation = "normal conversation level"
+            case 71...80: explanation = "lecture"
+            case 81...85: explanation = "Scream, loud conversation"
+            case 86...141: explanation = "busy traffic"
+        default: explanation = "Scream from hell"
+        }
+        
+        textExplanationLabel.text = explanation
     }
 }
