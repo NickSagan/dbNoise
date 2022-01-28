@@ -11,6 +11,7 @@ import SwiftyOnboard
 class ViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
+    var myTimer = Timer()
     
     let onboardTitleArray: [String] = ["Noise level", "Hearing test", "New opportunities"]
     let onboardSubTitleArray: [String] = ["Check the noise level, keep personal statistics. Keep track of the global noise rating.", "Take a hearing test, save the results.  Monitor your hearing. We care about your health.", "Discover all the possibilities for just $6,99 per month"]
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
         view.addSubview(swiftyOnboard)
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
+        
     }
     
     @objc func handleContinue(sender: UIButton) {
@@ -123,13 +125,18 @@ extension ViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
         
         if currentPage == 0.0 || currentPage == 1.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
-            overlay.skipButton.setTitle("Skip", for: .normal)
+            //overlay.skipButton.setTitle("Skip", for: .normal)
             overlay.skipButton.isHidden = true
             overlay.microTitle.isHidden = true
         } else {
             overlay.continueButton.setTitle("Start using", for: .normal)
-            overlay.skipButton.isHidden = false
+            //overlay.skipButton.isHidden = false
             overlay.microTitle.isHidden = false
+            
+            myTimer.invalidate()
+            myTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                overlay.skipButton.isHidden = false
+            })
         }
     }
     
