@@ -92,6 +92,8 @@ class NoiseDetectorViewController: UIViewController {
     
     @IBAction func hearingPressed(_ sender: UIButton) {
         print("hearing")
+        let vc = HearingViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func menuPressed(_ sender: UIButton) {

@@ -21,6 +21,7 @@ class HearingViewController: UIViewController {
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame)
         
+
         if traitCollection.userInterfaceStyle == .dark {
             swiftyOnboard.style = .dark
             swiftyOnboard.backgroundColor = .black
