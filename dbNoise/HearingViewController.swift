@@ -80,6 +80,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         page.subTitle.text = onboardSubTitleArray[index]
         page.subTitle.font = UIFont(name: "SFProDisplay-Light", size: 22)
         
+        page.updateTopAnchor()
  
         if traitCollection.userInterfaceStyle == .dark {
             swiftyOnboard.style = .dark
@@ -106,6 +107,13 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
         
         //Setup for the overlay buttons:
+        overlay.microTitle.text = microText
+        overlay.microTitle.isHidden = false
+        overlay.microTitle.tintColor = UIColor(cgColor: CGColor(red: 60, green: 60, blue: 67, alpha: 0.3))
+        overlay.microTitle.font = UIFont(name: "SFProDisplay-Light", size: 10)
+        
+        overlay.skipButton.isHidden = true
+        
 //        overlay.continueButton.titleLabel?.font = UIFont(name: "Lato-Bold", size: 16)
 //        overlay.continueButton.setTitleColor(UIColor.white, for: .normal)
 //        overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
@@ -118,19 +126,14 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
     func swiftyOnboardOverlayForPosition(_ swiftyOnboard: SwiftyOnboard, overlay: SwiftyOnboardOverlay, for position: Double) {
         let currentPage = round(position)
         overlay.pageControl.currentPage = Int(currentPage)
-        print(Int(currentPage))
         overlay.continueButton.tag = Int(position)
-        overlay.microTitle.text = microText
-        
+
         if currentPage == 0.0 || currentPage == 1.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
-            //overlay.skipButton.setTitle("Skip", for: .normal)
-            overlay.skipButton.isHidden = true
-            overlay.microTitle.isHidden = true
+ 
         } else {
-            overlay.continueButton.setTitle("Start using", for: .normal)
-            //overlay.skipButton.isHidden = false
-            overlay.microTitle.isHidden = false
+            overlay.continueButton.setTitle("Start Test", for: .normal)
+    
         }
     }
 }
