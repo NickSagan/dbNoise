@@ -14,6 +14,8 @@ protocol MicManagerDelegate {
     func peakAudioVolumeResult(_ value: Int)
 }
 
+// https://github.com/stevenysjo/DecibelMeter
+
 class MicManager: NSObject {
     let audioSession = AVAudioSession.sharedInstance()
     var delegate: MicManagerDelegate?
@@ -44,6 +46,8 @@ class MicManager: NSObject {
             audioSession.requestRecordPermission { _ in
                 self.checkForPermission(result)
             }
+        @unknown default:
+            result(false)
         }
     }
 
