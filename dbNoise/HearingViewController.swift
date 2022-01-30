@@ -14,6 +14,7 @@ class HearingViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     var currentVolumeLevel: Float = 0.0
+    var myTimer: Timer()
 
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other"]
@@ -37,7 +38,42 @@ class HearingViewController: UIViewController {
         swiftyOnboard.delegate = self
         
         currentVolumeLevel = AVAudioSession.sharedInstance().outputVolume
+        
+        let currentRoute = AVAudioSession.sharedInstance().currentRoute
+                
+                if currentRoute.outputs.count != 0 {
+                    for description in currentRoute.outputs {
+                        if description.portType == AVAudioSession.Port.headphones {
+                            
+                            print("headphone plugged in")
+                        } else {
+                            
+                            print("headphone pulled out")
+                        }
+                    }
+                } else {
+                    print("requires connection to device")
+                }
+                
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(audioRouteChangeListener(_:)),
+                    name: AVAudioSession.routeChangeNotification,
+                    object: nil)
     }
+    
+    @objc dynamic fileprivate func audioRouteChangeListener(_ notification:Notification) {
+            let audioRouteChangeReason = notification.userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
+
+            switch audioRouteChangeReason {
+            case AVAudioSession.RouteChangeReason.newDeviceAvailable.rawValue:
+                print("headphone plugged in")
+            case AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue:
+                print("headphone pulled out")
+            default:
+                break
+            }
+        }
     
     @objc func handleContinue(sender: UIButton) {
         let index = swiftyOnboard.currentPage
