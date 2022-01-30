@@ -13,6 +13,7 @@ import MediaPlayer
 class HearingViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
+    var currentVolumeLevel: Float = 0.0
 
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other"]
@@ -35,12 +36,17 @@ class HearingViewController: UIViewController {
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
         
+        currentVolumeLevel = AVAudioSession.sharedInstance().outputVolume
     }
     
     @objc func handleContinue(sender: UIButton) {
         let index = swiftyOnboard.currentPage
         if index == 2 {
-            print("Start hearing test")
+            if currentVolumeLevel > 0.38 && currentVolumeLevel < 0.62 {
+                print("Start hearing test")
+            } else {
+                print("Please set volume to 50%")
+            }
         } else {
             print("Next")
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
@@ -66,8 +72,10 @@ class HearingViewController: UIViewController {
     }
     
     @objc func sliderValueDidChange(sender: UISlider!) {
+        currentVolumeLevel = sender.value
         MPVolumeView.setVolume(sender.value)
-
+        
+        print("volume: \(currentVolumeLevel)")
      }
 }
 
@@ -112,6 +120,12 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             slider.value = AVAudioSession.sharedInstance().outputVolume
             slider.isEnabled = true
             slider.addTarget(self, action: #selector(sliderValueDidChange(sender:)), for: .valueChanged)
+            
+            let ellipse = UIImageView(frame: CGRect(x: (view.frame.size.width * 0.4) - 32, y: -10, width: 65, height: 65))
+            ellipse.image = UIImage(named: "ellipse")
+            //ellipse.backgroundColor?.withAlphaComponent(0)
+            slider.addSubview(ellipse)
+
             page.addSubview(slider)
             
             
@@ -189,7 +203,8 @@ extension AVAudioSessionPortDescription {
     }
 }
 
-//Update system volume
+//Update system volume https://stackoverflow.com/questions/37873962/setting-the-system-volume-in-swift-under-ios
+
 extension MPVolumeView {
     static func setVolume(_ volume: Float) {
         let volumeView = MPVolumeView()
