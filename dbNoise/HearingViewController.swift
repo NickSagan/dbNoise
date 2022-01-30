@@ -14,7 +14,7 @@ class HearingViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     var currentVolumeLevel: Float = 0.0
-    var myTimer: Timer()
+    var myTimer = Timer()
 
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other"]
@@ -80,6 +80,7 @@ class HearingViewController: UIViewController {
         
         if index == 0 {
             if AVAudioSession.isHeadphonesConnected {
+                myTimer.invalidate()
                 print("Next")
                 swiftyOnboard?.goToPage(index: index + 1, animated: true)
             } else {
@@ -91,6 +92,7 @@ class HearingViewController: UIViewController {
                 print("Next")
             } else {
                 print("Please set volume to 50%")
+                
             }
         } else if index == 2 {
             print("Start hearing test")
@@ -186,6 +188,15 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             overlay.continueButton.isEnabled = false
         }
         
+        myTimer.invalidate()
+        myTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            if AVAudioSession.isHeadphonesConnected {
+                overlay.continueButton.isEnabled = true
+            } else {
+                overlay.continueButton.isEnabled = false
+            }
+        })
+        
         return overlay
     }
     
@@ -197,6 +208,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         if currentPage == 0.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
         } else if currentPage == 1.0 {
+            myTimer.invalidate()
             overlay.continueButton.setTitle("Next", for: .normal)
             overlay.continueButton.isEnabled = true
         } else {
