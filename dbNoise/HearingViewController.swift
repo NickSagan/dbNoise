@@ -7,6 +7,8 @@
 
 import UIKit
 import SwiftyOnboard
+import AVFAudio
+import MediaPlayer
 
 class HearingViewController: UIViewController {
     
@@ -43,6 +45,7 @@ class HearingViewController: UIViewController {
             print("Next")
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
         }
+        
     }
     
     @objc func handleSkip() {
@@ -61,13 +64,17 @@ class HearingViewController: UIViewController {
 //            swiftyOnboard?.goToPage(index: 2, animated: true)
 //        }
     }
+    
+    @objc func sliderValueDidChange(sender: UISlider!) {
+        MPVolumeView.setVolume(sender.value)
+
+     }
 }
 
 //MARK: - SwiftyOnboard protocols
 
 extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
     
-
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
         return 3
     }
@@ -80,7 +87,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         page.subTitle.text = onboardSubTitleArray[index]
         page.subTitle.font = UIFont(name: "SFProDisplay-Light", size: 22)
         
-        page.updateTopAnchor()
+        page.updateTopAnchor() // fix for UINavBar
  
         if traitCollection.userInterfaceStyle == .dark {
             swiftyOnboard.style = .dark
@@ -90,7 +97,23 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             swiftyOnboard.backgroundColor = .white
         }
         
-        if index == 1 {
+        if index == 0 {
+            page.imageView.image = UIImage(named: "\(index)hearing.png")
+            
+        } else if index == 1 {
+            // slider, check for 0.5 value
+            print(page.imageView.frame)
+            let slider = UISlider(frame: CGRect(x: view.frame.size.width * 0.1, y: view.frame.height * 0.4, width: view.frame.size.width * 0.8, height: 44))
+            
+            slider.minimumValue = 0.0
+            slider.maximumValue = 1.0
+            slider.isContinuous = true
+//            slider.tintColor = UIColor.blueColor
+            slider.value = AVAudioSession.sharedInstance().outputVolume
+            slider.isEnabled = true
+            slider.addTarget(self, action: #selector(sliderValueDidChange(sender:)), for: .valueChanged)
+            page.addSubview(slider)
+            
             
         } else {
             page.imageView.image = UIImage(named: "\(index)hearing.png")
@@ -106,7 +129,12 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         overlay.skipButton.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
         
-        //Setup for the overlay buttons:
+        if !AVAudioSession.isHeadphonesConnected {
+            overlay.continueButton.isEnabled = false
+        } else {
+            overlay.continueButton.isEnabled = true
+        }
+
         overlay.microTitle.text = microText
         overlay.microTitle.isHidden = false
         overlay.microTitle.tintColor = UIColor(cgColor: CGColor(red: 60, green: 60, blue: 67, alpha: 0.3))
@@ -114,12 +142,6 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         
         overlay.skipButton.isHidden = true
         
-//        overlay.continueButton.titleLabel?.font = UIFont(name: "Lato-Bold", size: 16)
-//        overlay.continueButton.setTitleColor(UIColor.white, for: .normal)
-//        overlay.skipButton.setTitleColor(UIColor.white, for: .normal)
-//        overlay.skipButton.titleLabel?.font = UIFont(name: "Lato-Heavy", size: 16)
-//
-        //Return the overlay view:
         return overlay
     }
     
@@ -128,12 +150,53 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         overlay.pageControl.currentPage = Int(currentPage)
         overlay.continueButton.tag = Int(position)
 
-        if currentPage == 0.0 || currentPage == 1.0 {
+        if currentPage == 0.0 {
+            print(AVAudioSession.isHeadphonesConnected)
             overlay.continueButton.setTitle("Next", for: .normal)
- 
+            if !AVAudioSession.isHeadphonesConnected {
+                overlay.continueButton.isEnabled = false
+            } else {
+                overlay.continueButton.isEnabled = true
+            }
+            
+        } else if currentPage == 1.0 {
+            overlay.continueButton.setTitle("Next", for: .normal)
+            overlay.continueButton.isEnabled = true
         } else {
             overlay.continueButton.setTitle("Start Test", for: .normal)
-    
+            overlay.continueButton.isEnabled = true
+        }
+    }
+}
+
+//MARK: - AVAudioSession extension to check for headphones
+
+extension AVAudioSession {
+
+    static var isHeadphonesConnected: Bool {
+        return sharedInstance().isHeadphonesConnected
+    }
+
+    var isHeadphonesConnected: Bool {
+        return !currentRoute.outputs.filter { $0.isHeadphones }.isEmpty
+    }
+
+}
+
+extension AVAudioSessionPortDescription {
+    var isHeadphones: Bool {
+        return portType == AVAudioSession.Port.headphones
+    }
+}
+
+//Update system volume
+extension MPVolumeView {
+    static func setVolume(_ volume: Float) {
+        let volumeView = MPVolumeView()
+        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+            slider?.value = volume
         }
     }
 }
