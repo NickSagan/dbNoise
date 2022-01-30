@@ -41,34 +41,30 @@ class HearingViewController: UIViewController {
     
     @objc func handleContinue(sender: UIButton) {
         let index = swiftyOnboard.currentPage
-        if index == 2 {
+        
+        if index == 0 {
+            if AVAudioSession.isHeadphonesConnected {
+                print("Next")
+                swiftyOnboard?.goToPage(index: index + 1, animated: true)
+            } else {
+                print("Please connect your headphones")
+            }
+        } else if index == 1 {
             if currentVolumeLevel > 0.38 && currentVolumeLevel < 0.62 {
-                print("Start hearing test")
+                swiftyOnboard?.goToPage(index: index + 1, animated: true)
+                print("Next")
             } else {
                 print("Please set volume to 50%")
             }
+        } else if index == 2 {
+            print("Start hearing test")
         } else {
-            print("Next")
-            swiftyOnboard?.goToPage(index: index + 1, animated: true)
+            print("Page out of index found")
         }
         
     }
     
     @objc func handleSkip() {
-//        let index = swiftyOnboard.currentPage
-//        if index == 2 {
-//            print("Skip Onboarding - go to main stuff")
-//
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "NoiseDetectorID")
-//            let nc = UINavigationController(rootViewController: vc)
-//            nc.modalPresentationStyle = .overFullScreen
-//            present(nc, animated: true, completion: nil)
-//
-//        } else {
-//            print("Skip to last page")
-//            swiftyOnboard?.goToPage(index: 2, animated: true)
-//        }
     }
     
     @objc func sliderValueDidChange(sender: UISlider!) {
@@ -109,14 +105,12 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             page.imageView.image = UIImage(named: "\(index)hearing.png")
             
         } else if index == 1 {
-            // slider, check for 0.5 value
             print(page.imageView.frame)
             let slider = UISlider(frame: CGRect(x: view.frame.size.width * 0.1, y: view.frame.height * 0.4, width: view.frame.size.width * 0.8, height: 44))
             
             slider.minimumValue = 0.0
             slider.maximumValue = 1.0
             slider.isContinuous = true
-//            slider.tintColor = UIColor.blueColor
             slider.value = AVAudioSession.sharedInstance().outputVolume
             slider.isEnabled = true
             slider.addTarget(self, action: #selector(sliderValueDidChange(sender:)), for: .valueChanged)
@@ -142,12 +136,6 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         //Setup targets for the buttons on the overlay view:
         overlay.skipButton.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
-        
-        if !AVAudioSession.isHeadphonesConnected {
-            overlay.continueButton.isEnabled = false
-        } else {
-            overlay.continueButton.isEnabled = true
-        }
 
         overlay.microTitle.text = microText
         overlay.microTitle.isHidden = false
@@ -155,6 +143,12 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         overlay.microTitle.font = UIFont(name: "SFProDisplay-Light", size: 10)
         
         overlay.skipButton.isHidden = true
+        
+        if AVAudioSession.isHeadphonesConnected {
+            overlay.continueButton.isEnabled = true
+        } else {
+            overlay.continueButton.isEnabled = false
+        }
         
         return overlay
     }
@@ -165,14 +159,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         overlay.continueButton.tag = Int(position)
 
         if currentPage == 0.0 {
-            print(AVAudioSession.isHeadphonesConnected)
             overlay.continueButton.setTitle("Next", for: .normal)
-            if !AVAudioSession.isHeadphonesConnected {
-                overlay.continueButton.isEnabled = false
-            } else {
-                overlay.continueButton.isEnabled = true
-            }
-            
         } else if currentPage == 1.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
             overlay.continueButton.isEnabled = true
