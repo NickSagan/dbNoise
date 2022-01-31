@@ -17,7 +17,7 @@ class HearingViewController: UIViewController {
     var myTimer = Timer()
 
     let onboardTitle: String = "Hearing level"
-    let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other"]
+    let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", ""]
     let microText: String = "Despite its accuracy, this device is not a medical device. See your GP"
    
     override func viewDidLoad() {
@@ -118,7 +118,7 @@ class HearingViewController: UIViewController {
 extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
     
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
-        return 3
+        return 4
     }
     
     func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
@@ -143,7 +143,6 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             page.imageView.image = UIImage(named: "\(index)hearing.png")
             
         } else if index == 1 {
-            print(page.imageView.frame)
             let slider = UISlider(frame: CGRect(x: view.frame.size.width * 0.1, y: view.frame.height * 0.4, width: view.frame.size.width * 0.8, height: 44))
             
             slider.minimumValue = 0.0
@@ -161,8 +160,28 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             page.addSubview(slider)
             
             
-        } else {
+        } else if index == 2 {
             page.imageView.image = UIImage(named: "\(index)hearing.png")
+        } else if index == 3 {
+            page.updateToHearingConstraints()
+            page.imageView.image = UIImage(named: "\(index)hearing.png")
+            let knob = UIImageView(image: UIImage(named: "knob.png"))
+            knob.translatesAutoresizingMaskIntoConstraints = false
+            
+            page.imageView.addSubview(knob)
+            
+            knob.centerYAnchor.constraint(equalTo: page.imageView.centerYAnchor).isActive = true
+            knob.centerXAnchor.constraint(equalTo: page.imageView.centerXAnchor).isActive = true
+            knob.widthAnchor.constraint(equalToConstant: 84).isActive = true
+            knob.heightAnchor.constraint(equalToConstant: 84).isActive = true
+            
+            let progress = UIProgressView()
+            progress.translatesAutoresizingMaskIntoConstraints = false
+            page.addSubview(progress)
+            progress.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 15).isActive = true
+            progress.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
+            progress.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
+            progress.progress = 0.01
         }
         
         return page
