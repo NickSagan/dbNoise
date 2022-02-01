@@ -14,10 +14,13 @@ class HearingViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     var currentVolumeLevel: Float = 0.0
-    var myTimer = Timer()
+    var headphonesCheckerTimer = Timer()
+    var hearingTestTimer = Timer()
     var hearingIsInProgress: Bool = false
+    var testSound = HearingTestSound()
     
     var knob: UIImageView!
+    var progress = UIProgressView()
     
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", ""]
@@ -79,6 +82,7 @@ class HearingViewController: UIViewController {
         if hearingIsInProgress {
             if gesture.direction == .right {
                 print("Swipe Right")
+                
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: 120, y: 0)
                 } completion: { _ in
@@ -88,6 +92,7 @@ class HearingViewController: UIViewController {
             }
             else if gesture.direction == .left {
                 print("Swipe Left")
+
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: -120, y: 0)
                 } completion: { _ in
@@ -115,7 +120,7 @@ class HearingViewController: UIViewController {
         
         if index == 0 {
             if AVAudioSession.isHeadphonesConnected {
-                myTimer.invalidate()
+                headphonesCheckerTimer.invalidate()
                 print("Next")
                 swiftyOnboard?.goToPage(index: index + 1, animated: true)
             } else {
@@ -133,6 +138,7 @@ class HearingViewController: UIViewController {
             print("Start hearing test")
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
             hearingIsInProgress = true
+            startHearingTest()
         } else if index == 3 {
             print("Finish hearing test")
             hearingIsInProgress = true
@@ -148,6 +154,15 @@ class HearingViewController: UIViewController {
         MPVolumeView.setVolume(sender.value)
         
         print("volume: \(currentVolumeLevel)")
+    }
+    
+    func startHearingTest() {
+
+        hearingTestTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { _ in
+            MPVolumeView.setHearingVolume(Float.random(in: 0.01...0.5))
+            self.testSound.play("right")
+            self.progress.progress += 0.05
+        })
     }
 }
 
@@ -219,7 +234,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             progress.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 15).isActive = true
             progress.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
             progress.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
-            progress.progress = 0.01
+            progress.progress = 0.0
             
         }
         
@@ -246,8 +261,8 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             overlay.continueButton.isEnabled = false
         }
         
-        myTimer.invalidate()
-        myTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+        headphonesCheckerTimer.invalidate()
+        headphonesCheckerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             if AVAudioSession.isHeadphonesConnected {
                 overlay.continueButton.isEnabled = true
             } else {
@@ -266,7 +281,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         if currentPage == 0.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
         } else if currentPage == 1.0 {
-            myTimer.invalidate()
+            headphonesCheckerTimer.invalidate()
             overlay.continueButton.setTitle("Next", for: .normal)
             overlay.continueButton.isEnabled = true
         } else if currentPage == 2.0 {
@@ -302,11 +317,25 @@ extension AVAudioSessionPortDescription {
 //Update system volume https://stackoverflow.com/questions/37873962/setting-the-system-volume-in-swift-under-ios
 
 extension MPVolumeView {
+    
+    // for slider changing volume
+    
     static func setVolume(_ volume: Float) {
         let volumeView = MPVolumeView()
         let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+            slider?.value = volume
+        }
+    }
+    
+    // and this one for hearing test
+    
+    static func setHearingVolume(_ volume: Float) {
+        let volumeView = MPVolumeView()
+        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
             slider?.value = volume
         }
     }
