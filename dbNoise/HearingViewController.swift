@@ -95,7 +95,6 @@ class HearingViewController: UIViewController {
                 }
             }
         }
-
     }
     
     @objc dynamic fileprivate func audioRouteChangeListener(_ notification:Notification) {

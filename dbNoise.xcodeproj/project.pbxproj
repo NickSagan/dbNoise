@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		91124E6C27A2C788006AA3DC /* NoiseDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91124E6B27A2C787006AA3DC /* NoiseDetectorViewController.swift */; };
 		91226D8E27A3DFBF008DD34E /* MicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91226D8D27A3DFBF008DD34E /* MicManager.swift */; };
+		916832EB27A9957B00C4C109 /* HearingTestSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832EA27A9957B00C4C109 /* HearingTestSound.swift */; };
+		916832F127A996D200C4C109 /* r2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832ED27A996D200C4C109 /* r2.wav */; };
+		916832F227A996D200C4C109 /* l2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832EE27A996D200C4C109 /* l2.wav */; };
+		916832F327A996D200C4C109 /* r1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832EF27A996D200C4C109 /* r1.wav */; };
+		916832F427A996D200C4C109 /* l1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832F027A996D200C4C109 /* l1.wav */; };
 		9184C99727A557A70040F230 /* HearingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184C99627A557A70040F230 /* HearingViewController.swift */; };
 		91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E70927A158F300816161 /* AppDelegate.swift */; };
 		91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E70B27A158F300816161 /* SceneDelegate.swift */; };
@@ -44,6 +49,11 @@
 		2560DAE6AC4C4BF3688C300A /* Pods_dbNoise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dbNoise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91124E6B27A2C787006AA3DC /* NoiseDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseDetectorViewController.swift; sourceTree = "<group>"; };
 		91226D8D27A3DFBF008DD34E /* MicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicManager.swift; sourceTree = "<group>"; };
+		916832EA27A9957B00C4C109 /* HearingTestSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestSound.swift; sourceTree = "<group>"; };
+		916832ED27A996D200C4C109 /* r2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = r2.wav; sourceTree = "<group>"; };
+		916832EE27A996D200C4C109 /* l2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = l2.wav; sourceTree = "<group>"; };
+		916832EF27A996D200C4C109 /* r1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = r1.wav; sourceTree = "<group>"; };
+		916832F027A996D200C4C109 /* l1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = l1.wav; sourceTree = "<group>"; };
 		9184C99627A557A70040F230 /* HearingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingViewController.swift; sourceTree = "<group>"; };
 		91D8E70627A158F300816161 /* dbNoise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dbNoise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D8E70927A158F300816161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +98,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		916832EC27A996B900C4C109 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				916832F027A996D200C4C109 /* l1.wav */,
+				916832EE27A996D200C4C109 /* l2.wav */,
+				916832EF27A996D200C4C109 /* r1.wav */,
+				916832ED27A996D200C4C109 /* r2.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		91D8E6FD27A158F300816161 = {
 			isa = PBXGroup;
 			children = (
@@ -115,10 +136,12 @@
 				91124E6B27A2C787006AA3DC /* NoiseDetectorViewController.swift */,
 				9184C99627A557A70040F230 /* HearingViewController.swift */,
 				91226D8D27A3DFBF008DD34E /* MicManager.swift */,
+				916832EA27A9957B00C4C109 /* HearingTestSound.swift */,
 				91D8E70F27A158F300816161 /* Main.storyboard */,
 				91D8E71227A158FE00816161 /* Assets.xcassets */,
 				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
 				91D8E71727A158FE00816161 /* Info.plist */,
+				916832EC27A996B900C4C109 /* Sounds */,
 				91D8E72627A1778A00816161 /* fonts */,
 			);
 			path = dbNoise;
@@ -233,12 +256,16 @@
 				91D8E74A27A177D300816161 /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				91D8E74527A177D300816161 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				91D8E74E27A177D300816161 /* SF-Pro-Text-Bold.otf in Resources */,
+				916832F227A996D200C4C109 /* l2.wav in Resources */,
 				91D8E73F27A177D300816161 /* SF-Pro-Display-Regular.otf in Resources */,
+				916832F127A996D200C4C109 /* r2.wav in Resources */,
 				91D8E74827A177D300816161 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				91D8E74027A177D300816161 /* SF-Pro-Display-Ultralight.otf in Resources */,
 				91D8E74C27A177D300816161 /* SF-Pro-Display-Light.otf in Resources */,
 				91D8E74327A177D300816161 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				91D8E74427A177D300816161 /* SF-Pro-Display-LightItalic.otf in Resources */,
+				916832F427A996D200C4C109 /* l1.wav in Resources */,
+				916832F327A996D200C4C109 /* r1.wav in Resources */,
 				91D8E74D27A177D300816161 /* SF-Pro-Display-Bold.otf in Resources */,
 				91D8E71327A158FE00816161 /* Assets.xcassets in Resources */,
 				91D8E74227A177D300816161 /* SF-Pro-Text-BoldItalic.otf in Resources */,
@@ -306,6 +333,7 @@
 				91226D8E27A3DFBF008DD34E /* MicManager.swift in Sources */,
 				91D8E70E27A158F300816161 /* ViewController.swift in Sources */,
 				91124E6C27A2C788006AA3DC /* NoiseDetectorViewController.swift in Sources */,
+				916832EB27A9957B00C4C109 /* HearingTestSound.swift in Sources */,
 				91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */,
 				91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */,
 				9184C99727A557A70040F230 /* HearingViewController.swift in Sources */,
