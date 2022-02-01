@@ -15,6 +15,9 @@ class HearingViewController: UIViewController {
     var swiftyOnboard: SwiftyOnboard!
     var currentVolumeLevel: Float = 0.0
     var myTimer = Timer()
+    var hearingIsInProgress: Bool = false
+    
+    var knob: UIImageView!
     
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", ""]
@@ -73,12 +76,26 @@ class HearingViewController: UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-       if gesture.direction == .right {
-            print("Swipe Right")
-       }
-       else if gesture.direction == .left {
-            print("Swipe Left")
-       }
+        if hearingIsInProgress {
+            if gesture.direction == .right {
+                print("Swipe Right")
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
+                    self.knob.transform = CGAffineTransform(translationX: 120, y: 0)
+                } completion: { _ in
+                    self.knob.transform = .identity
+                }
+                
+            }
+            else if gesture.direction == .left {
+                print("Swipe Left")
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
+                    self.knob.transform = CGAffineTransform(translationX: -120, y: 0)
+                } completion: { _ in
+                    self.knob.transform = .identity
+                }
+            }
+        }
+
     }
     
     @objc dynamic fileprivate func audioRouteChangeListener(_ notification:Notification) {
@@ -116,8 +133,10 @@ class HearingViewController: UIViewController {
         } else if index == 2 {
             print("Start hearing test")
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
+            hearingIsInProgress = true
         } else if index == 3 {
             print("Finish hearing test")
+            hearingIsInProgress = true
         }
         
     }
@@ -185,7 +204,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         } else if index == 3 {
             page.updateToHearingConstraints()
             page.imageView.image = UIImage(named: "\(index)hearing.png")
-            let knob = UIImageView(image: UIImage(named: "knob.png"))
+            knob = UIImageView(image: UIImage(named: "knob.png"))
             knob.translatesAutoresizingMaskIntoConstraints = false
             
             page.imageView.addSubview(knob)
@@ -251,8 +270,11 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             myTimer.invalidate()
             overlay.continueButton.setTitle("Next", for: .normal)
             overlay.continueButton.isEnabled = true
-        } else {
+        } else if currentPage == 2.0 {
             overlay.continueButton.setTitle("Start Test", for: .normal)
+            overlay.continueButton.isEnabled = true
+        } else if currentPage == 3.0 {
+            overlay.continueButton.setTitle("Stop Test", for: .normal)
             overlay.continueButton.isEnabled = true
         }
     }
