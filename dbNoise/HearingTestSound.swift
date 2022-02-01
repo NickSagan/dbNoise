@@ -10,33 +10,32 @@ import AVFoundation
 
 class HearingTestSound {
     
-    var player: AVAudioPlayer?
+    fileprivate var player = AVAudioPlayer()
+    fileprivate var volume: Float = 0.5
+    fileprivate var soundName: String = "r1"
     
     func play(_ sound: String) {
-        let x = Int.random(in: 1...2)
-        var randomSound: String = "r1"
+        // Set random volume
+        volume = Float.random(in: 0.03...0.5)
+        player.volume = volume
+        
+        // Generate random sound name
         if sound == "left" {
-            randomSound = "\(x)l"
+            soundName = "l\(Int.random(in: 1...2))"
         } else if sound == "right" {
-            randomSound = "\(x)r"
+            soundName = "r\(Int.random(in: 1...2))"
         } else {
+            print("Can't play this sound. Input: left or right")
             return
         }
         
-        guard let url = Bundle.main.url(forResource: randomSound, withExtension: "wav") else { return }
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "wav") else { return }
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
 
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
-            /* iOS 10 and earlier require the following line:
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-
-            guard let player = player else { return }
-
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
             player.play()
 
         } catch let error {
