@@ -18,6 +18,11 @@ class HearingViewController: UIViewController {
     var hearingTestTimer = Timer()
     var hearingIsInProgress: Bool = false
     var testSound = HearingTestSound()
+    var currentSideInHearingTest: String = "left"
+    let sides: [String] = ["right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left"]
+    var leftEarScore: Int = 0
+    var rightEarScore: Int = 0
+    var isScoreBlocked: Bool = true
     
     var knob: UIImageView!
     var progress = UIProgressView()
@@ -81,8 +86,7 @@ class HearingViewController: UIViewController {
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         if hearingIsInProgress {
             if gesture.direction == .right {
-                print("Swipe Right")
-                
+                addScoreToHearingTest(swipeDirection: "right")
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: 120, y: 0)
                 } completion: { _ in
@@ -91,8 +95,7 @@ class HearingViewController: UIViewController {
                 
             }
             else if gesture.direction == .left {
-                print("Swipe Left")
-
+                addScoreToHearingTest(swipeDirection: "left")
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: -120, y: 0)
                 } completion: { _ in
@@ -141,6 +144,7 @@ class HearingViewController: UIViewController {
             startHearingTest()
         } else if index == 3 {
             print("Finish hearing test")
+            hearingTestTimer.invalidate()
             hearingIsInProgress = true
         }
         
@@ -157,12 +161,66 @@ class HearingViewController: UIViewController {
     }
     
     func startHearingTest() {
+        hearingTestTimer.invalidate()
+        rightEarScore = 0
+        leftEarScore = 0
+        var counter = 0
+        progress.progress = 0.01
+        var localSides = sides
+        localSides.shuffle()
 
         hearingTestTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { _ in
+            
             MPVolumeView.setHearingVolume(Float.random(in: 0.01...0.5))
-            self.testSound.play("right")
+            if !localSides.isEmpty {
+                self.currentSideInHearingTest = localSides.removeLast()
+            } else {
+                print("Error: localSides array is empty")
+            }
+            
+            self.testSound.play(self.currentSideInHearingTest)
+            self.isScoreBlocked = false
             self.progress.progress += 0.05
+
+            counter += 1
+            
+            print("Timer iteration number: \(counter)")
+            print(localSides.count)
+            
+            if counter >= 20 {
+                self.hearingTestTimer.invalidate()
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                    self.hearingTestFinished()
+                }
+            }
         })
+    }
+    
+    func addScoreToHearingTest(swipeDirection: String) {
+        
+        guard !isScoreBlocked else {
+            print("Score is blocked: \(isScoreBlocked)")
+            return
+        }
+        
+        if currentSideInHearingTest == swipeDirection {
+            if currentSideInHearingTest == "left" {
+                leftEarScore += 1
+            } else {
+                rightEarScore += 1
+            }
+        } else {
+            print("Failed in test")
+        }
+        isScoreBlocked = true
+        print("Left ear: \(leftEarScore), right ear: \(rightEarScore), is score blocked: \(isScoreBlocked)")
+    }
+    
+    func hearingTestFinished() {
+        self.isScoreBlocked = false
+        
+        print("FINISH*** Test result is: left \(leftEarScore), right \(rightEarScore)")
     }
 }
 
@@ -228,13 +286,12 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             knob.widthAnchor.constraint(equalToConstant: 84).isActive = true
             knob.heightAnchor.constraint(equalToConstant: 84).isActive = true
             
-            let progress = UIProgressView()
             progress.translatesAutoresizingMaskIntoConstraints = false
             page.addSubview(progress)
             progress.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 15).isActive = true
             progress.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
             progress.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
-            progress.progress = 0.0
+            progress.progress = 0.01
             
         }
         
