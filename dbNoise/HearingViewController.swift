@@ -13,7 +13,7 @@ import MediaPlayer
 class HearingViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
-    var currentVolumeLevel: Float = 0.0
+    var currentVolumeLevel: Float = 0.5
     var headphonesCheckerTimer = Timer()
     var hearingTestTimer = Timer()
     var hearingIsInProgress: Bool = false
@@ -130,6 +130,7 @@ class HearingViewController: UIViewController {
                 print("Please connect your headphones")
             }
         } else if index == 1 {
+            MPVolumeView.setVolume(0.5)
             if currentVolumeLevel > 0.38 && currentVolumeLevel < 0.62 {
                 swiftyOnboard?.goToPage(index: index + 1, animated: true)
                 print("Next")
@@ -145,7 +146,7 @@ class HearingViewController: UIViewController {
         } else if index == 3 {
             print("Finish hearing test")
             hearingTestTimer.invalidate()
-            hearingIsInProgress = true
+            hearingIsInProgress = false
         }
         
     }
@@ -168,6 +169,7 @@ class HearingViewController: UIViewController {
         progress.progress = 0.01
         var localSides = sides
         localSides.shuffle()
+        hearingIsInProgress = true
 
         hearingTestTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { _ in
             
@@ -218,7 +220,7 @@ class HearingViewController: UIViewController {
     }
     
     func hearingTestFinished() {
-        self.isScoreBlocked = false
+        hearingIsInProgress = false
         
         print("FINISH*** Test result is: left \(leftEarScore), right \(rightEarScore)")
     }
