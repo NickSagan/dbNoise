@@ -15,17 +15,17 @@ class HearingViewController: UIViewController {
     var swiftyOnboard: SwiftyOnboard!
     var currentVolumeLevel: Float = 0.0
     var myTimer = Timer()
-
+    
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", ""]
     let microText: String = "Despite its accuracy, this device is not a medical device. See your GP"
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame)
+        swiftyOnboard.shouldSwipe = false
         
-
         if traitCollection.userInterfaceStyle == .dark {
             swiftyOnboard.style = .dark
             swiftyOnboard.backgroundColor = .black
@@ -33,47 +33,66 @@ class HearingViewController: UIViewController {
             swiftyOnboard.style = .light
             swiftyOnboard.backgroundColor = .white
         }
+        
         view.addSubview(swiftyOnboard)
+        
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
         
         currentVolumeLevel = AVAudioSession.sharedInstance().outputVolume
         
         let currentRoute = AVAudioSession.sharedInstance().currentRoute
-                
-                if currentRoute.outputs.count != 0 {
-                    for description in currentRoute.outputs {
-                        if description.portType == AVAudioSession.Port.headphones {
-                            
-                            print("headphone plugged in")
-                        } else {
-                            
-                            print("headphone pulled out")
-                        }
-                    }
+        
+        if currentRoute.outputs.count != 0 {
+            for description in currentRoute.outputs {
+                if description.portType == AVAudioSession.Port.headphones {
+                    
+                    print("headphone plugged in")
                 } else {
-                    print("requires connection to device")
+                    
+                    print("headphone pulled out")
                 }
-                
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(audioRouteChangeListener(_:)),
-                    name: AVAudioSession.routeChangeNotification,
-                    object: nil)
+            }
+        } else {
+            print("requires connection to device")
+        }
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(audioRouteChangeListener(_:)),
+            name: AVAudioSession.routeChangeNotification,
+            object: nil)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        view.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
+       if gesture.direction == .right {
+            print("Swipe Right")
+       }
+       else if gesture.direction == .left {
+            print("Swipe Left")
+       }
     }
     
     @objc dynamic fileprivate func audioRouteChangeListener(_ notification:Notification) {
-            let audioRouteChangeReason = notification.userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
-
-            switch audioRouteChangeReason {
-            case AVAudioSession.RouteChangeReason.newDeviceAvailable.rawValue:
-                print("headphone plugged in")
-            case AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue:
-                print("headphone pulled out")
-            default:
-                break
-            }
+        let audioRouteChangeReason = notification.userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
+        
+        switch audioRouteChangeReason {
+        case AVAudioSession.RouteChangeReason.newDeviceAvailable.rawValue:
+            print("headphone plugged in")
+        case AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue:
+            print("headphone pulled out")
+        default:
+            break
         }
+    }
     
     @objc func handleContinue(sender: UIButton) {
         let index = swiftyOnboard.currentPage
@@ -96,8 +115,9 @@ class HearingViewController: UIViewController {
             }
         } else if index == 2 {
             print("Start hearing test")
-        } else {
-            print("Page out of index found")
+            swiftyOnboard?.goToPage(index: index + 1, animated: true)
+        } else if index == 3 {
+            print("Finish hearing test")
         }
         
     }
@@ -110,7 +130,7 @@ class HearingViewController: UIViewController {
         MPVolumeView.setVolume(sender.value)
         
         print("volume: \(currentVolumeLevel)")
-     }
+    }
 }
 
 //MARK: - SwiftyOnboard protocols
@@ -123,14 +143,14 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
     
     func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
         let page = SwiftyOnboardPage()
-
+        
         page.title.text = onboardTitle
         page.title.font = UIFont(name: "SFProDisplay-Bold", size: 34)
         page.subTitle.text = onboardSubTitleArray[index]
         page.subTitle.font = UIFont(name: "SFProDisplay-Light", size: 22)
         
         page.updateTopAnchor() // fix for UINavBar
- 
+        
         if traitCollection.userInterfaceStyle == .dark {
             swiftyOnboard.style = .dark
             swiftyOnboard.backgroundColor = .black
@@ -156,7 +176,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             ellipse.image = UIImage(named: "ellipse")
             //ellipse.backgroundColor?.withAlphaComponent(0)
             slider.addSubview(ellipse)
-
+            
             page.addSubview(slider)
             
             
@@ -182,6 +202,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             progress.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
             progress.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
             progress.progress = 0.01
+            
         }
         
         return page
@@ -193,7 +214,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         //Setup targets for the buttons on the overlay view:
         overlay.skipButton.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
-
+        
         overlay.microTitle.text = microText
         overlay.microTitle.isHidden = false
         overlay.microTitle.tintColor = UIColor(cgColor: CGColor(red: 60, green: 60, blue: 67, alpha: 0.3))
@@ -223,7 +244,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         let currentPage = round(position)
         overlay.pageControl.currentPage = Int(currentPage)
         overlay.continueButton.tag = Int(position)
-
+        
         if currentPage == 0.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
         } else if currentPage == 1.0 {
@@ -240,15 +261,15 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
 //MARK: - AVAudioSession extension to check for headphones
 
 extension AVAudioSession {
-
+    
     static var isHeadphonesConnected: Bool {
         return sharedInstance().isHeadphonesConnected
     }
-
+    
     var isHeadphonesConnected: Bool {
         return !currentRoute.outputs.filter { $0.isHeadphones }.isEmpty
     }
-
+    
 }
 
 extension AVAudioSessionPortDescription {
@@ -263,7 +284,7 @@ extension MPVolumeView {
     static func setVolume(_ volume: Float) {
         let volumeView = MPVolumeView()
         let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
-
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
             slider?.value = volume
         }
