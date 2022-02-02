@@ -10,7 +10,7 @@ import AVFAudio
 import MediaPlayer
 
 protocol HearingTestLogicDelegate {
-    func getTestResults()
+    func getHearingTestResultForEars(left: Int, right: Int)
     func getProgress(value: Float)
 }
 
@@ -25,7 +25,7 @@ class HearingTestLogic {
     private let sides: [String] = ["right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left"]
     var leftEarScore: Int = 0
     var rightEarScore: Int = 0
-    var isScoreBlocked: Bool = true
+    private var isScoreBlocked: Bool = true
     var progress: Float = 0.01
     
     func start() {
@@ -92,8 +92,13 @@ class HearingTestLogic {
     func finish() {
         isInProgress = false
         hearingTestTimer.invalidate()
-        
         print("FINISH*** Test result is: left \(leftEarScore), right \(rightEarScore)")
+        delegate?.getHearingTestResultForEars(left: leftEarScore, right: rightEarScore)
     }
     
+    func finished() {
+        // if user will finish test with back button, or will close app, or something like that. Just to be sure timer is invalidated
+        isInProgress = false
+        hearingTestTimer.invalidate()
+    }
 }

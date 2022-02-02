@@ -18,7 +18,7 @@ class HearingViewController: UIViewController {
     let hearingTest = HearingTestLogic()
     
     var knob: UIImageView!
-    var progress = UIProgressView()
+    var progressView = UIProgressView()
     
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", ""]
@@ -75,6 +75,10 @@ class HearingViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeRight.direction = .right
         view.addGestureRecognizer(swipeRight)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        hearingTest.finished()
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
@@ -159,18 +163,17 @@ class HearingViewController: UIViewController {
 
 extension HearingViewController: HearingTestLogicDelegate {
     
-    func getTestResults() {
+    func getHearingTestResultForEars(left: Int, right: Int) {
         // to do
+        
     }
     
     func getProgress(value: Float) {
-        progress.progress = value
+        progressView.progress = value
     }
-    
-    
 }
 
-//MARK: - SwiftyOnboard protocols
+//MARK: - SwiftyOnboard PAGES
 
 extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
     
@@ -232,17 +235,18 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             knob.widthAnchor.constraint(equalToConstant: 84).isActive = true
             knob.heightAnchor.constraint(equalToConstant: 84).isActive = true
             
-            progress.translatesAutoresizingMaskIntoConstraints = false
-            page.addSubview(progress)
-            progress.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 15).isActive = true
-            progress.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
-            progress.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
-            progress.progress = 0.01
+            progressView.translatesAutoresizingMaskIntoConstraints = false
+            page.addSubview(progressView)
+            progressView.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 15).isActive = true
+            progressView.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
+            progressView.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
+            progressView.progress = 0.01
             
         }
-        
         return page
     }
+    
+//MARK: - SwiftyOnboard OVERLAY
     
     func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
         let overlay = SwiftyOnboardOverlay()
@@ -293,6 +297,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         } else if currentPage == 3.0 {
             overlay.continueButton.setTitle("Stop Test", for: .normal)
             overlay.continueButton.isEnabled = true
+            overlay.pageControl.isHidden = true
         }
     }
 }
