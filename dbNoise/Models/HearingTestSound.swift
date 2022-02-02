@@ -8,6 +8,8 @@
 import Foundation
 import AVFoundation
 
+// This class will play a special random hearing test sound
+
 class HearingTestSound {
     
     fileprivate var player = AVAudioPlayer()

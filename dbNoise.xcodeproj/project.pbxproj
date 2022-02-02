@@ -14,6 +14,10 @@
 		916832F227A996D200C4C109 /* l2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832EE27A996D200C4C109 /* l2.wav */; };
 		916832F327A996D200C4C109 /* r1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832EF27A996D200C4C109 /* r1.wav */; };
 		916832F427A996D200C4C109 /* l1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832F027A996D200C4C109 /* l1.wav */; };
+		916832F627AAB6EE00C4C109 /* HearingTestLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832F527AAB6EE00C4C109 /* HearingTestLogic.swift */; };
+		916832F827AABD9A00C4C109 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832F727AABD9A00C4C109 /* Extensions.swift */; };
+		916832FE27AACE3500C4C109 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916832FD27AACE3500C4C109 /* ResultView.xib */; };
+		9168330027AADD0600C4C109 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832FF27AADD0600C4C109 /* ResultView.swift */; };
 		9184C99727A557A70040F230 /* HearingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184C99627A557A70040F230 /* HearingViewController.swift */; };
 		91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E70927A158F300816161 /* AppDelegate.swift */; };
 		91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8E70B27A158F300816161 /* SceneDelegate.swift */; };
@@ -54,6 +58,10 @@
 		916832EE27A996D200C4C109 /* l2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = l2.wav; sourceTree = "<group>"; };
 		916832EF27A996D200C4C109 /* r1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = r1.wav; sourceTree = "<group>"; };
 		916832F027A996D200C4C109 /* l1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = l1.wav; sourceTree = "<group>"; };
+		916832F527AAB6EE00C4C109 /* HearingTestLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestLogic.swift; sourceTree = "<group>"; };
+		916832F727AABD9A00C4C109 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		916832FD27AACE3500C4C109 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
+		916832FF27AADD0600C4C109 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		9184C99627A557A70040F230 /* HearingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingViewController.swift; sourceTree = "<group>"; };
 		91D8E70627A158F300816161 /* dbNoise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dbNoise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D8E70927A158F300816161 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +117,47 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		916832F927AAC03F00C4C109 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				91D8E70D27A158F300816161 /* ViewController.swift */,
+				91124E6B27A2C787006AA3DC /* NoiseDetectorViewController.swift */,
+				9184C99627A557A70040F230 /* HearingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		916832FA27AAC05300C4C109 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91D8E70F27A158F300816161 /* Main.storyboard */,
+				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
+				916832FD27AACE3500C4C109 /* ResultView.xib */,
+				916832FF27AADD0600C4C109 /* ResultView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		916832FB27AAC05900C4C109 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				916832F527AAB6EE00C4C109 /* HearingTestLogic.swift */,
+				91226D8D27A3DFBF008DD34E /* MicManager.swift */,
+				916832F727AABD9A00C4C109 /* Extensions.swift */,
+				916832EA27A9957B00C4C109 /* HearingTestSound.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		916832FC27AAC0D200C4C109 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				91D8E70927A158F300816161 /* AppDelegate.swift */,
+				91D8E70B27A158F300816161 /* SceneDelegate.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
 		91D8E6FD27A158F300816161 = {
 			isa = PBXGroup;
 			children = (
@@ -130,16 +179,11 @@
 		91D8E70827A158F300816161 /* dbNoise */ = {
 			isa = PBXGroup;
 			children = (
-				91D8E70927A158F300816161 /* AppDelegate.swift */,
-				91D8E70B27A158F300816161 /* SceneDelegate.swift */,
-				91D8E70D27A158F300816161 /* ViewController.swift */,
-				91124E6B27A2C787006AA3DC /* NoiseDetectorViewController.swift */,
-				9184C99627A557A70040F230 /* HearingViewController.swift */,
-				91226D8D27A3DFBF008DD34E /* MicManager.swift */,
-				916832EA27A9957B00C4C109 /* HearingTestSound.swift */,
-				91D8E70F27A158F300816161 /* Main.storyboard */,
+				916832FC27AAC0D200C4C109 /* Supporting files */,
+				916832FB27AAC05900C4C109 /* Models */,
+				916832FA27AAC05300C4C109 /* Views */,
+				916832F927AAC03F00C4C109 /* Controllers */,
 				91D8E71227A158FE00816161 /* Assets.xcassets */,
-				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
 				91D8E71727A158FE00816161 /* Info.plist */,
 				916832EC27A996B900C4C109 /* Sounds */,
 				91D8E72627A1778A00816161 /* fonts */,
@@ -264,6 +308,7 @@
 				91D8E74C27A177D300816161 /* SF-Pro-Display-Light.otf in Resources */,
 				91D8E74327A177D300816161 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				91D8E74427A177D300816161 /* SF-Pro-Display-LightItalic.otf in Resources */,
+				916832FE27AACE3500C4C109 /* ResultView.xib in Resources */,
 				916832F427A996D200C4C109 /* l1.wav in Resources */,
 				916832F327A996D200C4C109 /* r1.wav in Resources */,
 				91D8E74D27A177D300816161 /* SF-Pro-Display-Bold.otf in Resources */,
@@ -331,10 +376,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				91226D8E27A3DFBF008DD34E /* MicManager.swift in Sources */,
+				916832F827AABD9A00C4C109 /* Extensions.swift in Sources */,
 				91D8E70E27A158F300816161 /* ViewController.swift in Sources */,
 				91124E6C27A2C788006AA3DC /* NoiseDetectorViewController.swift in Sources */,
 				916832EB27A9957B00C4C109 /* HearingTestSound.swift in Sources */,
 				91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */,
+				916832F627AAB6EE00C4C109 /* HearingTestLogic.swift in Sources */,
+				9168330027AADD0600C4C109 /* ResultView.swift in Sources */,
 				91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */,
 				9184C99727A557A70040F230 /* HearingViewController.swift in Sources */,
 			);

@@ -15,6 +15,8 @@ protocol MicManagerDelegate {
 }
 
 // https://github.com/stevenysjo/DecibelMeter
+//
+// This class will manage input audio and return dB values
 
 class MicManager: NSObject {
     let audioSession = AVAudioSession.sharedInstance()

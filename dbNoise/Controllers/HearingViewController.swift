@@ -15,20 +15,13 @@ class HearingViewController: UIViewController {
     var swiftyOnboard: SwiftyOnboard!
     var currentVolumeLevel: Float = 0.5
     var headphonesCheckerTimer = Timer()
-    var hearingTestTimer = Timer()
-    var hearingIsInProgress: Bool = false
-    var testSound = HearingTestSound()
-    var currentSideInHearingTest: String = "left"
-    let sides: [String] = ["right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left"]
-    var leftEarScore: Int = 0
-    var rightEarScore: Int = 0
-    var isScoreBlocked: Bool = true
+    let hearingTest = HearingTestLogic()
     
     var knob: UIImageView!
-    var progress = UIProgressView()
+    var progressView = UIProgressView()
     
     let onboardTitle: String = "Hearing level"
-    let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", ""]
+    let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", "", "You have no hearing impairment"]
     let microText: String = "Despite its accuracy, this device is not a medical device. See your GP"
     
     override func viewDidLoad() {
@@ -49,6 +42,7 @@ class HearingViewController: UIViewController {
         
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
+        hearingTest.delegate = self
         
         currentVolumeLevel = AVAudioSession.sharedInstance().outputVolume
         
@@ -83,10 +77,14 @@ class HearingViewController: UIViewController {
         view.addGestureRecognizer(swipeRight)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        hearingTest.finished()
+    }
+    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        if hearingIsInProgress {
+        if hearingTest.isInProgress {
             if gesture.direction == .right {
-                addScoreToHearingTest(swipeDirection: "right")
+                hearingTest.addScore(swipeDirection: "right")
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: 120, y: 0)
                 } completion: { _ in
@@ -95,7 +93,7 @@ class HearingViewController: UIViewController {
                 
             }
             else if gesture.direction == .left {
-                addScoreToHearingTest(swipeDirection: "left")
+                hearingTest.addScore(swipeDirection: "left")
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: -120, y: 0)
                 } completion: { _ in
@@ -141,12 +139,14 @@ class HearingViewController: UIViewController {
         } else if index == 2 {
             print("Start hearing test")
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
-            hearingIsInProgress = true
-            startHearingTest()
+            hearingTest.start()
+
         } else if index == 3 {
             print("Finish hearing test")
-            hearingTestTimer.invalidate()
-            hearingIsInProgress = false
+            hearingTest.finish()
+        } else if index == 4 {
+            print("Start NEW hearing test")
+            swiftyOnboard?.goToPage(index: 0, animated: true)
         }
         
     }
@@ -160,78 +160,28 @@ class HearingViewController: UIViewController {
         
         print("volume: \(currentVolumeLevel)")
     }
+}
+
+//MARK: - HearingTestDelegate
+
+extension HearingViewController: HearingTestLogicDelegate {
     
-    func startHearingTest() {
-        hearingTestTimer.invalidate()
-        rightEarScore = 0
-        leftEarScore = 0
-        var counter = 0
-        progress.progress = 0.01
-        var localSides = sides
-        localSides.shuffle()
-        hearingIsInProgress = true
-
-        hearingTestTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { _ in
-            
-            MPVolumeView.setHearingVolume(Float.random(in: 0.01...0.5))
-            if !localSides.isEmpty {
-                self.currentSideInHearingTest = localSides.removeLast()
-            } else {
-                print("Error: localSides array is empty")
-            }
-            
-            self.testSound.play(self.currentSideInHearingTest)
-            self.isScoreBlocked = false
-            self.progress.progress += 0.05
-
-            counter += 1
-            
-            print("Timer iteration number: \(counter)")
-            print(localSides.count)
-            
-            if counter >= 20 {
-                self.hearingTestTimer.invalidate()
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-                    self.hearingTestFinished()
-                }
-            }
-        })
+    func getHearingTestResultForEars(left: Int, right: Int) {
+        
+        swiftyOnboard?.goToPage(index: 4, animated: true)
     }
     
-    func addScoreToHearingTest(swipeDirection: String) {
-        
-        guard !isScoreBlocked else {
-            print("Score is blocked: \(isScoreBlocked)")
-            return
-        }
-        
-        if currentSideInHearingTest == swipeDirection {
-            if currentSideInHearingTest == "left" {
-                leftEarScore += 1
-            } else {
-                rightEarScore += 1
-            }
-        } else {
-            print("Failed in test")
-        }
-        isScoreBlocked = true
-        print("Left ear: \(leftEarScore), right ear: \(rightEarScore), is score blocked: \(isScoreBlocked)")
-    }
-    
-    func hearingTestFinished() {
-        hearingIsInProgress = false
-        
-        print("FINISH*** Test result is: left \(leftEarScore), right \(rightEarScore)")
+    func getProgress(value: Float) {
+        progressView.progress = value
     }
 }
 
-//MARK: - SwiftyOnboard protocols
+//MARK: - SwiftyOnboard PAGES
 
 extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
     
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
-        return 4
+        return 5
     }
     
     func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
@@ -288,17 +238,24 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             knob.widthAnchor.constraint(equalToConstant: 84).isActive = true
             knob.heightAnchor.constraint(equalToConstant: 84).isActive = true
             
-            progress.translatesAutoresizingMaskIntoConstraints = false
-            page.addSubview(progress)
-            progress.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 15).isActive = true
-            progress.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
-            progress.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
-            progress.progress = 0.01
+            progressView.translatesAutoresizingMaskIntoConstraints = false
+            page.addSubview(progressView)
+            progressView.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 15).isActive = true
+            progressView.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -15).isActive = true
+            progressView.topAnchor.constraint(equalTo: page.imageView.bottomAnchor, constant: 20).isActive = true
+            progressView.progress = 0.01
             
+        } else if index == 4 {
+            let result = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
+            page.imageView.addSubview(result)
+         
+//            page.imageView.backgroundColor = .green
+            // add left + right results + % result
         }
-        
         return page
     }
+    
+//MARK: - SwiftyOnboard OVERLAY
     
     func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
         let overlay = SwiftyOnboardOverlay()
@@ -349,53 +306,11 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         } else if currentPage == 3.0 {
             overlay.continueButton.setTitle("Stop Test", for: .normal)
             overlay.continueButton.isEnabled = true
-        }
-    }
-}
-
-//MARK: - AVAudioSession extension to check for headphones
-
-extension AVAudioSession {
-    
-    static var isHeadphonesConnected: Bool {
-        return sharedInstance().isHeadphonesConnected
-    }
-    
-    var isHeadphonesConnected: Bool {
-        return !currentRoute.outputs.filter { $0.isHeadphones }.isEmpty
-    }
-    
-}
-
-extension AVAudioSessionPortDescription {
-    var isHeadphones: Bool {
-        return portType == AVAudioSession.Port.headphones
-    }
-}
-
-//Update system volume https://stackoverflow.com/questions/37873962/setting-the-system-volume-in-swift-under-ios
-
-extension MPVolumeView {
-    
-    // for slider changing volume
-    
-    static func setVolume(_ volume: Float) {
-        let volumeView = MPVolumeView()
-        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
-            slider?.value = volume
-        }
-    }
-    
-    // and this one for hearing test
-    
-    static func setHearingVolume(_ volume: Float) {
-        let volumeView = MPVolumeView()
-        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
-            slider?.value = volume
+            overlay.pageControl.isHidden = true
+        } else if currentPage == 4.0 {
+            overlay.continueButton.setTitle("Start new Test", for: .normal)
+            overlay.continueButton.isEnabled = true
+            overlay.pageControl.isHidden = true
         }
     }
 }
