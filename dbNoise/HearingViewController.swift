@@ -15,14 +15,15 @@ class HearingViewController: UIViewController {
     var swiftyOnboard: SwiftyOnboard!
     var currentVolumeLevel: Float = 0.5
     var headphonesCheckerTimer = Timer()
-    var hearingTestTimer = Timer()
-    var hearingIsInProgress: Bool = false
-    var testSound = HearingTestSound()
-    var currentSideInHearingTest: String = "left"
-    let sides: [String] = ["right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left"]
-    var leftEarScore: Int = 0
-    var rightEarScore: Int = 0
-    var isScoreBlocked: Bool = true
+//    var hearingTestTimer = Timer()
+//    var hearingIsInProgress: Bool = false
+//    var testSound = HearingTestSound()
+//    var currentSideInHearingTest: String = "left"
+//    let sides: [String] = ["right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left", "right", "left"]
+//    var leftEarScore: Int = 0
+//    var rightEarScore: Int = 0
+//    var isScoreBlocked: Bool = true
+    let hearingTest = HearingTestLogic()
     
     var knob: UIImageView!
     var progress = UIProgressView()
@@ -84,9 +85,9 @@ class HearingViewController: UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        if hearingIsInProgress {
+        if hearingTest.isInProgress {
             if gesture.direction == .right {
-                addScoreToHearingTest(swipeDirection: "right")
+                hearingTest.addScore(swipeDirection: "right")
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: 120, y: 0)
                 } completion: { _ in
@@ -95,7 +96,7 @@ class HearingViewController: UIViewController {
                 
             }
             else if gesture.direction == .left {
-                addScoreToHearingTest(swipeDirection: "left")
+                hearingTest.addScore(swipeDirection: "left")
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
                     self.knob.transform = CGAffineTransform(translationX: -120, y: 0)
                 } completion: { _ in
@@ -141,12 +142,11 @@ class HearingViewController: UIViewController {
         } else if index == 2 {
             print("Start hearing test")
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
-            hearingIsInProgress = true
-            startHearingTest()
+            hearingTest.start()
+
         } else if index == 3 {
             print("Finish hearing test")
-            hearingTestTimer.invalidate()
-            hearingIsInProgress = false
+            hearingTest.finish()
         }
         
     }
@@ -159,70 +159,6 @@ class HearingViewController: UIViewController {
         MPVolumeView.setVolume(sender.value)
         
         print("volume: \(currentVolumeLevel)")
-    }
-    
-    func startHearingTest() {
-        hearingTestTimer.invalidate()
-        rightEarScore = 0
-        leftEarScore = 0
-        var counter = 0
-        progress.progress = 0.01
-        var localSides = sides
-        localSides.shuffle()
-        hearingIsInProgress = true
-
-        hearingTestTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: { _ in
-            
-            MPVolumeView.setHearingVolume(Float.random(in: 0.01...0.5))
-            if !localSides.isEmpty {
-                self.currentSideInHearingTest = localSides.removeLast()
-            } else {
-                print("Error: localSides array is empty")
-            }
-            
-            self.testSound.play(self.currentSideInHearingTest)
-            self.isScoreBlocked = false
-            self.progress.progress += 0.05
-
-            counter += 1
-            
-            print("Timer iteration number: \(counter)")
-            print(localSides.count)
-            
-            if counter >= 20 {
-                self.hearingTestTimer.invalidate()
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-                    self.hearingTestFinished()
-                }
-            }
-        })
-    }
-    
-    func addScoreToHearingTest(swipeDirection: String) {
-        
-        guard !isScoreBlocked else {
-            print("Score is blocked: \(isScoreBlocked)")
-            return
-        }
-        
-        if currentSideInHearingTest == swipeDirection {
-            if currentSideInHearingTest == "left" {
-                leftEarScore += 1
-            } else {
-                rightEarScore += 1
-            }
-        } else {
-            print("Failed in test")
-        }
-        isScoreBlocked = true
-        print("Left ear: \(leftEarScore), right ear: \(rightEarScore), is score blocked: \(isScoreBlocked)")
-    }
-    
-    func hearingTestFinished() {
-        hearingIsInProgress = false
-        
-        print("FINISH*** Test result is: left \(leftEarScore), right \(rightEarScore)")
     }
 }
 
