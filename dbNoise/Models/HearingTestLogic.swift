@@ -9,7 +9,14 @@ import Foundation
 import AVFAudio
 import MediaPlayer
 
+protocol HearingTestLogicDelegate {
+    func getTestResults()
+    func getProgress(value: Float)
+}
+
 class HearingTestLogic {
+    
+    var delegate: HearingTestLogicDelegate?
     
     private var hearingTestTimer = Timer()
     var isInProgress: Bool = false
@@ -43,6 +50,8 @@ class HearingTestLogic {
             self.testSound.play(self.currentSideInHearingTest)
             self.isScoreBlocked = false
             self.progress += 0.05
+            
+            self.delegate?.getProgress(value: self.progress)
 
             counter += 1
             

@@ -42,6 +42,7 @@ class HearingViewController: UIViewController {
         
         swiftyOnboard.dataSource = self
         swiftyOnboard.delegate = self
+        hearingTest.delegate = self
         
         currentVolumeLevel = AVAudioSession.sharedInstance().outputVolume
         
@@ -152,6 +153,21 @@ class HearingViewController: UIViewController {
         
         print("volume: \(currentVolumeLevel)")
     }
+}
+
+//MARK: - HearingTestDelegate
+
+extension HearingViewController: HearingTestLogicDelegate {
+    
+    func getTestResults() {
+        // to do
+    }
+    
+    func getProgress(value: Float) {
+        progress.progress = value
+    }
+    
+    
 }
 
 //MARK: - SwiftyOnboard protocols
