@@ -250,6 +250,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             page.imageView.addSubview(result)
          
 //            page.imageView.backgroundColor = .green
+            // add left + right results + % result
         }
         return page
     }
