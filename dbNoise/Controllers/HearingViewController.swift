@@ -20,6 +20,7 @@ class HearingViewController: UIViewController {
     var knob: UIImageView!
     var progressView = UIProgressView()
     var result: ResultView!
+    var page: SwiftyOnboardPage!
     
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", "", "You have no hearing impairment"]
@@ -140,6 +141,7 @@ class HearingViewController: UIViewController {
         } else if index == 2 {
             print("Start hearing test")
             swiftyOnboard?.goToPage(index: index + 1, animated: true)
+            progressView.progress = 0.01
             hearingTest.start()
 
         } else if index == 3 {
@@ -182,6 +184,12 @@ extension HearingViewController: HearingTestLogicDelegate {
         } completion: { _ in
             
         }
+        
+        if x > 50 {
+            self.page.subTitle.text = "You have no hearing impairment"
+        } else {
+            self.page.subTitle.text = "You have hearing impairment. Try to visit a doctor"
+        }
     }
     
     func getProgress(value: Float) {
@@ -198,7 +206,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
     }
     
     func swiftyOnboardPageForIndex(_ swiftyOnboard: SwiftyOnboard, index: Int) -> SwiftyOnboardPage? {
-        let page = SwiftyOnboardPage()
+        page = SwiftyOnboardPage()
         
         page.title.text = onboardTitle
         page.title.font = UIFont(name: "SFProDisplay-Bold", size: 34)
@@ -261,9 +269,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         } else if index == 4 {
             result = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
             page.imageView.addSubview(result)
-            
-//            page.imageView.backgroundColor = .green
-            // add left + right results + % result
+//            page.imageView.backgroundColor = .gray
         }
         return page
     }
@@ -309,6 +315,8 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         
         if currentPage == 0.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
+            overlay.pageControl.isHidden = false
+            overlay.microTitle.isHidden = false
         } else if currentPage == 1.0 {
             headphonesCheckerTimer.invalidate()
             overlay.continueButton.setTitle("Next", for: .normal)
@@ -324,6 +332,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             overlay.continueButton.setTitle("Start new Test", for: .normal)
             overlay.continueButton.isEnabled = true
             overlay.pageControl.isHidden = true
+            overlay.microTitle.isHidden = true
         }
     }
 }
