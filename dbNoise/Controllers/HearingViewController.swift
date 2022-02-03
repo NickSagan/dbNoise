@@ -19,6 +19,7 @@ class HearingViewController: UIViewController {
     
     var knob: UIImageView!
     var progressView = UIProgressView()
+    var result: ResultView!
     
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", "", "You have no hearing impairment"]
@@ -167,8 +168,20 @@ class HearingViewController: UIViewController {
 extension HearingViewController: HearingTestLogicDelegate {
     
     func getHearingTestResultForEars(left: Int, right: Int) {
-        
         swiftyOnboard?.goToPage(index: 4, animated: true)
+        result.leftResult.text = "\(Int(left*10))%"
+        result.rightResult.text = "\(Int(right*10))%"
+        var x = ((left + right) * 5) - Int.random(in: 5...9)
+        if x < 0 {
+            x = 0
+        }
+        result.hearingIsBetter.text = "Your hearing is better than \(x)% of users"
+        
+        UIView.animate(withDuration: 0.9, delay: 0.15, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
+            self.result.knobCircle.transform = CGAffineTransform(translationX: CGFloat(-x * 3), y: 0)
+        } completion: { _ in
+            
+        }
     }
     
     func getProgress(value: Float) {
@@ -246,9 +259,9 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             progressView.progress = 0.01
             
         } else if index == 4 {
-            let result = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
+            result = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
             page.imageView.addSubview(result)
-         
+            
 //            page.imageView.backgroundColor = .green
             // add left + right results + % result
         }
