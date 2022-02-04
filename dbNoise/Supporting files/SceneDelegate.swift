@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // 3. Create a view hierarchy programmatically
         
-        if(UserDefaults.standard.bool(forKey: "notFirstInApp") == false){
+        if (UserDefaults.standard.bool(forKey: "notFirstInApp") == false) {
             UserDefaults.standard.set(true, forKey: "notFirstInApp")
             // First launch - go to onboarding screen
             print("This is first launch")
@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // 5. Set the window and call makeKeyAndVisible()
             self.window = window
             window.makeKeyAndVisible()
-        }else{
+        } else {
             //Not a first launch - go to NoiseDetectorVC
             print("This is NOT a first launch")
 

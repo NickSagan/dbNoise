@@ -10,7 +10,7 @@ import Foundation
 struct Result: Codable {
     
     let name: String
-    let date: Date
+    let date: String
     let left: Int
     let right: Int
     

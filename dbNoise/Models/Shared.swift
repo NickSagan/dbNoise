@@ -7,6 +7,9 @@
 
 import Foundation
 
+// https://stackoverflow.com/questions/63367953/storing-array-of-custom-objects-in-userdefaults
+
+
 class Shared {
     static let instance = Shared()
     private init() { }

@@ -13,14 +13,17 @@ import MediaPlayer
 class HearingViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
+    var page: SwiftyOnboardPage!
+    
     var currentVolumeLevel: Float = 0.5
     var headphonesCheckerTimer = Timer()
     let hearingTest = HearingTestLogic()
     
     var knob: UIImageView!
     var progressView = UIProgressView()
+    
     var result: ResultView!
-    var page: SwiftyOnboardPage!
+    var results: Array<Result> = []
     
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", "", "You have no hearing impairment"]
@@ -28,6 +31,9 @@ class HearingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        results = Shared.instance.results
+        print(results)
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame)
         swiftyOnboard.shouldSwipe = false
@@ -171,6 +177,17 @@ extension HearingViewController: HearingTestLogicDelegate {
     
     func getHearingTestResultForEars(left: Int, right: Int) {
         swiftyOnboard?.goToPage(index: 4, animated: true)
+        
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm"
+        let dateString = df.string(from: date)
+        
+        let newResult = Result(name: "Test name", date: dateString, left: left, right: right)
+        
+        results.append(newResult)
+        Shared.instance.results = results
+        
         result.leftResult.text = "\(Int(left*10))%"
         result.rightResult.text = "\(Int(right*10))%"
         var x = ((left + right) * 5) - Int.random(in: 5...9)
