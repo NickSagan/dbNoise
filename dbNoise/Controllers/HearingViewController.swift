@@ -14,6 +14,7 @@ class HearingViewController: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     var page: SwiftyOnboardPage!
+    var overlay: SwiftyOnboardOverlay!
     
     var currentVolumeLevel: Float = 0.5
     var headphonesCheckerTimer = Timer()
@@ -33,7 +34,6 @@ class HearingViewController: UIViewController {
         super.viewDidLoad()
         
         results = Shared.instance.results
-        print(results)
         
         swiftyOnboard = SwiftyOnboard(frame: view.frame)
         swiftyOnboard.shouldSwipe = false
@@ -163,6 +163,11 @@ class HearingViewController: UIViewController {
     @objc func handleSkip() {
     }
     
+    @objc func goToResultsList() {
+        let vc = HearingResultsViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc func sliderValueDidChange(sender: UISlider!) {
         currentVolumeLevel = sender.value
         MPVolumeView.setVolume(sender.value)
@@ -177,6 +182,8 @@ extension HearingViewController: HearingTestLogicDelegate {
     
     func getHearingTestResultForEars(left: Int, right: Int) {
         swiftyOnboard?.goToPage(index: 4, animated: true)
+        
+        // https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
         
         let date = Date()
         let df = DateFormatter()
@@ -286,6 +293,9 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         } else if index == 4 {
             result = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
             page.imageView.addSubview(result)
+            
+            
+            
 //            page.imageView.backgroundColor = .gray
         }
         return page
@@ -294,11 +304,12 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
 //MARK: - SwiftyOnboard OVERLAY
     
     func swiftyOnboardViewForOverlay(_ swiftyOnboard: SwiftyOnboard) -> SwiftyOnboardOverlay? {
-        let overlay = SwiftyOnboardOverlay()
+        overlay = SwiftyOnboardOverlay()
         
         //Setup targets for the buttons on the overlay view:
         overlay.skipButton.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
         overlay.continueButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
+        overlay.resultsList.addTarget(self, action: #selector(goToResultsList), for: .touchUpInside)
         
         overlay.microTitle.text = microText
         overlay.microTitle.isHidden = false
@@ -316,9 +327,9 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
         headphonesCheckerTimer.invalidate()
         headphonesCheckerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             if AVAudioSession.isHeadphonesConnected {
-                overlay.continueButton.isEnabled = true
+                self.overlay.continueButton.isEnabled = true
             } else {
-                overlay.continueButton.isEnabled = false
+                self.overlay.continueButton.isEnabled = false
             }
         })
         
@@ -334,6 +345,7 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             overlay.continueButton.setTitle("Next", for: .normal)
             overlay.pageControl.isHidden = false
             overlay.microTitle.isHidden = false
+            overlay.resultsList.isHidden = true
         } else if currentPage == 1.0 {
             headphonesCheckerTimer.invalidate()
             overlay.continueButton.setTitle("Next", for: .normal)
@@ -350,6 +362,8 @@ extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate 
             overlay.continueButton.isEnabled = true
             overlay.pageControl.isHidden = true
             overlay.microTitle.isHidden = true
+            overlay.setUpResultListConstraints()
+            overlay.resultsList.isHidden = false
         }
     }
 }
