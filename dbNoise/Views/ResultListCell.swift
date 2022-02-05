@@ -11,9 +11,23 @@ class ResultListCell : UITableViewCell {
 
     var result : Result? {
         didSet {
-            dateLabel.text = result?.date
-            leftEarLabel.text = "\(result?.leftEar ?? 0) L"
-            rightEarLabel.text = "\(result?.rightEar ?? 0) R"
+            if let res = result {
+                dateLabel.text = res.date
+                leftEarLabel.text = "\(res.leftEar) L"
+                rightEarLabel.text = "\(res.rightEar) R"
+                
+                if res.rightEar < 50 {
+                    rightEarLabel.textColor = .systemRed
+                }
+                if res.leftEar < 50 {
+                    leftEarLabel.textColor = .systemRed
+                }
+            } else {
+                print("Error recieving result data")
+                dateLabel.text = "No date"
+                leftEarLabel.text = "00 L"
+                rightEarLabel.text = "00 R"
+            }
         }
     }
     
