@@ -11,8 +11,8 @@ struct Result: Codable {
     
     let name: String
     let date: String
-    let left: Int
-    let right: Int
+    let leftEar: Int
+    let rightEar: Int
     
 }
 
