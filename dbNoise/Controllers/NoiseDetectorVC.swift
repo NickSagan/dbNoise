@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoiseDetectorViewController: UIViewController {
+class NoiseDetectorVC: UIViewController {
     
     @IBOutlet weak var proButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
@@ -92,7 +92,7 @@ class NoiseDetectorViewController: UIViewController {
     
     @IBAction func hearingPressed(_ sender: UIButton) {
         print("hearing")
-        let vc = HearingViewController()
+        let vc = HearingVC()
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -101,7 +101,7 @@ class NoiseDetectorViewController: UIViewController {
     }
 }
 
-extension NoiseDetectorViewController: MicManagerDelegate {
+extension NoiseDetectorVC: MicManagerDelegate {
     
     func audioRecordingFailed() {
         print("failed")

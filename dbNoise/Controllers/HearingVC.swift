@@ -10,7 +10,7 @@ import SwiftyOnboard
 import AVFAudio
 import MediaPlayer
 
-class HearingViewController: UIViewController {
+class HearingVC: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     var page: SwiftyOnboardPage!
@@ -164,8 +164,7 @@ class HearingViewController: UIViewController {
     }
     
     @objc func goToResultsList() {
-        let vc = HearingResultsViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(ResultsListVC(), animated: true)
     }
     
     @objc func sliderValueDidChange(sender: UISlider!) {
@@ -178,7 +177,7 @@ class HearingViewController: UIViewController {
 
 //MARK: - HearingTestDelegate
 
-extension HearingViewController: HearingTestLogicDelegate {
+extension HearingVC: HearingTestLogicDelegate {
     
     func getHearingTestResultForEars(left: Int, right: Int) {
         swiftyOnboard?.goToPage(index: 4, animated: true)
@@ -190,8 +189,8 @@ extension HearingViewController: HearingTestLogicDelegate {
         df.dateFormat = "yyyy-MM-dd HH:mm"
         let dateString = df.string(from: date)
         
-        let newResult = Result(name: "Test name", date: dateString, left: left, right: right)
-        
+        let newResult = Result(name: "Test name", date: dateString, leftEar: left, rightEar: right)
+ 
         results.append(newResult)
         Shared.instance.results = results
         
@@ -223,7 +222,7 @@ extension HearingViewController: HearingTestLogicDelegate {
 
 //MARK: - SwiftyOnboard PAGES
 
-extension HearingViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
+extension HearingVC: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
     
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {
         return 5

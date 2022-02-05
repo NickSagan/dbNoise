@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Noise Detector View Controller-->
+        <!--Noise DetectorVC-->
         <scene sceneID="AFR-Jq-p3P">
             <objects>
-                <viewController storyboardIdentifier="NoiseDetectorID" id="1Vd-99-dn5" customClass="NoiseDetectorViewController" customModule="dbNoise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoiseDetectorID" id="1Vd-99-dn5" customClass="NoiseDetectorVC" customModule="dbNoise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F8n-U9-oBR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,7 +8,7 @@
 import UIKit
 import SwiftyOnboard
 
-class ViewController: UIViewController {
+class OnboardVC: UIViewController {
     
     var swiftyOnboard: SwiftyOnboard!
     var myTimer = Timer()
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
 
 //MARK: - SwiftyOnboard protocols
 
-extension ViewController: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
+extension OnboardVC: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
     
 
     func swiftyOnboardNumberOfPages(_ swiftyOnboard: SwiftyOnboard) -> Int {

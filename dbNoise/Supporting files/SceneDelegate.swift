@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("This is first launch")
 
             // 4. Set the root view controller of the window with your view controller
-            window.rootViewController = ViewController()
+            window.rootViewController = OnboardVC()
             // 5. Set the window and call makeKeyAndVisible()
             self.window = window
             window.makeKeyAndVisible()
