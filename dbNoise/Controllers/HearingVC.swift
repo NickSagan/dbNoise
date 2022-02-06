@@ -340,6 +340,7 @@ extension HearingVC: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
         
         if currentPage == 0.0 {
             overlay.continueButton.setTitle("Next", for: .normal)
+            overlay.setUpBasicConstraints()
             overlay.pageControl.isHidden = false
             overlay.microTitle.isHidden = false
             overlay.resultsList.isHidden = true
