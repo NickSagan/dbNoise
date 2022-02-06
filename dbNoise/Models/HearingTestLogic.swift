@@ -10,7 +10,7 @@ import AVFAudio
 import MediaPlayer
 
 protocol HearingTestLogicDelegate {
-    func getHearingTestResultForEars(left: Int, right: Int)
+    func getHearingTest(_ result: Result)
     func getProgress(value: Float)
 }
 
@@ -92,13 +92,46 @@ class HearingTestLogic {
     func finish() {
         isInProgress = false
         hearingTestTimer.invalidate()
-        print("FINISH*** Test result is: left \(leftEarScore), right \(rightEarScore)")
-        delegate?.getHearingTestResultForEars(left: leftEarScore, right: rightEarScore)
+        let result: Result = packToResult(left: leftEarScore, right: rightEarScore)
+        
+        // Save new result into array and into Filemanager directory
+        var results: Array<Result> = Shared.instance.results
+        results.append(result)
+        Shared.instance.results = results
+
+        delegate?.getHearingTest(result)
     }
     
     func finished() {
         // if user will finish test with back button, or will close app, or something like that. Just to be sure timer is invalidated
         isInProgress = false
         hearingTestTimer.invalidate()
+    }
+    
+    
+    // Pack test results into Result object
+    
+    private func packToResult(left: Int, right: Int) -> Result {
+        // https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
+        
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm"
+        let dateString = df.string(from: date)
+
+        var x = ((left + right) * 5) - Int.random(in: 3...9)
+        if x < 0 {
+            x = 0
+        }
+        let hearingCompare = "Your hearing is better than \(x)% of users"
+        let subtitleText: String!
+        
+        if x > 50 {
+            subtitleText = "You have no hearing impairment"
+        } else {
+            subtitleText = "You have hearing impairment. Try to visit a doctor"
+        }
+        
+        return Result(date: dateString, leftEar: left, rightEar: right, leftPercent: "\(Int(left*10))%", rightPercent: "\(Int(right*10))%", subtitleText: subtitleText, hearingCompare: hearingCompare, xForKnob: x)
     }
 }
