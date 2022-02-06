@@ -23,18 +23,15 @@ class HearingVC: UIViewController {
     var knob: UIImageView!
     var progressView = UIProgressView()
     
-    var result: ResultView!
-    var results: Array<Result> = []
-    
+    var resultView: ResultView!
+
     let onboardTitle: String = "Hearing level"
     let onboardSubTitleArray: [String] = ["Wear the headset for accurate measurement", "Set your phone volume to 50%", "Swap left or right when you hear sound from one side or the other", "", "You have no hearing impairment"]
     let microText: String = "Despite its accuracy, this device is not a medical device. See your GP"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        results = Shared.instance.results
-        
+ 
         swiftyOnboard = SwiftyOnboard(frame: view.frame)
         swiftyOnboard.shouldSwipe = false
         
@@ -178,40 +175,19 @@ class HearingVC: UIViewController {
 //MARK: - HearingTestDelegate
 
 extension HearingVC: HearingTestLogicDelegate {
-    
-    func getHearingTestResultForEars(left: Int, right: Int) {
+    func getHearingTest(_ result: Result) {
+        
         swiftyOnboard?.goToPage(index: 4, animated: true)
-        
-        // https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
-        
-        let date = Date()
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm"
-        let dateString = df.string(from: date)
-        
-        let newResult = Result(name: "Test name", date: dateString, leftEar: left, rightEar: right)
  
-        results.append(newResult)
-        Shared.instance.results = results
-        
-        result.leftResult.text = "\(Int(left*10))%"
-        result.rightResult.text = "\(Int(right*10))%"
-        var x = ((left + right) * 5) - Int.random(in: 5...9)
-        if x < 0 {
-            x = 0
-        }
-        result.hearingIsBetter.text = "Your hearing is better than \(x)% of users"
+        resultView.leftResult.text = result.leftPercent
+        resultView.rightResult.text = result.rightPercent
+        resultView.hearingIsBetter.text = result.hearingCompare
+        self.page.subTitle.text = result.subtitleText
         
         UIView.animate(withDuration: 0.9, delay: 0.15, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: []) {
-            self.result.knobCircle.transform = CGAffineTransform(translationX: CGFloat(-x * 3), y: 0)
+            self.resultView.knobCircle.transform = CGAffineTransform(translationX: CGFloat(-result.xForKnob * 3), y: 0)
         } completion: { _ in
             
-        }
-        
-        if x > 50 {
-            self.page.subTitle.text = "You have no hearing impairment"
-        } else {
-            self.page.subTitle.text = "You have hearing impairment. Try to visit a doctor"
         }
     }
     
@@ -290,8 +266,8 @@ extension HearingVC: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
             progressView.progress = 0.01
             
         } else if index == 4 {
-            result = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
-            page.imageView.addSubview(result)
+            resultView = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
+            page.imageView.addSubview(resultView)
             
             
             
