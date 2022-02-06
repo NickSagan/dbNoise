@@ -9,7 +9,7 @@ import UIKit
 
 class ResultsListVC: UIViewController {
     
-    var results: [Result] = Shared.instance.results
+    var results: [Result] = []
 
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -20,6 +20,7 @@ class ResultsListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        results = Shared.instance.results
         tableView.delegate = self
         tableView.dataSource = self
         subviews()
@@ -67,5 +68,11 @@ extension ResultsListVC: UITableViewDelegate, UITableViewDataSource {
             Shared.instance.results = results
             tableView.reloadData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ResultVC()
+        vc.result = results[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
