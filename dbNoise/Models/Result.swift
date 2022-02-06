@@ -9,10 +9,13 @@ import Foundation
 
 struct Result: Codable {
     
-    let name: String
     let date: String
     let leftEar: Int
     let rightEar: Int
-    
+    let leftPercent: String
+    let rightPercent: String
+    let subtitleText: String
+    let hearingCompare: String
+    let xForKnob: Int
 }
 
