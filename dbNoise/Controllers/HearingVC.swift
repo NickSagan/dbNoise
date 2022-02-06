@@ -31,6 +31,9 @@ class HearingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePressed))
+        navigationItem.rightBarButtonItem?.isEnabled = false
  
         swiftyOnboard = SwiftyOnboard(frame: view.frame)
         swiftyOnboard.shouldSwipe = false
@@ -152,6 +155,7 @@ class HearingVC: UIViewController {
             hearingTest.finish()
         } else if index == 4 {
             print("Start NEW hearing test")
+            navigationItem.rightBarButtonItem?.isEnabled = false
             swiftyOnboard?.goToPage(index: 0, animated: true)
         }
         
@@ -170,13 +174,33 @@ class HearingVC: UIViewController {
         
         print("volume: \(currentVolumeLevel)")
     }
+    
+    @objc func sharePressed() {
+        // render UIView into UIImage
+        // https://www.hackingwithswift.com/example-code/media/how-to-render-a-uiview-to-a-uiimage
+        print("Share pressed")
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let image = renderer.image { ctx in
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        }
+        
+        let items: [UIImage] = [image]
+        
+        print(items)
+        
+        // let items: [Any] = ["Look at my hearing test result:", image, URL(string: "https://dbnoiseapp.com")!]
+        
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        print(ac)
+        present(ac, animated: true)
+    }
 }
 
 //MARK: - HearingTestDelegate
 
 extension HearingVC: HearingTestLogicDelegate {
     func getHearingTest(_ result: Result) {
-        
+        navigationItem.rightBarButtonItem?.isEnabled = true
         swiftyOnboard?.goToPage(index: 4, animated: true)
  
         resultView.leftResult.text = result.leftPercent
@@ -268,9 +292,7 @@ extension HearingVC: SwiftyOnboardDataSource, SwiftyOnboardDelegate {
         } else if index == 4 {
             resultView = ResultView(frame: CGRect(x: view.frame.size.width * 0.05, y: 0, width: 350, height: 300))
             page.imageView.addSubview(resultView)
-            
-            
-            
+     
 //            page.imageView.backgroundColor = .gray
         }
         return page
