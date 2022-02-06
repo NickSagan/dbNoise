@@ -16,10 +16,10 @@ class ResultListCell : UITableViewCell {
                 leftEarLabel.text = "\(res.leftEar) L"
                 rightEarLabel.text = "\(res.rightEar) R"
                 
-                if res.rightEar < 50 {
+                if res.rightEar < 5 {
                     rightEarLabel.textColor = .systemRed
                 }
-                if res.leftEar < 50 {
+                if res.leftEar < 5 {
                     leftEarLabel.textColor = .systemRed
                 }
             } else {
