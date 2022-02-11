@@ -65,6 +65,7 @@ class ResultVC: UIViewController {
         
         // let items: [Any] = ["Look at my hearing test result:", image, URL(string: "https://dbnoiseapp.com")!]
         
+        // https://www.hackingwithswift.com/articles/118/uiactivityviewcontroller-by-example
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         
         present(ac, animated: true)
