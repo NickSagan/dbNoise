@@ -10,6 +10,7 @@
 		91124E6C27A2C788006AA3DC /* NoiseDetectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91124E6B27A2C787006AA3DC /* NoiseDetectorVC.swift */; };
 		91180A3527B69CF5009AFDDA /* MyRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91180A3427B69CF5009AFDDA /* MyRatingCell.swift */; };
 		91180A3727B69EAF009AFDDA /* NoiseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91180A3627B69EAF009AFDDA /* NoiseResult.swift */; };
+		91180A3927B6A011009AFDDA /* MyRatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91180A3827B6A011009AFDDA /* MyRatingVC.swift */; };
 		91226D8E27A3DFBF008DD34E /* MicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91226D8D27A3DFBF008DD34E /* MicManager.swift */; };
 		916832EB27A9957B00C4C109 /* HearingTestSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832EA27A9957B00C4C109 /* HearingTestSound.swift */; };
 		916832F127A996D200C4C109 /* r2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832ED27A996D200C4C109 /* r2.wav */; };
@@ -21,7 +22,7 @@
 		916832FE27AACE3500C4C109 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916832FD27AACE3500C4C109 /* ResultView.xib */; };
 		9168330027AADD0600C4C109 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832FF27AADD0600C4C109 /* ResultView.swift */; };
 		9184C99727A557A70040F230 /* HearingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184C99627A557A70040F230 /* HearingVC.swift */; };
-		91D614CD27AD79450094D9C3 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D614CC27AD79450094D9C3 /* Result.swift */; };
+		91D614CD27AD79450094D9C3 /* HearingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D614CC27AD79450094D9C3 /* HearingResult.swift */; };
 		91D614CF27AD84110094D9C3 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D614CE27AD84110094D9C3 /* Shared.swift */; };
 		91D614DD27AEDA450094D9C3 /* ResultsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D614DC27AEDA450094D9C3 /* ResultsListVC.swift */; };
 		91D614DF27AEDF6E0094D9C3 /* ResultListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D614DE27AEDF6E0094D9C3 /* ResultListCell.swift */; };
@@ -61,6 +62,7 @@
 		91124E6B27A2C787006AA3DC /* NoiseDetectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseDetectorVC.swift; sourceTree = "<group>"; };
 		91180A3427B69CF5009AFDDA /* MyRatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingCell.swift; sourceTree = "<group>"; };
 		91180A3627B69EAF009AFDDA /* NoiseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseResult.swift; sourceTree = "<group>"; };
+		91180A3827B6A011009AFDDA /* MyRatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingVC.swift; sourceTree = "<group>"; };
 		91226D8D27A3DFBF008DD34E /* MicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicManager.swift; sourceTree = "<group>"; };
 		916832EA27A9957B00C4C109 /* HearingTestSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestSound.swift; sourceTree = "<group>"; };
 		916832ED27A996D200C4C109 /* r2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = r2.wav; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 		916832FD27AACE3500C4C109 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		916832FF27AADD0600C4C109 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		9184C99627A557A70040F230 /* HearingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingVC.swift; sourceTree = "<group>"; };
-		91D614CC27AD79450094D9C3 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		91D614CC27AD79450094D9C3 /* HearingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingResult.swift; sourceTree = "<group>"; };
 		91D614CE27AD84110094D9C3 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		91D614DC27AEDA450094D9C3 /* ResultsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListVC.swift; sourceTree = "<group>"; };
 		91D614DE27AEDF6E0094D9C3 /* ResultListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultListCell.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				9184C99627A557A70040F230 /* HearingVC.swift */,
 				91D614DC27AEDA450094D9C3 /* ResultsListVC.swift */,
 				91D614E027AFFE560094D9C3 /* ResultVC.swift */,
+				91180A3827B6A011009AFDDA /* MyRatingVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -163,7 +166,7 @@
 				91226D8D27A3DFBF008DD34E /* MicManager.swift */,
 				916832F727AABD9A00C4C109 /* Extensions.swift */,
 				916832EA27A9957B00C4C109 /* HearingTestSound.swift */,
-				91D614CC27AD79450094D9C3 /* Result.swift */,
+				91D614CC27AD79450094D9C3 /* HearingResult.swift */,
 				91D614CE27AD84110094D9C3 /* Shared.swift */,
 				91180A3627B69EAF009AFDDA /* NoiseResult.swift */,
 			);
@@ -412,7 +415,8 @@
 				91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */,
 				91D614DD27AEDA450094D9C3 /* ResultsListVC.swift in Sources */,
 				9184C99727A557A70040F230 /* HearingVC.swift in Sources */,
-				91D614CD27AD79450094D9C3 /* Result.swift in Sources */,
+				91D614CD27AD79450094D9C3 /* HearingResult.swift in Sources */,
+				91180A3927B6A011009AFDDA /* MyRatingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

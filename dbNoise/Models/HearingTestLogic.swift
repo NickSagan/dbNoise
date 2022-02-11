@@ -10,7 +10,7 @@ import AVFAudio
 import MediaPlayer
 
 protocol HearingTestLogicDelegate {
-    func getHearingTest(_ result: Result)
+    func getHearingTest(_ result: HearingResult)
     func getProgress(value: Float)
 }
 
@@ -92,12 +92,12 @@ class HearingTestLogic {
     func finish() {
         isInProgress = false
         hearingTestTimer.invalidate()
-        let result: Result = packToResult(left: leftEarScore, right: rightEarScore)
+        let result: HearingResult = packToResult(left: leftEarScore, right: rightEarScore)
         
         // Save new result into array and into Filemanager directory
-        var results: Array<Result> = Shared.instance.results
+        var results: Array<HearingResult> = Shared.instance.hearingResults
         results.append(result)
-        Shared.instance.results = results
+        Shared.instance.hearingResults = results
 
         delegate?.getHearingTest(result)
     }
@@ -109,9 +109,9 @@ class HearingTestLogic {
     }
     
     
-    // Pack test results into Result object
+    // Pack test results into HearingResult object
     
-    private func packToResult(left: Int, right: Int) -> Result {
+    private func packToResult(left: Int, right: Int) -> HearingResult {
         // https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
         
         let date = Date()
@@ -132,6 +132,6 @@ class HearingTestLogic {
             subtitleText = "You have hearing impairment. Try to visit a doctor"
         }
         
-        return Result(date: dateString, leftEar: left, rightEar: right, leftPercent: "\(Int(left*10))%", rightPercent: "\(Int(right*10))%", subtitleText: subtitleText, hearingCompare: hearingCompare, xForKnob: x)
+        return HearingResult(date: dateString, leftEar: left, rightEar: right, leftPercent: "\(Int(left*10))%", rightPercent: "\(Int(right*10))%", subtitleText: subtitleText, hearingCompare: hearingCompare, xForKnob: x)
     }
 }

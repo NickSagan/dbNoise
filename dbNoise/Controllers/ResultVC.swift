@@ -9,7 +9,7 @@ import UIKit
 
 class ResultVC: UIViewController {
     
-    var result: Result!
+    var result: HearingResult!
     var resultView: ResultView!
 
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class ResultVC: UIViewController {
             resultView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: leftMargin)
         ])
         
-        if result == nil { print("Failed to get Result data") }
+        if result == nil { print("Failed to get HearingResult data") }
 
         resultView.leftResult.text = result.leftPercent
         resultView.rightResult.text = result.rightPercent

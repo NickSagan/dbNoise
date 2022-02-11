@@ -9,7 +9,7 @@ import UIKit
 
 class ResultsListVC: UIViewController {
     
-    var results: [Result] = []
+    var results: [HearingResult] = []
 
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -20,7 +20,7 @@ class ResultsListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        results = Shared.instance.results
+        results = Shared.instance.hearingResults
         tableView.delegate = self
         tableView.dataSource = self
         subviews()
@@ -65,7 +65,7 @@ extension ResultsListVC: UITableViewDelegate, UITableViewDataSource {
         if (editingStyle == .delete) {
             // handle delete (by removing the data from your array and updating the tableview)
             results.remove(at: indexPath.row)
-            Shared.instance.results = results
+            Shared.instance.hearingResults = results
             tableView.reloadData()
         }
     }

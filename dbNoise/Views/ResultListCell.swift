@@ -9,7 +9,7 @@ import UIKit
 
 class ResultListCell : UITableViewCell {
 
-    var result : Result? {
+    var result : HearingResult? {
         didSet {
             if let res = result {
                 dateLabel.text = res.date

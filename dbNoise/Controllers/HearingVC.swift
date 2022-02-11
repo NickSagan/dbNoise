@@ -199,7 +199,7 @@ class HearingVC: UIViewController {
 //MARK: - HearingTestDelegate
 
 extension HearingVC: HearingTestLogicDelegate {
-    func getHearingTest(_ result: Result) {
+    func getHearingTest(_ result: HearingResult) {
         navigationItem.rightBarButtonItem?.isEnabled = true
         swiftyOnboard?.goToPage(index: 4, animated: true)
  
