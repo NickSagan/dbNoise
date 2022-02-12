@@ -112,12 +112,6 @@ class HearingTestLogic {
     // Pack test results into HearingResult object
     
     private func packToResult(left: Int, right: Int) -> HearingResult {
-        // https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
-        
-        let date = Date()
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm"
-        let dateString = df.string(from: date)
 
         var x = ((left + right) * 5) - Int.random(in: 3...9)
         if x < 0 {
@@ -132,6 +126,6 @@ class HearingTestLogic {
             subtitleText = "You have hearing impairment. Try to visit a doctor"
         }
         
-        return HearingResult(date: dateString, leftEar: left, rightEar: right, leftPercent: "\(Int(left*10))%", rightPercent: "\(Int(right*10))%", subtitleText: subtitleText, hearingCompare: hearingCompare, xForKnob: x)
+        return HearingResult(date: Date().dateString(), leftEar: left, rightEar: right, leftPercent: "\(Int(left*10))%", rightPercent: "\(Int(right*10))%", subtitleText: subtitleText, hearingCompare: hearingCompare, xForKnob: x)
     }
 }
