@@ -25,6 +25,7 @@ class ResultsListVC: UIViewController {
         tableView.dataSource = self
         subviews()
         constraints()
+        title = "Results list"
     }
 }
 
