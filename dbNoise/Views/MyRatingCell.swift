@@ -64,7 +64,7 @@ class MyRatingCell : UITableViewCell {
         let lbl = UILabel()
         lbl.frame.size.width = 60
         lbl.frame.size.height = 20
-        lbl.textColor = .systemGreen
+        lbl.textColor = .systemRed
         lbl.backgroundColor = UIColor(cgColor: CGColor(red: 50, green: 192, blue: 85, alpha: 0.1))
         lbl.layer.masksToBounds = true
         lbl.layer.cornerRadius = 8.0
