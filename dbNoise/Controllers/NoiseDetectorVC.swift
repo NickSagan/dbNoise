@@ -97,7 +97,9 @@ class NoiseDetectorVC: UIViewController {
     }
     
     @IBAction func menuPressed(_ sender: UIButton) {
-        print("menu")
+        print("My Rating")
+        let vc = MyRatingVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
