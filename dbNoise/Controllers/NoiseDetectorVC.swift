@@ -17,6 +17,16 @@ class NoiseDetectorVC: UIViewController {
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var textExplanationLabel: UILabel!
     
+    let item: UIBarButtonItem = {
+        let btn = UIButton(type: .custom)
+        btn.setBackgroundImage(UIImage(named: "settings"), for: .normal)
+        btn.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
+        btn.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+        let item  = UIBarButtonItem(customView: btn)
+        
+        return item
+    }()
+    
     let micManager = MicManager()
     let decibelLimit: Double = 140
     var upperLimit: Double = 110
@@ -29,14 +39,13 @@ class NoiseDetectorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        results = Shared.instance.noiseResults
         
         micManager.delegate = self
         micManager.interval = interval
         
         let btn = UIButton(type: .custom)
         btn.setBackgroundImage(UIImage(named: "settings"), for: .normal)
-        btn.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
+        btn.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
         btn.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
         let item  = UIBarButtonItem(customView: btn)
         self.navigationItem.setRightBarButton(item, animated: true)
@@ -45,15 +54,10 @@ class NoiseDetectorVC: UIViewController {
         textExplanationLabel.layer.cornerRadius = 5
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        results = Shared.instance.noiseResults
+    }
     
     
     @IBAction func recordPressed(_ sender: UIButton) {
