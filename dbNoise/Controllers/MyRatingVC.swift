@@ -43,16 +43,29 @@ class MyRatingVC: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
         title = "My rating"
+        
+        let btn = UIButton(type: .custom)
+        btn.setBackgroundImage(UIImage(named: "settings"), for: .normal)
+        btn.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+        btn.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+        let item  = UIBarButtonItem(customView: btn)
+        self.navigationItem.setRightBarButton(item, animated: true)
+        
         subviews()
         constraints()
-        clearButton.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
+        clearButton.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
     }
     
-    @objc func clearTapped() {
+    @objc func clearPressed() {
         results.removeAll()
         Shared.instance.noiseResults = results
         tableView.reloadData()
+    }
+    
+    @objc func settingsPressed() {
+        print("Settings")
     }
 }
 
