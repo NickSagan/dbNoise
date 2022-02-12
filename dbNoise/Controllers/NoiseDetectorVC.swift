@@ -57,18 +57,18 @@ class NoiseDetectorVC: UIViewController {
     
     
     @IBAction func recordPressed(_ sender: UIButton) {
-        print("record")
-        maximal = 0
-        minimal = 141
-        avereage = 40
         
         if micManager.isAudioEngineRunning {
             DispatchQueue.main.async {
                 sender.setBackgroundImage(UIImage(named: "Rec.png"), for: .normal)
             }
             micManager.stopRecording()
-            results.append(NoiseResult(date: Date().dateString(), min: minimal, avg: avereage, max: maximal))
+            results.append(NoiseResult(date: Date().dateString(), min: self.minimal, avg: self.avereage, max: self.maximal))
             Shared.instance.noiseResults = results
+            
+            maximal = 0
+            minimal = 141
+            avereage = 40
         } else {
             micManager.checkForPermission { (success) in
                 if success {
@@ -96,13 +96,11 @@ class NoiseDetectorVC: UIViewController {
     }
     
     @IBAction func hearingPressed(_ sender: UIButton) {
-        print("hearing")
         let vc = HearingVC()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func menuPressed(_ sender: UIButton) {
-        print("My Rating")
         let vc = MyRatingVC()
         navigationController?.pushViewController(vc, animated: true)
     }
