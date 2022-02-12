@@ -15,6 +15,7 @@ class MinAvgMaxView: UIView {
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textAlignment = .center
+        label.frame.size.height = 20
         return label
     }()
     
@@ -24,6 +25,7 @@ class MinAvgMaxView: UIView {
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textAlignment = .center
+        label.frame.size.height = 20
         return label
     }()
     
@@ -33,15 +35,17 @@ class MinAvgMaxView: UIView {
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textAlignment = .center
+        label.frame.size.height = 20
         return label
     }()
     
     let minValueLabel: UILabel = {
         let label = UILabel()
-        label.text = "4 dB"
+        label.text = "40 dB"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 28)
         label.textAlignment = .center
+        label.frame.size.height = 33
         return label
     }()
     
@@ -51,6 +55,7 @@ class MinAvgMaxView: UIView {
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 28)
         label.textAlignment = .center
+        label.frame.size.height = 33
         return label
     }()
     
@@ -60,6 +65,7 @@ class MinAvgMaxView: UIView {
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 28)
         label.textAlignment = .center
+        label.frame.size.height = 33
         return label
     }()
     
@@ -84,6 +90,15 @@ class MinAvgMaxView: UIView {
         return view
     }()
     
+//    let stack: UIStackView = {
+//        let stack = UIStackView()
+//        stack.axis = .horizontal
+//        stack.distribution = .fillEqually
+//        stack.alignment = .center
+//        stack.spacing = 11.0
+//        return stack
+//    } ()
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -96,12 +111,18 @@ class MinAvgMaxView: UIView {
     
     func setUp() {
         let margin = self.layoutMarginsGuide
-        
+
         self.addSubview(green)
         self.addSubview(yellow)
         self.addSubview(red)
-
         
+        green.addSubview(minValueLabel)
+        green.addSubview(minLabel)
+        yellow.addSubview(avgValueLabel)
+        yellow.addSubview(avgLabel)
+        red.addSubview(maxValueLabel)
+        red.addSubview(maxLabel)
+
         green.translatesAutoresizingMaskIntoConstraints = false
         yellow.translatesAutoresizingMaskIntoConstraints = false
         red.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +136,41 @@ class MinAvgMaxView: UIView {
         //MARK: - CONSTRAINTS
         
         let constraints: [NSLayoutConstraint] = [
+            green.leadingAnchor.constraint(equalTo: margin.leadingAnchor),
+            yellow.leadingAnchor.constraint(equalTo: green.trailingAnchor, constant: 20),
+            red.leadingAnchor.constraint(equalTo: yellow.trailingAnchor, constant: 20),
+            red.trailingAnchor.constraint(equalTo: margin.trailingAnchor),
+            
+            green.widthAnchor.constraint(equalTo: yellow.widthAnchor),
+            yellow.widthAnchor.constraint(equalTo: red.widthAnchor),
 
+            green.centerYAnchor.constraint(equalTo: margin.centerYAnchor),
+            yellow.centerYAnchor.constraint(equalTo: margin.centerYAnchor),
+            red.centerYAnchor.constraint(equalTo: margin.centerYAnchor),
+
+            minValueLabel.leadingAnchor.constraint(equalTo: green.leadingAnchor),
+            minValueLabel.topAnchor.constraint(equalTo: green.topAnchor, constant: 10),
+            minValueLabel.trailingAnchor.constraint(equalTo: green.trailingAnchor),
+            minLabel.topAnchor.constraint(equalTo: minValueLabel.bottomAnchor, constant: 10),
+            minLabel.leadingAnchor.constraint(equalTo: green.leadingAnchor),
+            minLabel.trailingAnchor.constraint(equalTo: green.trailingAnchor),
+            minLabel.bottomAnchor.constraint(equalTo: green.bottomAnchor, constant: -8),
+            
+            avgValueLabel.leadingAnchor.constraint(equalTo: yellow.leadingAnchor),
+            avgValueLabel.topAnchor.constraint(equalTo: yellow.topAnchor, constant: 10),
+            avgValueLabel.trailingAnchor.constraint(equalTo: yellow.trailingAnchor),
+            avgLabel.topAnchor.constraint(equalTo: avgValueLabel.bottomAnchor, constant: 10),
+            avgLabel.leadingAnchor.constraint(equalTo: yellow.leadingAnchor),
+            avgLabel.trailingAnchor.constraint(equalTo: yellow.trailingAnchor),
+            avgLabel.bottomAnchor.constraint(equalTo: yellow.bottomAnchor, constant: -8),
+            
+            maxValueLabel.leadingAnchor.constraint(equalTo: red.leadingAnchor),
+            maxValueLabel.topAnchor.constraint(equalTo: red.topAnchor, constant: 10),
+            maxValueLabel.trailingAnchor.constraint(equalTo: red.trailingAnchor),
+            maxLabel.topAnchor.constraint(equalTo: maxValueLabel.bottomAnchor, constant: 10),
+            maxLabel.leadingAnchor.constraint(equalTo: red.leadingAnchor),
+            maxLabel.trailingAnchor.constraint(equalTo: red.trailingAnchor),
+            maxLabel.bottomAnchor.constraint(equalTo: red.bottomAnchor, constant: -8)
         ]
         NSLayoutConstraint.activate(constraints)
     }
