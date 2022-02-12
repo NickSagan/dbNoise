@@ -25,8 +25,11 @@ class NoiseDetectorVC: UIViewController {
     var maximal: Int = 0
     var avereage: Int = 40
     
+    var results: [NoiseResult]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        results = Shared.instance.noiseResults
         
         micManager.delegate = self
         micManager.interval = interval
@@ -64,6 +67,8 @@ class NoiseDetectorVC: UIViewController {
                 sender.setBackgroundImage(UIImage(named: "Rec.png"), for: .normal)
             }
             micManager.stopRecording()
+            results.append(NoiseResult(date: Date().dateString(), min: minimal, avg: avereage, max: maximal))
+            Shared.instance.noiseResults = results
         } else {
             micManager.checkForPermission { (success) in
                 if success {
