@@ -9,7 +9,7 @@ import UIKit
 
 class MyRatingVC: UIViewController {
     
-    var results: [NoiseResult] = []
+    var results: [NoiseResult]!
     
     let header: MinAvgMaxView = {
         let view = MinAvgMaxView()
@@ -39,8 +39,8 @@ class MyRatingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //results = Shared.instance.noiseResults
-        results = [NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149), NoiseResult(date: "12.08.1988", min: 12, avg: 88, max: 149)]
+        results = Shared.instance.noiseResults
+
         tableView.delegate = self
         tableView.dataSource = self
         title = "My rating"
@@ -50,7 +50,6 @@ class MyRatingVC: UIViewController {
     }
     
     @objc func clearTapped() {
-        print("Clear button")
         results.removeAll()
         Shared.instance.noiseResults = results
         tableView.reloadData()
@@ -60,6 +59,7 @@ class MyRatingVC: UIViewController {
 //MARK: - Subviews & Constraints
 
 extension MyRatingVC {
+    
     func subviews() {
         view.addSubview(header)
         view.addSubview(tableView)
@@ -108,7 +108,6 @@ extension MyRatingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
             results.remove(at: indexPath.row)
             Shared.instance.noiseResults = results
             tableView.reloadData()
