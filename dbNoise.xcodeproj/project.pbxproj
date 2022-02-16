@@ -22,6 +22,7 @@
 		916832F827AABD9A00C4C109 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832F727AABD9A00C4C109 /* Extensions.swift */; };
 		916832FE27AACE3500C4C109 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916832FD27AACE3500C4C109 /* ResultView.xib */; };
 		9168330027AADD0600C4C109 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832FF27AADD0600C4C109 /* ResultView.swift */; };
+		9175D0EA27BCECA400A8B84B /* RoundProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */; };
 		9184C99727A557A70040F230 /* HearingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184C99627A557A70040F230 /* HearingVC.swift */; };
 		91D614CD27AD79450094D9C3 /* HearingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D614CC27AD79450094D9C3 /* HearingResult.swift */; };
 		91D614CF27AD84110094D9C3 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D614CE27AD84110094D9C3 /* Shared.swift */; };
@@ -75,6 +76,7 @@
 		916832F727AABD9A00C4C109 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		916832FD27AACE3500C4C109 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		916832FF27AADD0600C4C109 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundProgressBar.swift; sourceTree = "<group>"; };
 		9184C99627A557A70040F230 /* HearingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingVC.swift; sourceTree = "<group>"; };
 		91D614CC27AD79450094D9C3 /* HearingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingResult.swift; sourceTree = "<group>"; };
 		91D614CE27AD84110094D9C3 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -152,12 +154,12 @@
 			isa = PBXGroup;
 			children = (
 				91D8E70F27A158F300816161 /* Main.storyboard */,
-				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
 				916832FD27AACE3500C4C109 /* ResultView.xib */,
 				916832FF27AADD0600C4C109 /* ResultView.swift */,
 				91D614DE27AEDF6E0094D9C3 /* ResultListCell.swift */,
 				91180A3427B69CF5009AFDDA /* MyRatingCell.swift */,
 				91180A3A27B796CE009AFDDA /* MinAvgMaxView.swift */,
+				9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,14 +177,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		916832FC27AAC0D200C4C109 /* Supporting files */ = {
+		916832FC27AAC0D200C4C109 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				91D8E70927A158F300816161 /* AppDelegate.swift */,
 				91D8E70B27A158F300816161 /* SceneDelegate.swift */,
 				916832F727AABD9A00C4C109 /* Extensions.swift */,
 			);
-			path = "Supporting files";
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9175D0EB27BCEEEB00A8B84B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				91D8E71227A158FE00816161 /* Assets.xcassets */,
+				91D8E71427A158FE00816161 /* LaunchScreen.storyboard */,
+				916832EC27A996B900C4C109 /* Sounds */,
+				91D8E72627A1778A00816161 /* fonts */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		91D8E6FD27A158F300816161 = {
@@ -206,14 +219,12 @@
 		91D8E70827A158F300816161 /* dbNoise */ = {
 			isa = PBXGroup;
 			children = (
-				916832FC27AAC0D200C4C109 /* Supporting files */,
+				916832FC27AAC0D200C4C109 /* Application */,
 				916832FB27AAC05900C4C109 /* Models */,
 				916832FA27AAC05300C4C109 /* Views */,
 				916832F927AAC03F00C4C109 /* Controllers */,
-				91D8E71227A158FE00816161 /* Assets.xcassets */,
+				9175D0EB27BCEEEB00A8B84B /* Resources */,
 				91D8E71727A158FE00816161 /* Info.plist */,
-				916832EC27A996B900C4C109 /* Sounds */,
-				91D8E72627A1778A00816161 /* fonts */,
 			);
 			path = dbNoise;
 			sourceTree = "<group>";
@@ -413,6 +424,7 @@
 				91D614CF27AD84110094D9C3 /* Shared.swift in Sources */,
 				91180A3527B69CF5009AFDDA /* MyRatingCell.swift in Sources */,
 				916832F627AAB6EE00C4C109 /* HearingTestLogic.swift in Sources */,
+				9175D0EA27BCECA400A8B84B /* RoundProgressBar.swift in Sources */,
 				9168330027AADD0600C4C109 /* ResultView.swift in Sources */,
 				91D614E127AFFE560094D9C3 /* ResultVC.swift in Sources */,
 				91180A3727B69EAF009AFDDA /* NoiseResult.swift in Sources */,
