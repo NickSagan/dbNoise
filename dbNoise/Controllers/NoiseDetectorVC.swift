@@ -16,7 +16,8 @@ class NoiseDetectorVC: UIViewController {
     @IBOutlet weak var avgLabel: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var textExplanationLabel: UILabel!
-    
+    @IBOutlet weak var roundProgressBar: RoundProgressBar!
+ 
     let item: UIBarButtonItem = {
         let btn = UIButton(type: .custom)
         btn.setBackgroundImage(UIImage(named: "settings"), for: .normal)
@@ -67,6 +68,8 @@ class NoiseDetectorVC: UIViewController {
                 sender.setBackgroundImage(UIImage(named: "Rec.png"), for: .normal)
             }
             micManager.stopRecording()
+            showProgress(maximal)
+            dbResultLabel.text = "\(maximal)"
             results.append(NoiseResult(date: Date().dateString(), min: self.minimal, avg: self.avereage, max: self.maximal))
             Shared.instance.noiseResults = results
             
@@ -108,6 +111,13 @@ class NoiseDetectorVC: UIViewController {
         let vc = MyRatingVC()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func showProgress(_ value: Int) {
+        var progressValue: Float = Float(value) / 140.0
+        if progressValue < 0.0 { progressValue = 0.0 }
+        if progressValue > 1.0 { progressValue = 1.0 }
+        roundProgressBar.progress = progressValue
+    }
 }
 
 extension NoiseDetectorVC: MicManagerDelegate {
@@ -122,6 +132,7 @@ extension NoiseDetectorVC: MicManagerDelegate {
             maximal = value
         }
         maxLabel.text = "\(maximal) max"
+        showProgress(value)
     }
     
     func avgAudioVolumeResult(_ value: Int) {
