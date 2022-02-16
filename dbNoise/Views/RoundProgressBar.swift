@@ -35,16 +35,16 @@ class RoundProgressBar: UIView {
         
         shapeLayer = CAShapeLayer()
         shapeLayer.path = background.cgPath
-        shapeLayer.lineWidth = 10
+        shapeLayer.lineWidth = 5
         shapeLayer.fillColor = nil
-        shapeLayer.strokeColor = UIColor.lightText.cgColor
+        shapeLayer.strokeColor = UIColor.systemGray4.cgColor
         
         progressLayer = CAShapeLayer()
         progressLayer.path = background.cgPath
         progressLayer.lineCap = CAShapeLayerLineCap.round
         progressLayer.lineWidth = 5
         progressLayer.fillColor = nil
-        progressLayer.strokeColor = UIColor.red.cgColor
+        progressLayer.strokeColor = UIColor.systemRed.cgColor
         progressLayer.strokeEnd = 0.0
         
         self.layer.addSublayer(shapeLayer)
