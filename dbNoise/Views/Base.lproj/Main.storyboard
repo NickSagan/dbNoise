@@ -18,10 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Puy-wC-EcC">
-                                <rect key="frame" x="61" y="91" width="292" height="284"/>
+                                <rect key="frame" x="61" y="91" width="292" height="285"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressEllipse" translatesAutoresizingMaskIntoConstraints="NO" id="8ly-07-k0L">
+                                        <rect key="frame" x="0.0" y="0.0" width="292" height="285"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lx4-Qe-lJO" customClass="RoundProgressBar" customModule="dbNoise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="292" height="285"/>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRF-8I-kOU">
-                                        <rect key="frame" x="117" y="104.5" width="58.5" height="75"/>
+                                        <rect key="frame" x="117" y="105" width="58.5" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="RWE-hG-ggE"/>
                                         </constraints>
@@ -29,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGV-On-nGu">
-                                        <rect key="frame" x="125" y="179.5" width="42.5" height="75"/>
+                                        <rect key="frame" x="125" y="180" width="42.5" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="ikz-AU-Nbt"/>
                                         </constraints>
@@ -40,11 +46,19 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="Lx4-Qe-lJO" firstAttribute="leading" secondItem="Puy-wC-EcC" secondAttribute="leading" id="1Xr-Mv-5Km"/>
+                                    <constraint firstItem="Lx4-Qe-lJO" firstAttribute="top" secondItem="Puy-wC-EcC" secondAttribute="top" id="2eO-cC-zi6"/>
                                     <constraint firstItem="hGV-On-nGu" firstAttribute="top" secondItem="xRF-8I-kOU" secondAttribute="bottom" id="2ki-60-Glo"/>
-                                    <constraint firstAttribute="height" priority="499" constant="284" id="8TB-4P-QN0"/>
+                                    <constraint firstAttribute="height" constant="285" id="8TB-4P-QN0"/>
+                                    <constraint firstItem="8ly-07-k0L" firstAttribute="leading" secondItem="Puy-wC-EcC" secondAttribute="leading" id="9SE-R3-yjT"/>
                                     <constraint firstItem="xRF-8I-kOU" firstAttribute="centerX" secondItem="Puy-wC-EcC" secondAttribute="centerX" id="Ddt-CU-vr7"/>
                                     <constraint firstItem="hGV-On-nGu" firstAttribute="centerX" secondItem="Puy-wC-EcC" secondAttribute="centerX" id="LaX-Fg-LnE"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lx4-Qe-lJO" secondAttribute="bottom" id="Rb5-lY-5AX"/>
+                                    <constraint firstAttribute="bottom" secondItem="8ly-07-k0L" secondAttribute="bottom" id="auo-o0-trN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lx4-Qe-lJO" secondAttribute="trailing" id="foc-II-xGh"/>
                                     <constraint firstItem="xRF-8I-kOU" firstAttribute="centerY" secondItem="Puy-wC-EcC" secondAttribute="centerY" id="jHK-pg-yok"/>
+                                    <constraint firstAttribute="trailing" secondItem="8ly-07-k0L" secondAttribute="trailing" id="lTO-SM-3jB"/>
+                                    <constraint firstItem="8ly-07-k0L" firstAttribute="top" secondItem="Puy-wC-EcC" secondAttribute="top" id="vuZ-4k-k9w"/>
                                     <constraint firstAttribute="width" constant="292" id="wmk-t4-afv"/>
                                 </constraints>
                             </view>
@@ -166,6 +180,7 @@
                         <outlet property="minLabel" destination="bWL-Np-CI3" id="Zcl-mZ-VXL"/>
                         <outlet property="proButton" destination="6IH-Gs-ggb" id="TyR-lY-PmN"/>
                         <outlet property="recordButton" destination="Why-Hz-7wY" id="nCo-hb-hvw"/>
+                        <outlet property="roundProgressBar" destination="Lx4-Qe-lJO" id="xHJ-0i-URz"/>
                         <outlet property="textExplanationLabel" destination="Nxm-q1-dFn" id="EZX-6B-9fR"/>
                     </connections>
                 </viewController>
@@ -179,6 +194,7 @@
         <image name="hearing" width="18.5" height="18.5"/>
         <image name="menu" width="18.5" height="18.5"/>
         <image name="pro" width="27" height="10.5"/>
+        <image name="progressEllipse" width="146" height="142.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
