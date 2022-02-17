@@ -1,5 +1,5 @@
 //
-//  ResultVC.swift
+//  HearingResultVC.swift
 //  dbNoise
 //
 //  Created by Nick Sagan on 06.02.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultVC: UIViewController {
+class HearingResultVC: UIViewController {
     
     var result: HearingResult!
     var resultView: ResultView!
@@ -67,7 +67,7 @@ class ResultVC: UIViewController {
         
         // https://www.hackingwithswift.com/articles/118/uiactivityviewcontroller-by-example
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        
+        ac.excludedActivityTypes = [.airDrop, .addToReadingList, .openInIBooks, .saveToCameraRoll]
         present(ac, animated: true)
     }
 }
