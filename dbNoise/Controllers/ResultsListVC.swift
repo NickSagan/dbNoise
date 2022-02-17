@@ -72,7 +72,7 @@ extension ResultsListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ResultVC()
+        let vc = HearingResultVC()
         vc.result = results[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }

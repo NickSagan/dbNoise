@@ -45,6 +45,11 @@ class MyRatingVC: UIViewController {
         tableView.dataSource = self
         
         title = "My rating"
+        if traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = .black
+        } else {
+            view.backgroundColor = .white
+        }
         
         let btn = UIButton(type: .custom)
         btn.setBackgroundImage(UIImage(named: "settings"), for: .normal)
@@ -128,9 +133,8 @@ extension MyRatingVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO - New VC for MyRating result view
-        //        let vc = ResultVC()
-        //        vc.result = results[indexPath.row]
-        //        navigationController?.pushViewController(vc, animated: true)
+                let vc = NoiseResultVC()
+                vc.result = results[indexPath.row]
+                navigationController?.pushViewController(vc, animated: true)
     }
 }
