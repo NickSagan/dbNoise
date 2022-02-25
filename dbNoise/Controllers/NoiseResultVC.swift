@@ -12,6 +12,7 @@ import AVFoundation
 class NoiseResultVC: UIViewController {
     
     var result: NoiseResult!
+    var myPlayer = AVAudioPlayer()
     
     let header: MinAvgMaxView = {
         let view = MinAvgMaxView()
@@ -27,18 +28,8 @@ class NoiseResultVC: UIViewController {
         return view
     }()
     
-    var player: MiniPlayer = {
-        let player = MiniPlayer()
-        player.translatesAutoresizingMaskIntoConstraints = false
-        return player
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        player.delegate = self
-        player.soundTrack = AVPlayerItem(url: result.url)
-        
         print(result!)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePressed))
@@ -53,36 +44,44 @@ class NoiseResultVC: UIViewController {
         constraints()
     }
     
-    @objc func sharePressed() {
-        // render UIView into UIImage
-        // https://www.hackingwithswift.com/example-code/media/how-to-render-a-uiview-to-a-uiimage
+    @objc func playPressed() {
+        myPlayer.volume = 1.0
         
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            myPlayer = try AVAudioPlayer(contentsOf: result.url)
+            myPlayer.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    @objc func sharePressed() {
         let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
         let image = renderer.image { ctx in
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         }
-        
         let items: [UIImage] = [image]
-        
-        // let items: [Any] = ["Look at my hearing test result:", image, URL(string: "https://dbnoiseapp.com")!]
-        
-        // https://www.hackingwithswift.com/articles/118/uiactivityviewcontroller-by-example
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
         ac.excludedActivityTypes = [.airDrop, .addToReadingList, .openInIBooks, .saveToCameraRoll]
         present(ac, animated: true)
     }
-    
 }
+
 extension NoiseResultVC {
     
     func subviews() {
         view.addSubview(header)
         view.addSubview(peak)
-        view.addSubview(player)
+//        view.addSubview(player)
 //        view.addSubview(audioRecord)
     }
     
     func constraints() {
+        
         NSLayoutConstraint.activate([
             peak.topAnchor.constraint(equalTo: view.topAnchor),
             peak.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -92,26 +91,12 @@ extension NoiseResultVC {
             header.topAnchor.constraint(equalTo: peak.bottomAnchor, constant: 20),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
             
-            player.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
-            player.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            player.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            player.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
+//            player.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
+//            player.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+//            player.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+//            player.heightAnchor.constraint(equalToConstant: 25)
         ])
-    }
-}
-
-extension NoiseResultVC: MiniPlayerDelegate {
-    func didPlay(player: MiniPlayer) {
-        print("Playing...")
-    }
-    
-    func didStop(player: MiniPlayer) {
-        print("Stopped")
-    }
-    
-    func didPause(player: MiniPlayer) {
-        print("Pause")
     }
 }
