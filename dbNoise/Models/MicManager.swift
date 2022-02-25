@@ -142,6 +142,6 @@ extension MicManager: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         recorder.stop()
         //recorder.deleteRecording()
-        recorder.prepareToRecord()
+        //recorder.prepareToRecord()
     }
 }
