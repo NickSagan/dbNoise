@@ -1,16 +1,20 @@
 PODS:
+  - MiniPlayer (1.0.0)
   - SwiftyOnboard (1.4.0)
 
 DEPENDENCIES:
+  - MiniPlayer
   - SwiftyOnboard
 
 SPEC REPOS:
   trunk:
+    - MiniPlayer
     - SwiftyOnboard
 
 SPEC CHECKSUMS:
+  MiniPlayer: 64deadeded312bf4517b7b9645f49e1269d81493
   SwiftyOnboard: 76a648dc1dcbc844343b6b95fe5883cb64a62f4a
 
-PODFILE CHECKSUM: d4c508740089d981399d77d026fb4c7534ee328b
+PODFILE CHECKSUM: a196ed4e93f9cb22fe8c3eebf953c05be9cc23e9
 
 COCOAPODS: 1.11.2

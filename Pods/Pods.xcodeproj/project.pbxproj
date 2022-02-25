@@ -7,20 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024C4228C9C015D38EEADBC4346CE749 /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D303AC777D3CCC1C957C93425E94CDD8 /* MiniPlayer.swift */; };
+		185700EE98993873EB95F4A53620268E /* Pods-dbNoise-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A3524B95C2DB0DB884CCA4C4456C7F8 /* Pods-dbNoise-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CD911A33A0FBD68CB16003A61A2658C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		29E68948A8E85ED60F9585E890070035 /* SwiftyOnboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 889E4AF17662EB192D7B6B0778CDCA10 /* SwiftyOnboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2C4103B1E988E319A06908304785CE72 /* SwiftyOnboard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ECBE0D3C3C8F195DDF2BCE6BBC436284 /* SwiftyOnboard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		307DF65644E2EE6B6F851667C954C08B /* SwiftyOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A11FC666C5557CF739D1E2F2C1687 /* SwiftyOnboard.swift */; };
-		706F09D5EBB27AF24F0ED1536673B229 /* SwiftyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B209E8FB3EF89CF347100FD7478DC5 /* SwiftyOnboardPage.swift */; };
-		7CEAA99FDAF9D268D903485923BAF91B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		9C94AD0762F458D22378AAD68128BB37 /* Pods-dbNoise-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D94281FBEDBB8866D771E0F2C30221C /* Pods-dbNoise-dummy.m */; };
-		C330E16B8A5FCB735F4BD15E4570C112 /* Pods-dbNoise-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A3524B95C2DB0DB884CCA4C4456C7F8 /* Pods-dbNoise-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D242D644A1592BD6F8424A6CF8DE984C /* SwiftyOnboard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A23C78286EC74876D6CC818014C61BB9 /* SwiftyOnboard-dummy.m */; };
-		F4FEC2CB667533D0A9080DE9CFBF602A /* SwiftyOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A1AB22C7AB0D5BEDB055EF4456B6 /* SwiftyOnboardOverlay.swift */; };
+		292288AE39FDBC8DA601155697F4DF23 /* Pods-dbNoise-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D94281FBEDBB8866D771E0F2C30221C /* Pods-dbNoise-dummy.m */; };
+		29E68948A8E85ED60F9585E890070035 /* SwiftyOnboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AEBC409B1C255283C8954CC7D8806BF /* SwiftyOnboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C4103B1E988E319A06908304785CE72 /* SwiftyOnboard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EE79A95E8725713B528EEB0EDED3795 /* SwiftyOnboard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		307DF65644E2EE6B6F851667C954C08B /* SwiftyOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B2AD652C74FACD27293283D74A29B /* SwiftyOnboard.swift */; };
+		4E94D609BD0FDAC3C6BD351A789CD6BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		706F09D5EBB27AF24F0ED1536673B229 /* SwiftyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B0BB486D323ECC1E860B81D4EAE19D /* SwiftyOnboardPage.swift */; };
+		816711A1720AD6C365066A6026191E3D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		81DF5E10A82A02649B6224B3477CB68D /* MiniPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C469277A39F1ED1ED4764F4D084392D6 /* MiniPlayer.xcassets */; };
+		9366577F805FA0DF9EFCE6430E80A3C1 /* MiniPlayer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 782A32580F940EBAC842D3E565C5737E /* MiniPlayer-dummy.m */; };
+		985F2F7F75692B014439B618DF468C65 /* MiniPlayer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A33BE668827784C7A36547A188265E7 /* MiniPlayer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9EBC129638FE5AC349BCBC5170BC852F /* MPAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192B86D532BD23683B35B5B32AB0C3A /* MPAudioPlayer.swift */; };
+		D242D644A1592BD6F8424A6CF8DE984C /* SwiftyOnboard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC58B8988ACD0E57D084C3C458A9039 /* SwiftyOnboard-dummy.m */; };
+		F4FEC2CB667533D0A9080DE9CFBF602A /* SwiftyOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEB350B1F965102F99F5E4EC7910BA2 /* SwiftyOnboardOverlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7C751417B269E3925C4264E0C3434B76 /* PBXContainerItemProxy */ = {
+		3D48CEDF2423300463A01B0F9FD28BE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E473FD38AD4A1245AE5BB3534D754F1;
+			remoteInfo = MiniPlayer;
+		};
+		CFC8A2EAEB32644AEC2A0CC3A379044C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -30,41 +43,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		353A11FC666C5557CF739D1E2F2C1687 /* SwiftyOnboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboard.swift; path = SwiftyOnboard/SwiftyOnboard.swift; sourceTree = "<group>"; };
-		43B209E8FB3EF89CF347100FD7478DC5 /* SwiftyOnboardPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardPage.swift; path = SwiftyOnboard/SwiftyOnboardPage.swift; sourceTree = "<group>"; };
+		02C722A8C0B43D061BC3E0E1DD6B387A /* SwiftyOnboard-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyOnboard-Info.plist"; sourceTree = "<group>"; };
+		0BD586A47A47C1295B8B27CB3DDAAC80 /* MiniPlayer */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MiniPlayer; path = MiniPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EE79A95E8725713B528EEB0EDED3795 /* SwiftyOnboard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-umbrella.h"; sourceTree = "<group>"; };
+		1192B86D532BD23683B35B5B32AB0C3A /* MPAudioPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MPAudioPlayer.swift; path = MiniPlayer/Classes/MPAudioPlayer.swift; sourceTree = "<group>"; };
+		168D888AEC70E40773014713788B3F65 /* SwiftyOnboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyOnboard.debug.xcconfig; sourceTree = "<group>"; };
 		4A3524B95C2DB0DB884CCA4C4456C7F8 /* Pods-dbNoise-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-dbNoise-umbrella.h"; sourceTree = "<group>"; };
-		4AD3709382688D11546A80085197E204 /* SwiftyOnboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyOnboard.debug.xcconfig; sourceTree = "<group>"; };
 		4D94281FBEDBB8866D771E0F2C30221C /* Pods-dbNoise-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dbNoise-dummy.m"; sourceTree = "<group>"; };
+		5498EB9E6841EE27C34D3EA4E86552B4 /* MiniPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MiniPlayer.release.xcconfig; sourceTree = "<group>"; };
+		5A33BE668827784C7A36547A188265E7 /* MiniPlayer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MiniPlayer-umbrella.h"; sourceTree = "<group>"; };
+		5B0032B9B6E9FED3D5A17406E5F7BF4A /* SwiftyOnboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyOnboard.modulemap; sourceTree = "<group>"; };
+		6AC58B8988ACD0E57D084C3C458A9039 /* SwiftyOnboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyOnboard-dummy.m"; sourceTree = "<group>"; };
+		6AEBC409B1C255283C8954CC7D8806BF /* SwiftyOnboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyOnboard.h; path = SwiftyOnboard/SwiftyOnboard.h; sourceTree = "<group>"; };
 		6F443926FF28E5842882EAE69BBADCD3 /* Pods-dbNoise */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-dbNoise"; path = Pods_dbNoise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70112429B6D3E796C2E63842E7463CA9 /* MiniPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MiniPlayer.debug.xcconfig; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		782A32580F940EBAC842D3E565C5737E /* MiniPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MiniPlayer-dummy.m"; sourceTree = "<group>"; };
 		8017291C736FE477BA33309A5EE1DCF4 /* Pods-dbNoise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dbNoise.debug.xcconfig"; sourceTree = "<group>"; };
-		842481D86000119C4632B6F0CA681EFE /* SwiftyOnboard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyOnboard.modulemap; sourceTree = "<group>"; };
-		889E4AF17662EB192D7B6B0778CDCA10 /* SwiftyOnboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyOnboard.h; path = SwiftyOnboard/SwiftyOnboard.h; sourceTree = "<group>"; };
-		88F41F62169BC3C7D50B6F1760CB336A /* SwiftyOnboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyOnboard.release.xcconfig; sourceTree = "<group>"; };
+		841B2AD652C74FACD27293283D74A29B /* SwiftyOnboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboard.swift; path = SwiftyOnboard/SwiftyOnboard.swift; sourceTree = "<group>"; };
+		8426DDDE0760E3DCAAA68F063AAC9B1F /* MiniPlayer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MiniPlayer-Info.plist"; sourceTree = "<group>"; };
 		8DE7B4DD90965C8C8AB13936207756C6 /* Pods-dbNoise-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dbNoise-acknowledgements.plist"; sourceTree = "<group>"; };
+		8FA0CE86F33798570E9AAC05E183708D /* SwiftyOnboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyOnboard.release.xcconfig; sourceTree = "<group>"; };
 		9561874E586E04C7B4B0CA4E14DA7F08 /* Pods-dbNoise-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-dbNoise-Info.plist"; sourceTree = "<group>"; };
-		9C51A1AB22C7AB0D5BEDB055EF4456B6 /* SwiftyOnboardOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardOverlay.swift; path = SwiftyOnboard/SwiftyOnboardOverlay.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1DF0EFF4A7EADEF8131820D5B5DFBAA /* Pods-dbNoise-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-dbNoise-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A23C78286EC74876D6CC818014C61BB9 /* SwiftyOnboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyOnboard-dummy.m"; sourceTree = "<group>"; };
+		A39F157AD3CB6B6A1ED1C9A104BDD9C7 /* SwiftyOnboard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-prefix.pch"; sourceTree = "<group>"; };
+		AB1D96342AF021CE8EEED5BB86AF8BB7 /* MiniPlayer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MiniPlayer.modulemap; sourceTree = "<group>"; };
+		AEEB350B1F965102F99F5E4EC7910BA2 /* SwiftyOnboardOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardOverlay.swift; path = SwiftyOnboard/SwiftyOnboardOverlay.swift; sourceTree = "<group>"; };
 		BF88BF8B106BB1E4E2F1DD048EC4FD20 /* Pods-dbNoise.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-dbNoise.modulemap"; sourceTree = "<group>"; };
-		CEE9C7A482E76C460F59AFCDC3A57C45 /* SwiftyOnboard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-prefix.pch"; sourceTree = "<group>"; };
+		C469277A39F1ED1ED4764F4D084392D6 /* MiniPlayer.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = MiniPlayer.xcassets; path = MiniPlayer/Assets/MiniPlayer.xcassets; sourceTree = "<group>"; };
+		D303AC777D3CCC1C957C93425E94CDD8 /* MiniPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MiniPlayer.swift; path = MiniPlayer/Classes/MiniPlayer.swift; sourceTree = "<group>"; };
 		D52E2A45E456303A47F95C020DCFF077 /* SwiftyOnboard */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyOnboard; path = SwiftyOnboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDCB1AF966DF7BABEE77D7E5F109517D /* Pods-dbNoise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-dbNoise.release.xcconfig"; sourceTree = "<group>"; };
-		E10CD5AAE4B645CB095640D67EC6E52A /* SwiftyOnboard-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyOnboard-Info.plist"; sourceTree = "<group>"; };
-		ECBE0D3C3C8F195DDF2BCE6BBC436284 /* SwiftyOnboard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyOnboard-umbrella.h"; sourceTree = "<group>"; };
+		E4B0BB486D323ECC1E860B81D4EAE19D /* SwiftyOnboardPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyOnboardPage.swift; path = SwiftyOnboard/SwiftyOnboardPage.swift; sourceTree = "<group>"; };
+		EC9FC7EF52B15498602F420B384149E3 /* MiniPlayer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MiniPlayer-prefix.pch"; sourceTree = "<group>"; };
 		F8BA4F2457E5F94D6C87FA0824382B8C /* Pods-dbNoise-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-dbNoise-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		018BB686F6183ADA3C2C8D9472355322 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CEAA99FDAF9D268D903485923BAF91B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		42FDB6EF592FDE315EFA4F81E5E33AFA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,9 +89,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5E9ED8DD0EFEA2688DC2A47E2CA06F1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E94D609BD0FDAC3C6BD351A789CD6BD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7471E94F9D312459A8345253F36F363 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				816711A1720AD6C365066A6026191E3D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14DEFCD9CD2F75EE1A2215FB46BFC0E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C469277A39F1ED1ED4764F4D084392D6 /* MiniPlayer.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		19817A39C47EE0F794E43BBEB8459A47 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,12 +141,14 @@
 			path = "Target Support Files/Pods-dbNoise";
 			sourceTree = "<group>";
 		};
-		55B0061D04F0A383F8B4CB787AAA24E4 /* Pods */ = {
+		50BFE7DF560295BB7F0D9191FDF80C37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BAD95EA123A3A3F250113C00E3F48F3F /* SwiftyOnboard */,
+				0BD586A47A47C1295B8B27CB3DDAAC80 /* MiniPlayer */,
+				6F443926FF28E5842882EAE69BBADCD3 /* Pods-dbNoise */,
+				D52E2A45E456303A47F95C020DCFF077 /* SwiftyOnboard */,
 			);
-			name = Pods;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -117,26 +159,41 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6803FAF1D14809506A19DFBB9D690A15 /* Products */ = {
+		60A3CB8A6511A4C90258B6B46E6E27F5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6F443926FF28E5842882EAE69BBADCD3 /* Pods-dbNoise */,
-				D52E2A45E456303A47F95C020DCFF077 /* SwiftyOnboard */,
+				AB1D96342AF021CE8EEED5BB86AF8BB7 /* MiniPlayer.modulemap */,
+				782A32580F940EBAC842D3E565C5737E /* MiniPlayer-dummy.m */,
+				8426DDDE0760E3DCAAA68F063AAC9B1F /* MiniPlayer-Info.plist */,
+				EC9FC7EF52B15498602F420B384149E3 /* MiniPlayer-prefix.pch */,
+				5A33BE668827784C7A36547A188265E7 /* MiniPlayer-umbrella.h */,
+				70112429B6D3E796C2E63842E7463CA9 /* MiniPlayer.debug.xcconfig */,
+				5498EB9E6841EE27C34D3EA4E86552B4 /* MiniPlayer.release.xcconfig */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/MiniPlayer";
 			sourceTree = "<group>";
 		};
-		BAD95EA123A3A3F250113C00E3F48F3F /* SwiftyOnboard */ = {
+		828F5178A797A4020ECB614B7E4A3AC7 /* SwiftyOnboard */ = {
 			isa = PBXGroup;
 			children = (
-				889E4AF17662EB192D7B6B0778CDCA10 /* SwiftyOnboard.h */,
-				353A11FC666C5557CF739D1E2F2C1687 /* SwiftyOnboard.swift */,
-				9C51A1AB22C7AB0D5BEDB055EF4456B6 /* SwiftyOnboardOverlay.swift */,
-				43B209E8FB3EF89CF347100FD7478DC5 /* SwiftyOnboardPage.swift */,
-				F1201EB1962E60909A1A94696824D211 /* Support Files */,
+				6AEBC409B1C255283C8954CC7D8806BF /* SwiftyOnboard.h */,
+				841B2AD652C74FACD27293283D74A29B /* SwiftyOnboard.swift */,
+				AEEB350B1F965102F99F5E4EC7910BA2 /* SwiftyOnboardOverlay.swift */,
+				E4B0BB486D323ECC1E860B81D4EAE19D /* SwiftyOnboardPage.swift */,
+				D28B0BC5DE7A7738F00C2117D20D5278 /* Support Files */,
 			);
 			name = SwiftyOnboard;
 			path = SwiftyOnboard;
+			sourceTree = "<group>";
+		};
+		8800BDA09FDBA3C2B8F1D120C82C52EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D32CF0BC531BAECE6FA4FE0EEA7BF7E9 /* MiniPlayer */,
+				828F5178A797A4020ECB614B7E4A3AC7 /* SwiftyOnboard */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -144,8 +201,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				55B0061D04F0A383F8B4CB787AAA24E4 /* Pods */,
-				6803FAF1D14809506A19DFBB9D690A15 /* Products */,
+				8800BDA09FDBA3C2B8F1D120C82C52EF /* Pods */,
+				50BFE7DF560295BB7F0D9191FDF80C37 /* Products */,
 				19817A39C47EE0F794E43BBEB8459A47 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -158,19 +215,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F1201EB1962E60909A1A94696824D211 /* Support Files */ = {
+		D28B0BC5DE7A7738F00C2117D20D5278 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				842481D86000119C4632B6F0CA681EFE /* SwiftyOnboard.modulemap */,
-				A23C78286EC74876D6CC818014C61BB9 /* SwiftyOnboard-dummy.m */,
-				E10CD5AAE4B645CB095640D67EC6E52A /* SwiftyOnboard-Info.plist */,
-				CEE9C7A482E76C460F59AFCDC3A57C45 /* SwiftyOnboard-prefix.pch */,
-				ECBE0D3C3C8F195DDF2BCE6BBC436284 /* SwiftyOnboard-umbrella.h */,
-				4AD3709382688D11546A80085197E204 /* SwiftyOnboard.debug.xcconfig */,
-				88F41F62169BC3C7D50B6F1760CB336A /* SwiftyOnboard.release.xcconfig */,
+				5B0032B9B6E9FED3D5A17406E5F7BF4A /* SwiftyOnboard.modulemap */,
+				6AC58B8988ACD0E57D084C3C458A9039 /* SwiftyOnboard-dummy.m */,
+				02C722A8C0B43D061BC3E0E1DD6B387A /* SwiftyOnboard-Info.plist */,
+				A39F157AD3CB6B6A1ED1C9A104BDD9C7 /* SwiftyOnboard-prefix.pch */,
+				0EE79A95E8725713B528EEB0EDED3795 /* SwiftyOnboard-umbrella.h */,
+				168D888AEC70E40773014713788B3F65 /* SwiftyOnboard.debug.xcconfig */,
+				8FA0CE86F33798570E9AAC05E183708D /* SwiftyOnboard.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyOnboard";
+			sourceTree = "<group>";
+		};
+		D32CF0BC531BAECE6FA4FE0EEA7BF7E9 /* MiniPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				D303AC777D3CCC1C957C93425E94CDD8 /* MiniPlayer.swift */,
+				1192B86D532BD23683B35B5B32AB0C3A /* MPAudioPlayer.swift */,
+				14DEFCD9CD2F75EE1A2215FB46BFC0E5 /* Resources */,
+				60A3CB8A6511A4C90258B6B46E6E27F5 /* Support Files */,
+			);
+			name = MiniPlayer;
+			path = MiniPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,17 +254,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B6BC91C5E60534C90E2141F9D37F0FF /* Headers */ = {
+		286DA786808F1B253C2352090CEE6327 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C330E16B8A5FCB735F4BD15E4570C112 /* Pods-dbNoise-umbrella.h in Headers */,
+				985F2F7F75692B014439B618DF468C65 /* MiniPlayer-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFEFEB5E0DF118509D3074BDC7F7F4C1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				185700EE98993873EB95F4A53620268E /* Pods-dbNoise-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9E473FD38AD4A1245AE5BB3534D754F1 /* MiniPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95E8814B7B5FA0D2817E0DEB6FA371BA /* Build configuration list for PBXNativeTarget "MiniPlayer" */;
+			buildPhases = (
+				286DA786808F1B253C2352090CEE6327 /* Headers */,
+				D97F551A795DA2C25A09CC62275022EB /* Sources */,
+				5E9ED8DD0EFEA2688DC2A47E2CA06F1A /* Frameworks */,
+				6AC9DD675570BE8A4E99DDC25AC848C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiniPlayer;
+			productName = MiniPlayer;
+			productReference = 0BD586A47A47C1295B8B27CB3DDAAC80 /* MiniPlayer */;
+			productType = "com.apple.product-type.framework";
+		};
 		B738CAFC7004090B37ECAA9B942BE9D1 /* SwiftyOnboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1FE5461FD2394ED6715847F259EB576 /* Build configuration list for PBXNativeTarget "SwiftyOnboard" */;
@@ -216,17 +311,18 @@
 		};
 		FBF9A1FA5B91909EE4B2A2E758E46F8C /* Pods-dbNoise */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E82279B880AEFD713E22DA685097F091 /* Build configuration list for PBXNativeTarget "Pods-dbNoise" */;
+			buildConfigurationList = D4B075D5F7DD542CE22C27054DF355BB /* Build configuration list for PBXNativeTarget "Pods-dbNoise" */;
 			buildPhases = (
-				5B6BC91C5E60534C90E2141F9D37F0FF /* Headers */,
-				62F4E86A5ADFE6B18B31FAFCBE74160B /* Sources */,
-				018BB686F6183ADA3C2C8D9472355322 /* Frameworks */,
-				160AAF11C951DD017674B536586D3869 /* Resources */,
+				AFEFEB5E0DF118509D3074BDC7F7F4C1 /* Headers */,
+				F702543C3C153793C2FC0AAC862F292A /* Sources */,
+				A7471E94F9D312459A8345253F36F363 /* Frameworks */,
+				D35FC81A73F66820F2389E63D687BE24 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2159A0522C9BC72812EBF3A12699614D /* PBXTargetDependency */,
+				A572AAB51D78CDCDAA7DA5E757C0F221 /* PBXTargetDependency */,
+				956B241BB8BF1D73C14D6ED5F0EECA76 /* PBXTargetDependency */,
 			);
 			name = "Pods-dbNoise";
 			productName = Pods_dbNoise;
@@ -251,10 +347,11 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 6803FAF1D14809506A19DFBB9D690A15 /* Products */;
+			productRefGroup = 50BFE7DF560295BB7F0D9191FDF80C37 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				9E473FD38AD4A1245AE5BB3534D754F1 /* MiniPlayer */,
 				FBF9A1FA5B91909EE4B2A2E758E46F8C /* Pods-dbNoise */,
 				B738CAFC7004090B37ECAA9B942BE9D1 /* SwiftyOnboard */,
 			);
@@ -262,14 +359,22 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		160AAF11C951DD017674B536586D3869 /* Resources */ = {
+		6AC9DD675570BE8A4E99DDC25AC848C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81DF5E10A82A02649B6224B3477CB68D /* MiniPlayer.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C62D77434E58A2D9770321C243F4B9BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C62D77434E58A2D9770321C243F4B9BE /* Resources */ = {
+		D35FC81A73F66820F2389E63D687BE24 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -290,29 +395,83 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62F4E86A5ADFE6B18B31FAFCBE74160B /* Sources */ = {
+		D97F551A795DA2C25A09CC62275022EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C94AD0762F458D22378AAD68128BB37 /* Pods-dbNoise-dummy.m in Sources */,
+				024C4228C9C015D38EEADBC4346CE749 /* MiniPlayer.swift in Sources */,
+				9366577F805FA0DF9EFCE6430E80A3C1 /* MiniPlayer-dummy.m in Sources */,
+				9EBC129638FE5AC349BCBC5170BC852F /* MPAudioPlayer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F702543C3C153793C2FC0AAC862F292A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				292288AE39FDBC8DA601155697F4DF23 /* Pods-dbNoise-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2159A0522C9BC72812EBF3A12699614D /* PBXTargetDependency */ = {
+		956B241BB8BF1D73C14D6ED5F0EECA76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyOnboard;
 			target = B738CAFC7004090B37ECAA9B942BE9D1 /* SwiftyOnboard */;
-			targetProxy = 7C751417B269E3925C4264E0C3434B76 /* PBXContainerItemProxy */;
+			targetProxy = CFC8A2EAEB32644AEC2A0CC3A379044C /* PBXContainerItemProxy */;
+		};
+		A572AAB51D78CDCDAA7DA5E757C0F221 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MiniPlayer;
+			target = 9E473FD38AD4A1245AE5BB3534D754F1 /* MiniPlayer */;
+			targetProxy = 3D48CEDF2423300463A01B0F9FD28BE8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1059359FA443F84E33B6E7D1D6A19130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDCB1AF966DF7BABEE77D7E5F109517D /* Pods-dbNoise.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-dbNoise/Pods-dbNoise-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-dbNoise/Pods-dbNoise.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		31D533FA5E2E55D8AC26DF07F12CB750 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88F41F62169BC3C7D50B6F1760CB336A /* SwiftyOnboard.release.xcconfig */;
+			baseConfigurationReference = 8FA0CE86F33798570E9AAC05E183708D /* SwiftyOnboard.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -346,12 +505,10 @@
 			};
 			name = Release;
 		};
-		623CA55018B61E98B78A75FBDDA3CD21 /* Release */ = {
+		6B30257C0FB15FC73BF6057EA83F47D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDCB1AF966DF7BABEE77D7E5F109517D /* Pods-dbNoise.release.xcconfig */;
+			baseConfigurationReference = 70112429B6D3E796C2E63842E7463CA9 /* MiniPlayer.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -360,23 +517,56 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-dbNoise/Pods-dbNoise-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/MiniPlayer/MiniPlayer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MiniPlayer/MiniPlayer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-dbNoise/Pods-dbNoise.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/MiniPlayer/MiniPlayer.modulemap";
+				PRODUCT_MODULE_NAME = MiniPlayer;
+				PRODUCT_NAME = MiniPlayer;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		769195C52C2195357F84725A0D266E3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5498EB9E6841EE27C34D3EA4E86552B4 /* MiniPlayer.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MiniPlayer/MiniPlayer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MiniPlayer/MiniPlayer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MiniPlayer/MiniPlayer.modulemap";
+				PRODUCT_MODULE_NAME = MiniPlayer;
+				PRODUCT_NAME = MiniPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -514,7 +704,7 @@
 		};
 		C5E24BC23324A7B93474C3260E966D02 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AD3709382688D11546A80085197E204 /* SwiftyOnboard.debug.xcconfig */;
+			baseConfigurationReference = 168D888AEC70E40773014713788B3F65 /* SwiftyOnboard.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -547,7 +737,7 @@
 			};
 			name = Debug;
 		};
-		F7371976EE83C8047CAEB8E9B1599E31 /* Debug */ = {
+		F3782408BA18AC246A0AAE124101D83F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8017291C736FE477BA33309A5EE1DCF4 /* Pods-dbNoise.debug.xcconfig */;
 			buildSettings = {
@@ -596,6 +786,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		95E8814B7B5FA0D2817E0DEB6FA371BA /* Build configuration list for PBXNativeTarget "MiniPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B30257C0FB15FC73BF6057EA83F47D3 /* Debug */,
+				769195C52C2195357F84725A0D266E3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A1FE5461FD2394ED6715847F259EB576 /* Build configuration list for PBXNativeTarget "SwiftyOnboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -605,11 +804,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E82279B880AEFD713E22DA685097F091 /* Build configuration list for PBXNativeTarget "Pods-dbNoise" */ = {
+		D4B075D5F7DD542CE22C27054DF355BB /* Build configuration list for PBXNativeTarget "Pods-dbNoise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F7371976EE83C8047CAEB8E9B1599E31 /* Debug */,
-				623CA55018B61E98B78A75FBDDA3CD21 /* Release */,
+				F3782408BA18AC246A0AAE124101D83F /* Debug */,
+				1059359FA443F84E33B6E7D1D6A19130 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

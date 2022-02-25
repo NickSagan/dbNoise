@@ -13,6 +13,7 @@
 		91180A3927B6A011009AFDDA /* MyRatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91180A3827B6A011009AFDDA /* MyRatingVC.swift */; };
 		91180A3B27B796CF009AFDDA /* MinAvgMaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91180A3A27B796CE009AFDDA /* MinAvgMaxView.swift */; };
 		91226D8E27A3DFBF008DD34E /* MicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91226D8D27A3DFBF008DD34E /* MicManager.swift */; };
+		91346E7427C92A5D007FFBA3 /* IDFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91346E7327C92A5D007FFBA3 /* IDFabric.swift */; };
 		916832EB27A9957B00C4C109 /* HearingTestSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832EA27A9957B00C4C109 /* HearingTestSound.swift */; };
 		916832F127A996D200C4C109 /* r2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832ED27A996D200C4C109 /* r2.wav */; };
 		916832F227A996D200C4C109 /* l2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832EE27A996D200C4C109 /* l2.wav */; };
@@ -68,6 +69,7 @@
 		91180A3827B6A011009AFDDA /* MyRatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingVC.swift; sourceTree = "<group>"; };
 		91180A3A27B796CE009AFDDA /* MinAvgMaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinAvgMaxView.swift; sourceTree = "<group>"; };
 		91226D8D27A3DFBF008DD34E /* MicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicManager.swift; sourceTree = "<group>"; };
+		91346E7327C92A5D007FFBA3 /* IDFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDFabric.swift; sourceTree = "<group>"; };
 		916832EA27A9957B00C4C109 /* HearingTestSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingTestSound.swift; sourceTree = "<group>"; };
 		916832ED27A996D200C4C109 /* r2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = r2.wav; sourceTree = "<group>"; };
 		916832EE27A996D200C4C109 /* l2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = l2.wav; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				91D614CC27AD79450094D9C3 /* HearingResult.swift */,
 				91180A3627B69EAF009AFDDA /* NoiseResult.swift */,
 				91D614CE27AD84110094D9C3 /* Shared.swift */,
+				91346E7327C92A5D007FFBA3 /* IDFabric.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				91D614DF27AEDF6E0094D9C3 /* ResultListCell.swift in Sources */,
 				91D8E70E27A158F300816161 /* OnboardVC.swift in Sources */,
 				91124E6C27A2C788006AA3DC /* NoiseDetectorVC.swift in Sources */,
+				91346E7427C92A5D007FFBA3 /* IDFabric.swift in Sources */,
 				916832EB27A9957B00C4C109 /* HearingTestSound.swift in Sources */,
 				91D12B8127BEA37300A3B211 /* NoiseResultVC.swift in Sources */,
 				91D8E70A27A158F300816161 /* AppDelegate.swift in Sources */,

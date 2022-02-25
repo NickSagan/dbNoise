@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-dbNoise/Pods-dbNoise-frameworks.sh
+${BUILT_PRODUCTS_DIR}/MiniPlayer/MiniPlayer.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework
