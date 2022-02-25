@@ -7,6 +7,5 @@ target 'dbNoise' do
 
   # Pods for dbNoise
   pod 'SwiftyOnboard'
-  pod 'MiniPlayer'
 
 end

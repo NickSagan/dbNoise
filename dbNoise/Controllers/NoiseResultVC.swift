@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MiniPlayer
 import AVFoundation
 
 class NoiseResultVC: UIViewController {
@@ -28,9 +27,16 @@ class NoiseResultVC: UIViewController {
         return view
     }()
     
+    var playButton: UIButton = {
+        let view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setTitle("Play", for: .normal)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(result!)
+        playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePressed))
         title = "Result"
@@ -46,6 +52,13 @@ class NoiseResultVC: UIViewController {
     
     @objc func playPressed() {
         myPlayer.volume = 1.0
+   
+//        do {
+//            let url = result.url
+//            let isReachable = try url.checkResourceIsReachable()
+//        } catch let e {
+//            print("couldnt load file \(e.localizedDescription)")
+//        }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
@@ -76,8 +89,7 @@ extension NoiseResultVC {
     func subviews() {
         view.addSubview(header)
         view.addSubview(peak)
-//        view.addSubview(player)
-//        view.addSubview(audioRecord)
+        view.addSubview(playButton)
     }
     
     func constraints() {
@@ -91,12 +103,12 @@ extension NoiseResultVC {
             header.topAnchor.constraint(equalTo: peak.bottomAnchor, constant: 20),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
+            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
             
-//            player.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
-//            player.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-//            player.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-//            player.heightAnchor.constraint(equalToConstant: 25)
+            playButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
+            playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            playButton.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
 }
