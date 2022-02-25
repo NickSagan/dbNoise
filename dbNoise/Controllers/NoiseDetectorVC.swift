@@ -67,15 +67,18 @@ class NoiseDetectorVC: UIViewController {
             DispatchQueue.main.async {
                 sender.setBackgroundImage(UIImage(named: "Rec.png"), for: .normal)
             }
-            micManager.stopRecording()
-            showProgress(maximal)
-            dbResultLabel.text = "\(maximal)"
-            results.append(NoiseResult(date: Date().dateString(), min: self.minimal, avg: self.avereage, max: self.maximal))
-            Shared.instance.noiseResults = results
             
-            maximal = 0
-            minimal = 141
-            avereage = 40
+            if let url = micManager.getRecordingUrl() {
+                micManager.stopRecording()
+                showProgress(maximal)
+                dbResultLabel.text = "\(maximal)"
+                results.append(NoiseResult(date: Date().dateString(), min: self.minimal, avg: self.avereage, max: self.maximal, url: url))
+                Shared.instance.noiseResults = results
+                
+                maximal = 0
+                minimal = 141
+                avereage = 40
+            }
         } else {
             micManager.checkForPermission { (success) in
                 if success {
