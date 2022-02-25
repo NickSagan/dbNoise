@@ -12,4 +12,5 @@ struct NoiseResult: Codable {
     let min: Int
     let avg: Int
     let max: Int
+    let url: URL
 }
