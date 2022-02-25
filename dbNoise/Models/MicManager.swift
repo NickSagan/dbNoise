@@ -31,7 +31,7 @@ class MicManager: NSObject {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = urls.first!
-        return documentDirectory.appendingPathComponent("recording.m4a")
+        return documentDirectory.appendingPathComponent("recording\(IDFabric.shared.getID()).m4a")
     }
     
     var isAudioEngineRunning: Bool {
@@ -75,6 +75,10 @@ class MicManager: NSObject {
         } catch {
             print("Error: AVAudioRecorder creation failed")
         }
+    }
+    
+    func getRecordingUrl() -> URL? {
+        return recorder?.url
     }
     
     func startRecording() {
@@ -137,7 +141,7 @@ class MicManager: NSObject {
 extension MicManager: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         recorder.stop()
-        recorder.deleteRecording()
+        //recorder.deleteRecording()
         recorder.prepareToRecord()
     }
 }
