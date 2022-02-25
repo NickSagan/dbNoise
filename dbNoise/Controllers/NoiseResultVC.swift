@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MiniPlayer
+import AVFoundation
 
 class NoiseResultVC: UIViewController {
     
@@ -25,13 +27,21 @@ class NoiseResultVC: UIViewController {
         return view
     }()
     
+    var player: MiniPlayer = {
+        let player = MiniPlayer()
+        player.translatesAutoresizingMaskIntoConstraints = false
+        return player
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        player.delegate = self
+        player.soundTrack = AVPlayerItem(url: result.url)
+        
         print(result!)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(sharePressed))
-        
         title = "Result"
         if traitCollection.userInterfaceStyle == .dark {
             view.backgroundColor = .black
@@ -41,7 +51,6 @@ class NoiseResultVC: UIViewController {
         
         subviews()
         constraints()
-
     }
     
     @objc func sharePressed() {
@@ -69,6 +78,7 @@ extension NoiseResultVC {
     func subviews() {
         view.addSubview(header)
         view.addSubview(peak)
+        view.addSubview(player)
 //        view.addSubview(audioRecord)
     }
     
@@ -77,12 +87,31 @@ extension NoiseResultVC {
             peak.topAnchor.constraint(equalTo: view.topAnchor),
             peak.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             peak.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            peak.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            peak.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
             
             header.topAnchor.constraint(equalTo: peak.bottomAnchor, constant: 20),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30)
+            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            
+            player.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
+            player.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            player.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            player.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
         ])
+    }
+}
+
+extension NoiseResultVC: MiniPlayerDelegate {
+    func didPlay(player: MiniPlayer) {
+        print("Playing...")
+    }
+    
+    func didStop(player: MiniPlayer) {
+        print("Stopped")
+    }
+    
+    func didPause(player: MiniPlayer) {
+        print("Pause")
     }
 }
