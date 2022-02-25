@@ -35,3 +35,24 @@ class Shared {
         }
     }
 }
+
+// To save and read [HearingResult] & [NoiseResult]
+// https://stackoverflow.com/questions/63367953/storing-array-of-custom-objects-in-userdefaults
+
+extension URL {
+    static var hearingResults: URL {
+        let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let bundleID = Bundle.main.bundleIdentifier ?? "dBNoise"
+        let subDirectory = applicationSupport.appendingPathComponent(bundleID, isDirectory: true)
+        try? FileManager.default.createDirectory(at: subDirectory, withIntermediateDirectories: true, attributes: nil)
+        return subDirectory.appendingPathComponent("results.json")
+    }
+    
+    static var noiseResults: URL {
+        let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let bundleID = Bundle.main.bundleIdentifier ?? "dBNoise"
+        let subDirectory = applicationSupport.appendingPathComponent(bundleID, isDirectory: true)
+        try? FileManager.default.createDirectory(at: subDirectory, withIntermediateDirectories: true, attributes: nil)
+        return subDirectory.appendingPathComponent("noiseResults.json")
+    }
+}
