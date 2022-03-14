@@ -60,7 +60,36 @@ class MyRatingVC: UIViewController {
         
         subviews()
         constraints()
+        setHeader()
         clearButton.addTarget(self, action: #selector(clearPressed), for: .touchUpInside)
+    }
+    
+    func setHeader() {
+        var min = Int.max
+        var avg = 0
+        var avgSum = 0
+        var avgCounter = 0
+        var max = Int.min
+        
+        for result in results {
+            
+            avgCounter += 1
+            avgSum += result.avg
+            
+            if result.min < min {
+                min = result.min
+            }
+            
+            if result.max > max {
+                max = result.max
+            }
+        }
+        
+        avg = avgSum / avgCounter
+        
+        header.minValueLabel.text = "\(min) dB"
+        header.avgValueLabel.text = "\(avg) dB"
+        header.maxValueLabel.text = "\(max) dB"
     }
     
     @objc func clearPressed() {
