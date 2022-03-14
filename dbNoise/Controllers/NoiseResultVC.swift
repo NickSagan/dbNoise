@@ -27,6 +27,14 @@ class NoiseResultVC: UIViewController {
         return view
     }()
     
+    var peakLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.textColor = .white
+        lbl.text = ""
+        return lbl
+    }()
+    
     var playButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +56,8 @@ class NoiseResultVC: UIViewController {
         
         subviews()
         constraints()
+        
+        header.minValueLabel.text = "\(result.min) dB
     }
     
     @objc func playPressed() {
@@ -89,6 +99,7 @@ extension NoiseResultVC {
     func subviews() {
         view.addSubview(header)
         view.addSubview(peak)
+        peak.addSubview(peakLabel)
         view.addSubview(playButton)
     }
     
@@ -99,6 +110,9 @@ extension NoiseResultVC {
             peak.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             peak.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             peak.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            
+            peakLabel.centerXAnchor.constraint(equalTo: peak.centerXAnchor),
+            peakLabel.centerYAnchor.constraint(equalTo: peak.centerYAnchor),
             
             header.topAnchor.constraint(equalTo: peak.bottomAnchor, constant: 20),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
