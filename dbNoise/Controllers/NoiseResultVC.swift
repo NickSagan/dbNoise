@@ -32,6 +32,9 @@ class NoiseResultVC: UIViewController {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textColor = .white
         lbl.text = ""
+        lbl.font = UIFont.boldSystemFont(ofSize: 28)
+        lbl.textAlignment = .center
+        lbl.frame.size.height = 33
         return lbl
     }()
     
@@ -57,7 +60,11 @@ class NoiseResultVC: UIViewController {
         subviews()
         constraints()
         
-        header.minValueLabel.text = "\(result.min) dB
+        header.minValueLabel.text = "\(result.min) dB"
+        header.avgValueLabel.text = "\(result.avg) dB"
+        header.maxValueLabel.text = "\(result.max) dB"
+        
+        peakLabel.text = "Peak: \(result.max) dB"
     }
     
     @objc func playPressed() {
@@ -106,18 +113,18 @@ extension NoiseResultVC {
     func constraints() {
         
         NSLayoutConstraint.activate([
-            peak.topAnchor.constraint(equalTo: view.topAnchor),
+            peak.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             peak.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             peak.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            peak.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            peak.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             
             peakLabel.centerXAnchor.constraint(equalTo: peak.centerXAnchor),
             peakLabel.centerYAnchor.constraint(equalTo: peak.centerYAnchor),
             
-            header.topAnchor.constraint(equalTo: peak.bottomAnchor, constant: 20),
+            header.topAnchor.constraint(equalTo: peak.bottomAnchor, constant: 10),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
             
             playButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
             playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
