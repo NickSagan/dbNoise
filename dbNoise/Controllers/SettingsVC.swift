@@ -113,7 +113,6 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
 //        let vc = NoiseResultVC()
 //        vc.result = results[indexPath.row]
 //        navigationController?.pushViewController(vc, animated: true)

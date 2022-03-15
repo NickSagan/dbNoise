@@ -99,7 +99,8 @@ class MyRatingVC: UIViewController {
     }
     
     @objc func settingsPressed() {
-        print("Settings")
+        let vc = SettingsVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
