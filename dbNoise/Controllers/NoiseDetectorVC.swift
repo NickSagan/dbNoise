@@ -98,7 +98,8 @@ class NoiseDetectorVC: UIViewController {
     }
     
     @objc func settingsPressed(_ sender: UIButton) {
-        print("settings")
+        let vc = SettingsVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func proPressed(_ sender: UIButton) {
