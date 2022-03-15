@@ -20,6 +20,15 @@ class SettingsVC: UIViewController {
     
     var tableView: UITableView!
     
+    let settings = [
+        // Section 1
+        [["rate_app.png", "Rate App"], ["feedback.png", "Feedback"]],
+        // Section 2
+        [["subscription.png", "Subscription"], ["subscription.png", "Restore purchases"]],
+        // Section 3
+        [["policy.png", "Terms"], ["policy.png", "Politics"], ["policy.png", "Responsibility"]]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,8 +107,8 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SettingsCell
-        cell.icon.image = UIImage(named: "rate_app.png")
-        cell.titleLabel.text = "Rate App"
+        cell.icon.image = UIImage(named: settings[indexPath.section][indexPath.row][0])
+        cell.titleLabel.text = settings[indexPath.section][indexPath.row][1]
         return cell
     }
     
