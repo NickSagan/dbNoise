@@ -23,6 +23,7 @@
 		916832F827AABD9A00C4C109 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832F727AABD9A00C4C109 /* Extensions.swift */; };
 		916832FE27AACE3500C4C109 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916832FD27AACE3500C4C109 /* ResultView.xib */; };
 		9168330027AADD0600C4C109 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832FF27AADD0600C4C109 /* ResultView.swift */; };
+		916D60AB27E11BE100D9088B /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D60AA27E11BE100D9088B /* SettingsVC.swift */; };
 		9175D0EA27BCECA400A8B84B /* RoundProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */; };
 		9184C99727A557A70040F230 /* HearingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184C99627A557A70040F230 /* HearingVC.swift */; };
 		91D12B8127BEA37300A3B211 /* NoiseResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D12B8027BEA37300A3B211 /* NoiseResultVC.swift */; };
@@ -79,6 +80,7 @@
 		916832F727AABD9A00C4C109 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		916832FD27AACE3500C4C109 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		916832FF27AADD0600C4C109 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		916D60AA27E11BE100D9088B /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundProgressBar.swift; sourceTree = "<group>"; };
 		9184C99627A557A70040F230 /* HearingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingVC.swift; sourceTree = "<group>"; };
 		91D12B8027BEA37300A3B211 /* NoiseResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseResultVC.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				91D614E027AFFE560094D9C3 /* HearingResultVC.swift */,
 				91180A3827B6A011009AFDDA /* MyRatingVC.swift */,
 				91D12B8027BEA37300A3B211 /* NoiseResultVC.swift */,
+				916D60AA27E11BE100D9088B /* SettingsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				91D8E70C27A158F300816161 /* SceneDelegate.swift in Sources */,
 				91D614DD27AEDA450094D9C3 /* ResultsListVC.swift in Sources */,
 				9184C99727A557A70040F230 /* HearingVC.swift in Sources */,
+				916D60AB27E11BE100D9088B /* SettingsVC.swift in Sources */,
 				91D614CD27AD79450094D9C3 /* HearingResult.swift in Sources */,
 				91180A3927B6A011009AFDDA /* MyRatingVC.swift in Sources */,
 			);
