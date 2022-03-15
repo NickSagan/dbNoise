@@ -24,6 +24,7 @@
 		916832FE27AACE3500C4C109 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916832FD27AACE3500C4C109 /* ResultView.xib */; };
 		9168330027AADD0600C4C109 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832FF27AADD0600C4C109 /* ResultView.swift */; };
 		916D60AB27E11BE100D9088B /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D60AA27E11BE100D9088B /* SettingsVC.swift */; };
+		916D60AD27E11F5800D9088B /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D60AC27E11F5800D9088B /* SettingsCell.swift */; };
 		9175D0EA27BCECA400A8B84B /* RoundProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */; };
 		9184C99727A557A70040F230 /* HearingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9184C99627A557A70040F230 /* HearingVC.swift */; };
 		91D12B8127BEA37300A3B211 /* NoiseResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D12B8027BEA37300A3B211 /* NoiseResultVC.swift */; };
@@ -81,6 +82,7 @@
 		916832FD27AACE3500C4C109 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		916832FF27AADD0600C4C109 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		916D60AA27E11BE100D9088B /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		916D60AC27E11F5800D9088B /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundProgressBar.swift; sourceTree = "<group>"; };
 		9184C99627A557A70040F230 /* HearingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearingVC.swift; sourceTree = "<group>"; };
 		91D12B8027BEA37300A3B211 /* NoiseResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseResultVC.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				91180A3427B69CF5009AFDDA /* MyRatingCell.swift */,
 				91180A3A27B796CE009AFDDA /* MinAvgMaxView.swift */,
 				9175D0E927BCECA400A8B84B /* RoundProgressBar.swift */,
+				916D60AC27E11F5800D9088B /* SettingsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				91180A3527B69CF5009AFDDA /* MyRatingCell.swift in Sources */,
 				916832F627AAB6EE00C4C109 /* HearingTestLogic.swift in Sources */,
 				9175D0EA27BCECA400A8B84B /* RoundProgressBar.swift in Sources */,
+				916D60AD27E11F5800D9088B /* SettingsCell.swift in Sources */,
 				9168330027AADD0600C4C109 /* ResultView.swift in Sources */,
 				91D614E127AFFE560094D9C3 /* HearingResultVC.swift in Sources */,
 				91180A3727B69EAF009AFDDA /* NoiseResult.swift in Sources */,
