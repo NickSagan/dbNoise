@@ -3,8 +3,8 @@ This app allows users to measure the level of ambient noise, as well as test the
 
 # This project contains
 
-* UIKit, SwiftyOnboard, AVFAudio, MediaPlayer, AVKit, MPVolumeView // in progress...
-* I learned
+* UIKit, SwiftyOnboard, AVFAudio, MediaPlayer, AVKit, MPVolumeView, FileManager, MVC.
+* ...
 
 # How to use the app
 
