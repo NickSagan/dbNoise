@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class NoiseDetectorVC: UIViewController {
     
@@ -78,6 +79,12 @@ class NoiseDetectorVC: UIViewController {
                 maximal = 0
                 minimal = 141
                 avereage = 40
+                
+                // Rate app if 1st time
+                if (UserDefaults.standard.bool(forKey: "firstRate") == false) {
+                    UserDefaults.standard.set(true, forKey: "firstRate")
+                    rateApp()
+                }
             }
         } else {
             micManager.checkForPermission { (success) in
@@ -164,5 +171,22 @@ extension NoiseDetectorVC: MicManagerDelegate {
         }
         
         textExplanationLabel.text = explanation
+    }
+}
+
+// Rate App
+extension NoiseDetectorVC {
+    func rateApp() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+
+        } else if let url = URL(string: "itms-apps://itunes.apple.com/app/" + "appId") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 }

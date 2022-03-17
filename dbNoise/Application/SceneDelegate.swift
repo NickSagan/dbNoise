@@ -28,8 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if (UserDefaults.standard.bool(forKey: "notFirstInApp") == false) {
             UserDefaults.standard.set(true, forKey: "notFirstInApp")
             // First launch - go to onboarding screen
-            print("This is first launch")
-
             // 4. Set the root view controller of the window with your view controller
             window.rootViewController = OnboardVC()
             // 5. Set the window and call makeKeyAndVisible()
@@ -37,8 +35,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         } else {
             //Not a first launch - go to NoiseDetectorVC
-            print("This is NOT a first launch")
-
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "NoiseDetectorID")
             let nc = UINavigationController(rootViewController: vc)
