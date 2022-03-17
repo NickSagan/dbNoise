@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import StoreKit
+import MessageUI
 
 class SettingsVC: UIViewController {
 
@@ -52,6 +54,20 @@ class SettingsVC: UIViewController {
         
         subviews()
         constraints()
+    }
+    
+    func rateApp() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
+
+        } else if let url = URL(string: "itms-apps://itunes.apple.com/app/" + "appId") {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 }
 
@@ -114,7 +130,11 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 2 {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                rateApp()
+            }
+        } else if indexPath.section == 2 {
             if let url = URL(string: "https://pages.flycricket.io/dbnoise-0/terms.html") {
                 UIApplication.shared.open(url, options: [:])
             }
