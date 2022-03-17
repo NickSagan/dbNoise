@@ -113,6 +113,12 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 2 {
+            if let url = URL(string: "https://pages.flycricket.io/dbnoise-0/terms.html") {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
 //        let vc = NoiseResultVC()
 //        vc.result = results[indexPath.row]
 //        navigationController?.pushViewController(vc, animated: true)
