@@ -133,6 +133,8 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 rateApp()
+            } else if indexPath.row == 1 {
+                sendEmail()
             }
         } else if indexPath.section == 2 {
             if let url = URL(string: "https://pages.flycricket.io/dbnoise-0/terms.html") {
@@ -142,5 +144,26 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
 //        let vc = NoiseResultVC()
 //        vc.result = results[indexPath.row]
 //        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension SettingsVC: MFMailComposeViewControllerDelegate {
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["you@dbnoise.com"])
+            mail.setSubject("dBNoise feedback")
+            mail.setMessageBody("<p>Awesome dBNoise app!</p>", isHTML: true)
+
+            present(mail, animated: true)
+        } else {
+            print("Device can't sendMail")
+        }
+    }
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }
