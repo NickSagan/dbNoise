@@ -41,7 +41,10 @@ class NoiseResultVC: UIViewController {
     var playButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.setTitle("Play", for: .normal)
+        view.setTitle("  Play", for: .normal)
+        view.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        view.titleLabel?.font = view.titleLabel?.font.withSize(26)
+        view.tintColor = .white
         return view
     }()
     
@@ -114,16 +117,16 @@ extension NoiseResultVC {
         
         NSLayoutConstraint.activate([
             peak.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            peak.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            peak.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            peak.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            peak.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             peak.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
             
             peakLabel.centerXAnchor.constraint(equalTo: peak.centerXAnchor),
             peakLabel.centerYAnchor.constraint(equalTo: peak.centerYAnchor),
             
             header.topAnchor.constraint(equalTo: peak.bottomAnchor, constant: 10),
-            header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
             
             playButton.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20),
