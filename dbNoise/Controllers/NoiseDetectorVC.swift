@@ -73,7 +73,7 @@ class NoiseDetectorVC: UIViewController {
                 micManager.stopRecording()
                 showProgress(maximal)
                 dbResultLabel.text = "\(maximal)"
-                results.append(NoiseResult(date: Date().dateString(), min: self.minimal, avg: self.avereage, max: self.maximal, url: url))
+                results.append(NoiseResult(date: Date().dateStringNoTime(), min: self.minimal, avg: self.avereage, max: self.maximal, url: url))
                 Shared.instance.noiseResults = results
                 
                 maximal = 0
