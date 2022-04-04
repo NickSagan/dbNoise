@@ -13,6 +13,7 @@
 		91180A3927B6A011009AFDDA /* MyRatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91180A3827B6A011009AFDDA /* MyRatingVC.swift */; };
 		91180A3B27B796CF009AFDDA /* MinAvgMaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91180A3A27B796CE009AFDDA /* MinAvgMaxView.swift */; };
 		91226D8E27A3DFBF008DD34E /* MicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91226D8D27A3DFBF008DD34E /* MicManager.swift */; };
+		912BD5B627FB587E00529915 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 912BD5B527FB587E00529915 /* SnapKit */; };
 		91346E7427C92A5D007FFBA3 /* IDFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91346E7327C92A5D007FFBA3 /* IDFabric.swift */; };
 		916832EB27A9957B00C4C109 /* HearingTestSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916832EA27A9957B00C4C109 /* HearingTestSound.swift */; };
 		916832F127A996D200C4C109 /* r2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 916832ED27A996D200C4C109 /* r2.wav */; };
@@ -128,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3A24089A48A721168A31209 /* Pods_dbNoise.framework in Frameworks */,
+				912BD5B627FB587E00529915 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +305,9 @@
 			dependencies = (
 			);
 			name = dbNoise;
+			packageProductDependencies = (
+				912BD5B527FB587E00529915 /* SnapKit */,
+			);
 			productName = dbNoise;
 			productReference = 91D8E70627A158F300816161 /* dbNoise.app */;
 			productType = "com.apple.product-type.application";
@@ -331,6 +336,9 @@
 				Base,
 			);
 			mainGroup = 91D8E6FD27A158F300816161;
+			packageReferences = (
+				912BD5B427FB587E00529915 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 91D8E70727A158F300816161 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -674,6 +682,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		912BD5B427FB587E00529915 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		912BD5B527FB587E00529915 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 912BD5B427FB587E00529915 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 91D8E6FE27A158F300816161 /* Project object */;
 }
