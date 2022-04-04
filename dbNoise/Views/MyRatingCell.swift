@@ -30,16 +30,14 @@ class MyRatingCell : UITableViewCell {
     private let dateLabel : UILabel = {
         let date = UILabel()
         date.frame.size.height = 20
-        date.frame.size.width = 260
-        date.textAlignment = .left
+        date.frame.size.width = 200
+        date.textAlignment = .center
         return date
     }()
     
     
     private let minLabel : UILabel = {
         let lbl = UILabel()
-        lbl.frame.size.width = 60
-        lbl.frame.size.height = 20
         lbl.textColor = .systemGreen
         lbl.backgroundColor = UIColor(cgColor: CGColor(red: 50, green: 192, blue: 85, alpha: 0.1))
         lbl.layer.masksToBounds = true
@@ -50,8 +48,6 @@ class MyRatingCell : UITableViewCell {
     
     private let avgLabel : UILabel = {
         let lbl = UILabel()
-        lbl.frame.size.width = 60
-        lbl.frame.size.height = 20
         lbl.textColor = .systemYellow
         lbl.backgroundColor = UIColor(cgColor: CGColor(red: 50, green: 192, blue: 85, alpha: 0.1))
         lbl.layer.masksToBounds = true
@@ -68,7 +64,7 @@ class MyRatingCell : UITableViewCell {
         lbl.backgroundColor = UIColor(cgColor: CGColor(red: 50, green: 192, blue: 85, alpha: 0.1))
         lbl.layer.masksToBounds = true
         lbl.layer.cornerRadius = 8.0
-        lbl.textAlignment = .center
+        lbl.textAlignment = .left
         return lbl
     }()
         
@@ -79,16 +75,18 @@ class MyRatingCell : UITableViewCell {
         addSubview(avgLabel)
         addSubview(maxLabel)
         
+        dateLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4) .isActive = true
+        maxLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.18) .isActive = true
         minLabel.widthAnchor.constraint(equalTo: maxLabel.widthAnchor).isActive = true
         avgLabel.widthAnchor.constraint(equalTo: maxLabel.widthAnchor).isActive = true
 
         let stackView = UIStackView(arrangedSubviews: [dateLabel, minLabel, avgLabel, maxLabel])
         stackView.distribution = .fillProportionally
         stackView.axis = .horizontal
-        stackView.spacing = 15
+        stackView.spacing = 10
         addSubview(stackView)
         
-        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 15, paddingLeft: 15, paddingBottom: 15, paddingRight: 15, width: 0, height: 0, enableInsets: false)
+        stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 15, paddingLeft: 15, paddingBottom: 5, paddingRight: 15, width: 0, height: 0, enableInsets: false)
     
     }
     
