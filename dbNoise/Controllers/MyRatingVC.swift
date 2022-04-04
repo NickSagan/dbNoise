@@ -119,7 +119,7 @@ extension MyRatingVC {
             header.topAnchor.constraint(equalTo: view.topAnchor),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30),
+            header.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.27),
             
             tableView.topAnchor.constraint(equalTo: header.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
