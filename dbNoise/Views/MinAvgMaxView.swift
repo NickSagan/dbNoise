@@ -71,21 +71,21 @@ class MinAvgMaxView: UIView {
     
     let green: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = UIColor(red: 52/255.0, green: 199/255.0, blue: 89/255.0, alpha: 1)
         view.layer.cornerRadius = 12
         return view
     }()
     
     let yellow: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = UIColor(red: 255/255.0, green: 159/255.0, blue: 10/255.0, alpha: 1)
         view.layer.cornerRadius = 12
         return view
     }()
     
     let red: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemRed
+        view.backgroundColor = UIColor(red: 255/255.0, green: 69/255.0, blue: 58/255.0, alpha: 1)
         view.layer.cornerRadius = 12
         return view
     }()
