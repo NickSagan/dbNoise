@@ -84,7 +84,9 @@ class MyRatingVC: UIViewController {
                 max = result.max
             }
         }
-        
+        if min == Int.max { min = 0 }
+        if max == Int.min { max = 0 }
+        if avgCounter == 0 { avgCounter = 1 }
         avg = avgSum / avgCounter
         
         header.minValueLabel.text = "\(min) dB"
