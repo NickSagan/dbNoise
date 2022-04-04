@@ -101,11 +101,20 @@ extension UIView {
 // https://stackoverflow.com/questions/24070450/how-to-get-the-current-time-as-datetime
 
 extension Date {
-    
     func dateString() -> String {
         let date = Date()
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm"
+        let dateString = df.string(from: date)
+        return dateString
+    }
+}
+
+extension Date {
+    func dateStringNoTime() -> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
         let dateString = df.string(from: date)
         return dateString
     }
