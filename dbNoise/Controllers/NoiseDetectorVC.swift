@@ -110,7 +110,8 @@ class NoiseDetectorVC: UIViewController {
     }
     
     @IBAction func proPressed(_ sender: UIButton) {
-        print("pro")
+        let vc = FreeTrialVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func hearingPressed(_ sender: UIButton) {
